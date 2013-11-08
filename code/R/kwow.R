@@ -6,23 +6,51 @@
 # Project: kwow 
 ###############################################
 
+##
+## !!! NOTE: Comment this line when building project !!!
+##
 setwd("./code/R")
 
-mturk.file <- "../../data/mturk_output.csv"
-mturk.df.raw <- read.table(mturk.file, header=T, sep=",", fill=T)
-mturk.df <- mturk.df.raw[, c("Input.Title",
-                             "Answer.know_job",
-                             "Answer.know_anyone",
-                             "Answer.wage",
-                             "Answer.volume_trend",
-                             "Answer.wage_trend",
-                             "Answer.comment")]
+##
+## Clearing the workspace
+##
+rm(list=ls(all=TRUE))
+gc(reset=TRUE)
+set.seed(12345)
 
-tb <- table(mturk.df$Input.Title)
-jtitle <- names(tb[tb<30])
+##
+## Data utils
+##
+source("utils.R")
 
-mturk.df[mturk.df$Input.Title==jtitle,1]
-# Licensed Practical and Licensed Vocational Nurses
+##
+## Data from Bureau of Labor Statistics, Department of Labor
+##
+national.df <- import.top.national("../../data/national_M2012_dl.csv", 99)
+
+nrow(national.df)
+head(national.df)
+sapply(national.df, class)
+
+
+##
+## Data from MTurk
+##
+mturk.df <- import.mturk("../../data/mturk_output.csv")
+
+nrow(mturk.df)
+head(mturk.df)
+sapply(mturk.df, class)
+
+
+# tb <- table(mturk.df$Input.Title)
+# jtitle <- names(tb[tb<30])
+# 
+# mturk.df[mturk.df$Input.Title==jtitle,1]
+# # Licensed Practical and Licensed Vocational Nurses
+
+
+
 
 library(ggplot2)
 library(scales)
