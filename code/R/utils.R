@@ -48,7 +48,7 @@ import.top.national <- function(fname, TOP.N=100, OCC.CAT="broad"){
   df <- df[1:ifelse(nrow(df)>TOP.N, TOP.N, nrow(df)), ]
   rownames(df) <- 1:nrow(df)
   
-  df
+  df[,c(1,2,4,5,6,8,9:13)]
 }
 
 

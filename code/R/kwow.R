@@ -43,13 +43,28 @@ head(mturk.df)
 sapply(mturk.df, class)
 
 
-# tb <- table(mturk.df$Input.Title)
-# jtitle <- names(tb[tb<30])
-# 
-# mturk.df[mturk.df$Input.Title==jtitle,1]
-# # Licensed Practical and Licensed Vocational Nurses
+##
+## Function returns basic stats for variable
+## Statistics are comparable to OES data
+##
+national.stats <- function(x){
+  c(h.mean=mean(x),
+    h.median=median(x),
+    h.prse=100*sd(x)/mean(x),
+    h.pct=quantile(x,c(0.10,0.25,0.75,0.90)))
+}
+
+##
+## Aggregation of two datasets (OES & MTSO)
+##
+agg <- aggregate(.~Input.Title, data = mturk.df[,c(1,4)], FUN=national.stats)
+df <- merge(national.df, agg, by.x="OCC_TITLE", by.y="Input.Title")
+
+## Comparation of RSE's
+summary(data.frame(OES=df$EMP_PRSE, MTSO=df$Answer.wage[,3]))
 
 
+head(with(mturk.df, mturk.df[Answer.know_job=="Yes" & Answer.know_anyone!=0, ]))
 
 
 library(ggplot2)
