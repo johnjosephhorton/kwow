@@ -28,6 +28,7 @@ source("utils.R")
 ##
 library(xtable)
 library(ggplot2)
+library(reshape2)
 
 ##
 ## Data from Bureau of Labor Statistics, Department of Labor
@@ -64,10 +65,10 @@ national.stats <- function(x){
 ## Aggregation of two datasets (OES & MTSO)
 ##
 agg <- aggregate(.~Input.Title, data = mturk.df[,c(1,4)], FUN=national.stats)
-df <- merge(national.df, agg, by.x="OCC_TITLE", by.y="Input.Title")
+df1 <- merge(national.df, agg, by.x="OCC_TITLE", by.y="Input.Title")
 
 ## Comparation of RSE's
-stat <- summary(data.frame(OES=df$EMP_PRSE, MTSO=df$Answer.wage[,3]))
+stat <- summary(data.frame(OES=df1$EMP_PRSE, MTSO=df1$Answer.wage[,3]))
 tab <- xtable(stat, caption="RSE for Hourly Wages in OES and MTSO datasets (all obs.)",
               label="tab:rse_oes_mtso1")
 
@@ -83,10 +84,10 @@ sink()
 mturk.df.knowledge <- with(mturk.df, mturk.df[Answer.know_job=="Yes" & Answer.know_anyone!=0, ])
 
 agg <- aggregate(.~Input.Title, data = mturk.df.knowledge[,c(1,4)], FUN=national.stats)
-df <- merge(national.df, agg, by.x="OCC_TITLE", by.y="Input.Title")
+df2 <- merge(national.df, agg, by.x="OCC_TITLE", by.y="Input.Title")
 
 ## Comparation of RSE's
-stat <- summary(data.frame(OES=df$EMP_PRSE, MTSO=df$Answer.wage[,3]))
+stat <- summary(data.frame(OES=df2$EMP_PRSE, MTSO=df2$Answer.wage[,3]))
 tab <- xtable(stat, caption="RSE for Hourly Wages in OES and MTSO datasets (filtered)",
               label="tab:rse_oes_mtso2")
 
@@ -99,7 +100,32 @@ sink()
 national.df$OCC_TITLE[!(unique(national.df$OCC_TITLE) %in% unique(df$OCC_TITLE))]
 
 
+##
+## Basic plots
+##
 
+shorten.str <- function(x,N=15){
+  paste0(substr(x,1,N), ifelse(nchar(x)>N,"...",""))
+}
+
+# head(df1)
+# plots.df <- data.frame(job=sapply(df1$OCC_TITLE,shorten.str), h.mean.oes=df1$H_MEAN, h.mean.mtos=df1$Answer.wage[,1]) #[1:20,]
+
+plots.df <- data.frame(job=df1$OCC_CODE, h.mean.oes=df1$H_MEAN, h.mean.mtos=df1$Answer.wage[,1]) #[1:20,]
+
+plots.df <- plots.df[with(plots.df, order(-h.mean.oes)), ]
+plots.df <- within(plots.df, job<-factor(job, levels=job))
+plots.df <- melt(data=plots.df, id.vars="job")
+
+plot.mean.h <- 
+  ggplot(plots.df, aes(x=job, y=value, fill=variable)) + 
+  geom_bar(alpha=.5, position="dodge", stat="identity") + 
+  theme(axis.text.x=element_text(angle=90, hjust=0, vjust=0.5)) + 
+  ggtitle("Mean hourly wage")
+
+plot.mean.h
+
+ggsave("../../writeup/plots/mean.h.wage.png", plot.mean.h, width=8, height=5)
 
 library(ggplot2)
 library(scales)
