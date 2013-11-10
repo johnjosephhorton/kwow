@@ -9,7 +9,7 @@
 ##
 ## !!! NOTE: Comment this line when building project !!!
 ##
-setwd("./code/R")
+# setwd("./code/R")
 
 ##
 ## Clearing the workspace
@@ -22,6 +22,12 @@ set.seed(12345)
 ## Data utils
 ##
 source("utils.R")
+
+##
+## Libraries
+##
+library(xtable)
+library(ggplot2)
 
 ##
 ## Data from Bureau of Labor Statistics, Department of Labor
@@ -61,10 +67,38 @@ agg <- aggregate(.~Input.Title, data = mturk.df[,c(1,4)], FUN=national.stats)
 df <- merge(national.df, agg, by.x="OCC_TITLE", by.y="Input.Title")
 
 ## Comparation of RSE's
-summary(data.frame(OES=df$EMP_PRSE, MTSO=df$Answer.wage[,3]))
+stat <- summary(data.frame(OES=df$EMP_PRSE, MTSO=df$Answer.wage[,3]))
+tab <- xtable(stat, caption="RSE for Hourly Wages in OES and MTSO datasets (all obs.)",
+              label="tab:rse_oes_mtso1")
+
+# Output to a file 
+sink("../../writeup/tables/rse1.tex", append=FALSE, split=FALSE)
+tab
+sink()
+
+##
+## Filter only informed respondents
+## Who a) know the job; b) know any people in the job
+##
+mturk.df.knowledge <- with(mturk.df, mturk.df[Answer.know_job=="Yes" & Answer.know_anyone!=0, ])
+
+agg <- aggregate(.~Input.Title, data = mturk.df.knowledge[,c(1,4)], FUN=national.stats)
+df <- merge(national.df, agg, by.x="OCC_TITLE", by.y="Input.Title")
+
+## Comparation of RSE's
+stat <- summary(data.frame(OES=df$EMP_PRSE, MTSO=df$Answer.wage[,3]))
+tab <- xtable(stat, caption="RSE for Hourly Wages in OES and MTSO datasets (filtered)",
+              label="tab:rse_oes_mtso2")
+
+# Output to a file 
+sink("../../writeup/tables/rse2.tex", append=FALSE, split=FALSE)
+tab
+sink()
+
+## Jobs with no informed respondents
+national.df$OCC_TITLE[!(unique(national.df$OCC_TITLE) %in% unique(df$OCC_TITLE))]
 
 
-head(with(mturk.df, mturk.df[Answer.know_job=="Yes" & Answer.know_anyone!=0, ]))
 
 
 library(ggplot2)
