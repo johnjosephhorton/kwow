@@ -29,6 +29,7 @@ source("utils.R")
 library(xtable)
 library(ggplot2)
 library(reshape2)
+require(scales)
 
 ##
 ## Data from Bureau of Labor Statistics, Department of Labor
@@ -56,19 +57,52 @@ sapply(mturk.df, class)
 ##
 national.stats <- function(x){
   c(h.mean=mean(x),
-    h.median=median(x),
     h.prse=100*sd(x)/mean(x),
-    h.pct=quantile(x,c(0.10,0.25,0.75,0.90)))
+    h.pct=quantile(x,c(0.10,0.25,0.50,0.75,0.90)))
 }
 
 ##
-## Aggregation of two datasets (OES & MTSO)
+## Merging of two datasets (OES & MTSO)
 ##
 agg <- aggregate(.~Input.Title, data = mturk.df[,c(1,4)], FUN=national.stats)
-df1 <- merge(national.df, agg, by.x="OCC_TITLE", by.y="Input.Title")
+df1 <- cbind(agg$Input.Title, as.data.frame(agg$Answer.wage))
+df2 <- national.df[,c(-1,-3,-4)]
+
+names(df1) <- names(df2)
+
+df1$var <- "MTOS"
+df2$var <- "OES"
+
+df <- rbind(df1, df2)
+names(df)
+head(df)
+
+
+# all.jobs <- national.df$OCC_TITLE[1:9]
+all.jobs <- national.df[with(national.df, order(-H_MEAN)), ]$OCC_TITLE[1:9]
+df.f <- df[df$OCC_TITLE %in% all.jobs, ]
+
+tmp <- as.data.frame(sapply(df.f[,2:8], gsub, pattern=Inf, replacement=90.0))
+df.f[,2:8] <- sapply(sapply(tmp, as.character), as.numeric)
+
+p <- ggplot(df.f, aes(x=OCC_TITLE, ymin=`H_PCT10`, lower=`H_PCT25`, middle=`H_MEDIAN`, 
+                      upper=`H_PCT75`, ymax=`H_PCT90`)) 
+p <- p + geom_boxplot(aes(fill=var), stat="identity") 
+p <- p + theme(axis.text.x=element_blank())
+p <- p + facet_wrap( ~ OCC_TITLE, scales="free")
+p
+
+
+ggsave("../../writeup/plots/top.paid.png", p, width=8, height=5)
+ggsave("../../writeup/plots/low.paid.png", p, width=8, height=5)
+
+#
+# CODE BELOW IS DEPRECIATED 
+#
+
 
 ## Comparation of RSE's
-stat <- summary(data.frame(OES=df1$EMP_PRSE, MTSO=df1$Answer.wage[,3]))
+stat <- summary(data.frame(OES=df1$EMP_PRSE, MTSO=df$Answer.wage[,3]))
 tab <- xtable(stat, caption="RSE for Hourly Wages in OES and MTSO datasets (all obs.)",
               label="tab:rse_oes_mtso1")
 
@@ -97,7 +131,7 @@ tab
 sink()
 
 ## Jobs with no informed respondents
-national.df$OCC_TITLE[!(unique(national.df$OCC_TITLE) %in% unique(df$OCC_TITLE))]
+national.df$OCC_TITLE[!(unique(national.df$OCC_TITLE) %in% unique(df2$OCC_TITLE))]
 
 
 ##
@@ -127,8 +161,18 @@ plot.mean.h
 
 ggsave("../../writeup/plots/mean.h.wage.png", plot.mean.h, width=8, height=5)
 
-library(ggplot2)
-library(scales)
+
+
+# abs(qt(0.25, 40)) # 75% confidence, 1 sided (same as qt(0.75, 40))
+# abs(qt(0.01, 40)) # 99% confidence, 1 sided (same as qt(0.99, 40))
+# abs(qt(0.01/2, 40)) # 99% confidence, 2 sided
+
+names(df1)
+
+df1[,c("OCC_CODE", )]
+
+
+
 library(testthat)
 
 N <- 1000
