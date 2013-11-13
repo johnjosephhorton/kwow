@@ -31,16 +31,28 @@ import.top.national <- function(fname, TOP.N=100, OCC.CAT="broad"){
   
   ## Masks all columns with numerical values
   convert.cols <- colnames(df)[c(-1,-2,-3,-19,-20)]
+  ## Masks columns with hourly and annual data respectively
+  cols.hourly <- colnames(df)[c(6,9:13)]
+  cols.annual <- colnames(df)[c(7,14:18)]
   ## Replaces comma in numbers
   df[,convert.cols] <- as.data.frame(sapply(df[,convert.cols], gsub, pattern=",", replacement=""))
   ## Replaces '#' with Inf
-  df[,convert.cols] <- as.data.frame(sapply(df[,convert.cols], gsub, pattern="#", replacement=Inf))
+  ## df[,convert.cols] <- as.data.frame(sapply(df[,convert.cols], gsub, pattern="#", replacement=Inf))
+  
+  ## Replace '#' with 90.00 for hourly data
+  df[,cols.hourly] <- as.data.frame(sapply(df[,cols.hourly], gsub, pattern="#", replacement="90.00"))
+  ## Replace '#' with 187'200 for annual data
+  df[,cols.annual] <- as.data.frame(sapply(df[,cols.annual], gsub, pattern="#", replacement="187200"))
   
   ## Double convert factor-to-numeric
   df[,convert.cols] <- sapply(df[,convert.cols], as.character)
   df[,convert.cols] <- sapply(df[,convert.cols], as.numeric)
   ## Convert first 3 columns to characters
   df[,1:3] <- sapply(df[,1:3], as.character)
+  
+  ## For annually-paid jobs converts annual wages to hourly
+  df[!is.na(df$ANNUAL) & df$ANNUAL==T, cols.hourly] <-
+    df[!is.na(df$ANNUAL) & df$ANNUAL==T, cols.annual]/2080
   
   ## Order by Total employment (NOTE: original data is already ordered)
   df <- df[with(df, order(-TOT_EMP)), ]

@@ -29,7 +29,8 @@ source("utils.R")
 library(xtable)
 library(ggplot2)
 library(reshape2)
-require(scales)
+library(scales)
+library(stringr)
 
 ##
 ## Data from Bureau of Labor Statistics, Department of Labor
@@ -69,32 +70,66 @@ df1 <- cbind(agg$Input.Title, as.data.frame(agg$Answer.wage))
 df2 <- national.df[,c(-1,-3,-4)]
 
 names(df1) <- names(df2)
-
 df1$var <- "MTOS"
 df2$var <- "OES"
 
 df <- rbind(df1, df2)
-names(df)
-head(df)
+## Set order for datasources
+df$var <- factor(df$var, levels=c("OES", "MTOS"))
+rm(df1,df2,agg)
 
+##
+## Function to shorten strings
+##
+shorten.str <- function(x, N=20){
+  x <- as.character(x)
+  res <- paste0(substr(x,1,N), ifelse(nchar(x)>N,"...",""))
+  res
+}
 
-# all.jobs <- national.df$OCC_TITLE[1:9]
+##
+## Function to create custom boxplots from merged dataset
+##
+wage.boxplots <- function(df, all.jobs){
+  
+  ## Filtering data
+  df.f <- df[df$OCC_TITLE %in% all.jobs, ]
+  
+  ## Shorten string
+  df.f$OCC_TITLE <- shorten.str(df.f$OCC_TITLE)
+  
+  ## Ordering facets on median OES wage
+  df.f <- df.f[with(df.f, order(var, -H_MEDIAN)), ]
+  df.f$OCC_TITLE <- factor(df.f$OCC_TITLE, levels=df.f$OCC_TITLE[df.f$var=="OES"])
+  
+  ## Plotting
+  p <- ggplot(df.f, aes(x=OCC_TITLE, ymin=`H_PCT10`, lower=`H_PCT25`, middle=`H_MEDIAN`, 
+                        upper=`H_PCT75`, ymax=`H_PCT90`)) 
+  p <- p + geom_boxplot(aes(fill=var), stat="identity") 
+  p <- p + theme(axis.text.x=element_blank())
+  p <- p + facet_wrap( ~ OCC_TITLE, scales="free_x")
+  p <- p + xlab("Boxplots are constructed based on 10%,25%,50%,75% and 90% percentiles") + 
+    ggtitle("OES and MTOS Wages")
+  p
+}
+
+## Filter some top-paid jobs
 all.jobs <- national.df[with(national.df, order(-H_MEAN)), ]$OCC_TITLE[1:9]
-df.f <- df[df$OCC_TITLE %in% all.jobs, ]
+top.paid <- wage.boxplots(df, all.jobs)
+top.paid
+ggsave("../../writeup/plots/top.paid.png", top.paid, width=8, height=5)
 
-tmp <- as.data.frame(sapply(df.f[,2:8], gsub, pattern=Inf, replacement=90.0))
-df.f[,2:8] <- sapply(sapply(tmp, as.character), as.numeric)
+## Filter som low-paid jobs
+all.jobs <- national.df[with(national.df, order(H_MEAN)), ]$OCC_TITLE[1:16]
+low.paid <- wage.boxplots(df, all.jobs)
+low.paid
+ggsave("../../writeup/plots/low.paid.png", low.paid, width=8, height=5)
 
-p <- ggplot(df.f, aes(x=OCC_TITLE, ymin=`H_PCT10`, lower=`H_PCT25`, middle=`H_MEDIAN`, 
-                      upper=`H_PCT75`, ymax=`H_PCT90`)) 
-p <- p + geom_boxplot(aes(fill=var), stat="identity") 
-p <- p + theme(axis.text.x=element_blank())
-p <- p + facet_wrap( ~ OCC_TITLE, scales="free")
-p
-
-
-ggsave("../../writeup/plots/top.paid.png", p, width=8, height=5)
-ggsave("../../writeup/plots/low.paid.png", p, width=8, height=5)
+## Filter selected jobs
+all.jobs <- national.df$OCC_TITLE[str_detect(national.df$OCC_TITLE, ignore.case("computer"))]
+computer.jobs <- wage.boxplots(df, all.jobs)
+computer.jobs
+ggsave("../../writeup/plots/computer.jobs.png", computer.jobs, width=8, height=5)
 
 #
 # CODE BELOW IS DEPRECIATED 
@@ -138,9 +173,7 @@ national.df$OCC_TITLE[!(unique(national.df$OCC_TITLE) %in% unique(df2$OCC_TITLE)
 ## Basic plots
 ##
 
-shorten.str <- function(x,N=15){
-  paste0(substr(x,1,N), ifelse(nchar(x)>N,"...",""))
-}
+
 
 # head(df1)
 # plots.df <- data.frame(job=sapply(df1$OCC_TITLE,shorten.str), h.mean.oes=df1$H_MEAN, h.mean.mtos=df1$Answer.wage[,1]) #[1:20,]
