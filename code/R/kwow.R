@@ -31,6 +31,8 @@ library(ggplot2)
 library(reshape2)
 library(scales)
 library(stringr)
+library(lme4)
+
 
 ##
 ## Data from Bureau of Labor Statistics, Department of Labor
@@ -70,6 +72,7 @@ mturk.df$error <- with(mturk.df, sqrt((log(H_WAGE) - log(Answer.wage))**2))
 
 # what predicts error rate? 
 m <- lm(error ~ Answer.know_anyone + Answer.know_job + log(TOT_EMP), data = mturk.df)
+summary(m)
 
 # reformulate anyone not as factor
 mturk.df$know <- as.numeric(as.character(with(mturk.df,
@@ -109,13 +112,25 @@ ggplot(data = mturk.df, aes(x = log(H_WAGE), y = log(Answer.wage), size = TOT_EM
 
 
 
-
+m <- lm(I(Answer.know_anyone != "0") ~ TOT_EMP, data = mturk.df)
 summary(m)
 
-
-m <- lm(I(Answer.know_anyone != "0") ~ TOT_EMP, data = mturk.df)
-
 qplot(Answer.know_anyone, TOT_EMP, data = mturk.df) + geom_boxplot()
+
+
+# MTurks know jobs with lower wages?
+m <- lm(know ~ log(H_WAGE), data = mturk.df)
+summary(m)
+
+ggplot(data = mturk.df, aes(x = log(H_WAGE), y = error, size = TOT_EMP)) + geom_point() +
+  geom_smooth() + geom_abline(a = 1, b = 0) + facet_wrap(~know, ncol=2)
+
+m <- lm(error ~ know*social + log(H_WAGE), data = mturk.df)
+summary(m)
+
+ggplot(data = mturk.df, aes(x = log(H_WAGE), y = error, size = TOT_EMP)) + geom_point() +
+  geom_smooth() + geom_abline(a = 1, b = 0) 
+
 
 ##
 ## Function returns basic stats for variable
@@ -196,9 +211,17 @@ computer.jobs <- wage.boxplots(df, all.jobs)
 computer.jobs
 ggsave("../../writeup/plots/computer.jobs.png", computer.jobs, width=8, height=5)
 
+
+
+
+
+
+
 #
 # CODE BELOW IS DEPRECIATED 
 #
+
+
 
 
 ## Comparation of RSE's
@@ -243,7 +266,7 @@ national.df$OCC_TITLE[!(unique(national.df$OCC_TITLE) %in% unique(df2$OCC_TITLE)
 # head(df1)
 # plots.df <- data.frame(job=sapply(df1$OCC_TITLE,shorten.str), h.mean.oes=df1$H_MEAN, h.mean.mtos=df1$Answer.wage[,1]) #[1:20,]
 
-plots.df <- data.frame(job=df1$OCC_CODE, h.mean.oes=df1$H_MEAN, h.mean.mtos=df1$Answer.wage[,1]) #[1:20,]
+plots.df <- data.frame(job=df$OCC_CODE, h.mean.oes=df$H_MEAN, h.mean.mtos=df$Answer.wage[,1]) #[1:20,]
 
 plots.df <- plots.df[with(plots.df, order(-h.mean.oes)), ]
 plots.df <- within(plots.df, job<-factor(job, levels=job))
@@ -258,24 +281,3 @@ plot.mean.h <-
 plot.mean.h
 
 ggsave("../../writeup/plots/mean.h.wage.png", plot.mean.h, width=8, height=5)
-
-
-
-# abs(qt(0.25, 40)) # 75% confidence, 1 sided (same as qt(0.75, 40))
-# abs(qt(0.01, 40)) # 99% confidence, 1 sided (same as qt(0.99, 40))
-# abs(qt(0.01/2, 40)) # 99% confidence, 2 sided
-
-names(df1)
-
-df1[,c("OCC_CODE", )]
-
-
-
-library(testthat)
-
-N <- 1000
-df.raw <- data.frame(x = runif(N), y = runif(N))
-
-pdf("../../writeup/plots/hist.pdf")
- qplot(x, y, data = df.raw)
-dev.off() 
