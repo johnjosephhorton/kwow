@@ -49,8 +49,73 @@ mturk.df <- import.mturk("../../data/mturk_output.csv")
 
 nrow(mturk.df)
 head(mturk.df)
+
 sapply(mturk.df, class)
 
+
+# Hacky way of getting some of the national data on the mturk.df 
+l.emp <- national.df[, "TOT_EMP"]
+names(l.emp) <- national.df[, "OCC_TITLE"]
+l.emp <- as.list(l.emp)
+
+l.wage <- national.df[, "H_MEAN"]
+names(l.wage) <- national.df[, "OCC_TITLE"]
+l.wage <- as.list(l.wage)
+
+mturk.df$TOT_EMP <- as.numeric(as.character(l.emp[ mturk.df$Input.Title ]))
+mturk.df$H_WAGE <- as.numeric(as.character(l.wage[ mturk.df$Input.Title ]))
+
+# mse of wage prediction 
+mturk.df$error <- with(mturk.df, sqrt((log(H_WAGE) - log(Answer.wage))**2))
+
+# what predicts error rate? 
+m <- lm(error ~ Answer.know_anyone + Answer.know_job + log(TOT_EMP), data = mturk.df)
+
+# reformulate anyone not as factor
+mturk.df$know <- as.numeric(as.character(with(mturk.df,
+                                              factor(Answer.know_job,
+                                                     levels = c("No", "Maybe", "Yes"),
+                                                     labels = c("-1","0","1")))))
+
+mturk.df$social <- as.numeric(as.character(with(mturk.df,
+                                              factor(Answer.know_anyone,
+                                                     levels = c("0", "1", "2", "3-10", "10_plus"),
+                                                     labels = c("-2","-1","0","1","2")))))
+
+qplot(log(TOT_EMP), social, data = mturk.df) + geom_smooth() 
+
+qplot(log(TOT_EMP), know, data = mturk.df) + geom_smooth() 
+
+m <- lm(error ~ know*social + log(TOT_EMP), data = mturk.df)
+
+m <- lm(error ~ know*social, data = mturk.df)
+
+m <- lmer(error ~ know*social + log(TOT_EMP) + (1|Input.Title), data = mturk.df)
+
+summary(m)
+
+
+ggplot(data = mturk.df, aes(x = log(H_WAGE), y = log(Answer.wage), size = TOT_EMP)) + geom_point() +
+       geom_smooth() + geom_abline(a = 1, b = 0) 
+
+# What about when they know the job? 
+ggplot(data = mturk.df, aes(x = log(H_WAGE), y = log(Answer.wage), size = TOT_EMP)) +
+    geom_point() +
+       geom_smooth() + geom_abline(a = 1, b = 0) + facet_wrap(~Answer.know_job, ncol = 3)
+
+ggplot(data = mturk.df, aes(x = log(H_WAGE), y = log(Answer.wage), size = TOT_EMP)) +
+    geom_point() +
+       geom_smooth() + geom_abline(a = 1, b = 0) + facet_wrap(~Answer.know_anyone, ncol = 3)
+
+
+
+
+summary(m)
+
+
+m <- lm(I(Answer.know_anyone != "0") ~ TOT_EMP, data = mturk.df)
+
+qplot(Answer.know_anyone, TOT_EMP, data = mturk.df) + geom_boxplot()
 
 ##
 ## Function returns basic stats for variable
