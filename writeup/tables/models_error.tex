@@ -1,0 +1,40 @@
+
+
+\usepackage{booktabs}
+\begin{table}
+\begin{center}
+\begin{tabular}{l c c c c }
+\toprule
+                                  & Model 1 & Model 2 & Model 3 & Model 4 \\
+\midrule
+(Intercept)                       & $-0.06$      & $0.14^{***}$ & $0.00$       & $-0.02$      \\
+                                  & $(0.12)$     & $(0.04)$     & $(0.12)$     & $(0.27)$     \\
+know                              & $0.04$       & $0.05$       &              & $0.03$       \\
+                                  & $(0.04)$     & $(0.04)$     &              & $(0.04)$     \\
+social                            & $-0.04^{*}$  & $-0.04^{*}$  & $-0.01^{*}$  & $-0.03$      \\
+                                  & $(0.02)$     & $(0.02)$     & $(0.01)$     & $(0.02)$     \\
+log(TOT_EMP)                      & $0.01$       &              & $0.01$       & $0.01$       \\
+                                  & $(0.01)$     &              & $(0.01)$     & $(0.02)$     \\
+H_WAGE                            & $0.01^{***}$ & $0.01^{***}$ & $0.01^{***}$ & $0.01^{***}$ \\
+                                  & $(0.00)$     & $(0.00)$     & $(0.00)$     & $(0.00)$     \\
+know:social                       & $0.04$       & $0.04$       &              & $0.02$       \\
+                                  & $(0.02)$     & $(0.02)$     &              & $(0.02)$     \\
+\midrule
+AIC                               & 667.09       & 667.95       & 676.37       & 384.95       \\
+BIC                               & 708.29       & 703.27       & 705.81       & 432.04       \\
+Log Likelihood                    & -326.55      & -327.98      & -333.18      & -184.47      \\
+Deviance                          & 199.03       & 199.24       & 200.47       & 368.95       \\
+Num. obs.                         & 2659         & 2659         & 2667         & 2659         \\
+Num. groups: Input.Title          &              &              &              & 99           \\
+Variance: Input.Title.(Intercept) &              &              &              & 0.01         \\
+Variance: Residual                &              &              &              & 0.06         \\
+\bottomrule
+\multicolumn{5}{l}{\scriptsize{\textsuperscript{***}$p<0.001$, 
+  \textsuperscript{**}$p<0.01$, 
+  \textsuperscript{*}$p<0.05$}}
+\end{tabular}
+\caption{Statistical models}
+\label{table:coefficients}
+\end{center}
+\end{table}
+
