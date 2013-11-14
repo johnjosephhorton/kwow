@@ -95,6 +95,16 @@ import.mturk <- function(fname){
   char.cols <- c("Input.Title","Answer.comment")
   df[,char.cols] <- sapply(df[,char.cols], as.character)
   
+  # Reformulate anyone not as factor
+  df$know <- as.numeric(as.character(with(df, factor(Answer.know_job,
+                                                       levels = c("No", "Maybe", "Yes"),
+                                                       labels = c("-1","0","1")))))
+  
+  # Reformulate social not as factor
+  df$social <- as.numeric(as.character(with(df, factor(Answer.know_anyone,
+                                                         levels = c("0", "1", "2", "3-10", "10_plus"),
+                                                         labels = c("-2","-1","0","1","2")))))
+    
   df
 }
 
