@@ -82,14 +82,16 @@ cor(mturk.df[,c("error","TOT_EMP","H_WAGE","Answer.wage")])
 # How knowledge about job (ratio of awared respondents) is related to H_WAGE
 tb <- with(mturk.df, table(cut_interval(log(H_WAGE), 10), I(know==1)))
 tb <- data.frame(dont=tb[,1], know=tb[,2], ratio=tb[,2]/(tb[,1]+tb[,2]))
-q <- qplot(1:10, ratio, data=tb) + geom_smooth()
+q <- ggplot(data=tb, aes(x=1:10, y=ratio)) + geom_smooth() + geom_point() + xlab("log(H_WAGE)") +
+        scale_x_discrete(limits=levels(cut_interval(log(mturk.df$H_WAGE),10)))
 q
 ggsave("../../writeup/plots/knowledge_wage.png", q, width=8, height=5)
 
 # How knowledge about job (ratio of awared respondents) is related to TOT_EMP
 tb <- with(mturk.df, table(cut_interval(TOT_EMP, 10), I(know==1)))
 tb <- data.frame(dont=tb[,1], know=tb[,2], ratio=tb[,2]/(tb[,1]+tb[,2]))
-q <- qplot(1:10, ratio, data=tb) + geom_smooth()
+q <- ggplot(data=tb, aes(x=1:10, y=ratio)) + geom_smooth() + geom_point() + xlab("TOT_EMP") +
+        scale_x_discrete(limits=levels(cut_interval(log(mturk.df$TOT_EMP),10)))
 q
 ggsave("../../writeup/plots/knowledge_emp.png", q, width=8, height=5)
 
