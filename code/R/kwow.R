@@ -108,7 +108,9 @@ m1 <- glm(error ~ know*social + log(TOT_EMP) + H_WAGE, data = mturk.df)
 m2 <- glm(error ~ know*social + H_WAGE, data = mturk.df)
 m3 <- glm(error ~ social + H_WAGE + log(TOT_EMP), data=mturk.df)
 m4 <- lmer(error ~ know*social + log(TOT_EMP) + H_WAGE + (1|Input.Title) , data = mturk.df)
-screenreg(list(m1,m2,m3,m4))
+m5 <- glm(error ~ know*social + log(TOT_EMP) + H_WAGE + I(log(Answer.wage)>3), data = mturk.df)
+
+screenreg(list(m1,m2,m3,m4,m5))
 
 sink("../../writeup/tables/models_error.tex", append=FALSE, split=FALSE)
 texreg(list(m1,m2,m3,m4), booktabs=T)
