@@ -15,6 +15,218 @@
 ## Clearing the workspace
 ##
 rm(list=ls(all=TRUE))
+gc(reset=TRUE)
+set.seed(12345)
+
+##
+## Data utils
+##
+source("utils.R")
+
+##
+## Libraries
+##
+library(xtable)
+library(ggplot2)
+library(reshape2)
+library(scales)
+library(stringr)
+library(lme4)
+library(memisc)
+library(plyr)
+library(texreg)
+
+# If JJHmisc is missing, run: 
+#  library(devtools)
+#  install_github("JJHmisc", "johnjosephhorton")
+library(JJHmisc)
+##
+## Data from Bureau of Labor Statistics, Department of Labor
+##
+national.df <- import.top.national("../../data/national_M2012_dl.csv", 99)
+
+nrow(national.df)
+head(national.df)
+sapply(national.df, class)
+
+
+##
+## Data from MTurk
+##
+mturk.df <- import.mturk("../../data/mturk_output.csv")
+
+nrow(mturk.df)
+head(mturk.df)
+sapply(mturk.df, class)
+
+
+l.emp <- national.df[, "TOT_EMP"]
+names(l.emp) <- national.df[, "OCC_TITLE"]
+l.emp <- as.list(l.emp)
+
+l.wage <- national.df[, "H_MEAN"]
+names(l.wage) <- national.df[, "OCC_TITLE"]
+l.wage <- as.list(l.wage)
+
+mturk.df$TOT_EMP <- as.numeric(as.character(l.emp[ mturk.df$Input.Title ]))
+mturk.df$H_WAGE <- as.numeric(as.character(l.wage[ mturk.df$Input.Title ]))
+
+mturk.df$know <- as.numeric(as.character(with(mturk.df,
+                                              factor(Answer.know_job,
+                                                     levels = c("No", "Maybe", "Yes"),
+                                                     labels = c("-1","0","1")))))
+
+# mse of wage prediction 
+mturk.df$error <- with(mturk.df, sqrt((log(H_WAGE) - log(Answer.wage))**2))
+
+qplot(log(TOT_EMP), social, data = mturk.df) + geom_smooth() 
+
+qplot(log(TOT_EMP), know, data = mturk.df) + geom_smooth() 
+
+# what predicts error rate? 
+
+table(mturk.df[,c("know","social")])
+
+cor(mturk.df[,c("error","TOT_EMP","H_WAGE","Answer.wage")])
+
+
+# How knowledge about job (ratio of awared respondents) is related to H_WAGE
+tb <- with(mturk.df, table(cut_interval(log(H_WAGE), 10), I(know==1)))
+tb <- data.frame(dont=tb[,1], know=tb[,2], ratio=tb[,2]/(tb[,1]+tb[,2]))
+
+g.knowledge_by_wage <- ggplot(data=tb,
+                              aes(x=1:10, y=ratio)) +
+    geom_smooth() +
+    geom_point() +
+    xlab("log(Hourly Wage)") +
+        scale_x_discrete(limits=levels(cut_interval(log(mturk.df$H_WAGE),10))) +
+    theme_bw() 
+
+print(q)
+
+ggsave("../../writeup/plots/knowledge_wage.png", g.knowledge_by_wage, width=8, height=5)
+
+mturk.df$w.trend <- as.numeric(as.character(with(mturk.df,
+                                              factor(Answer.wage_trend,
+                                                     levels = c("GoDown", "StayTheSame", "GoUp"),
+                                                     labels = c("-1","0","1")))))
+
+df.wage <- ddply(mturk.df, .(Input.Title), summarise,
+                 mturk.w = mean(Answer.wage),
+                 mturk.w.weighted = mean(Answer.wage, weight = know),
+                 oes.w = mean(H_WAGE),
+                 tot.emp = mean(TOT_EMP),
+                 know.mu = mean(know),
+                 w.trend.mu = mean(w.trend))
+
+df.wage$error <- with(df.wage, log(oes.w) - log(mturk.w))
+
+
+# Worker wage historgrams
+# qplot(log(Answer.wage), data = mturk.df) + facet_wrap(~WorkerId, ncol = 12)
+
+# mse of wage prediction 
+mturk.df$error <- with(mturk.df, sqrt((log(H_WAGE) - log(Answer.wage))**2))
+
+m.1 <- lm(error ~ social, data = mturk.df)
+m.2 <- lmer(error ~ social + (1|Input.Title), data = mturk.df)
+
+# Does social predict know?
+m <- lm(know ~ social + log(TOT_EMP), data = mturk.df)
+
+# Within a worker, is knowledge of a job independent of its wage?
+#m <- lmer(Answer.wage ~ 1 + (H_WAGE | 
+
+# What's the occupational breakdown of "know"?
+
+
+# Are higher wage occupations less well-known? 
+m <- lm(error ~ oes.w, data = df.wage)
+
+# How much variation in wages does worker mean predictions explain? 
+m <- lm(log(oes.w) ~ log(mturk.w), data = df.wage)
+
+m <- lm(log(oes.w) ~ log(mturk.w.weighted), data = df.wage)
+
+m <- lm(log(oes.w) ~ log(mturk.w), data = df.wage, weights = tot.emp)
+
+# Trends
+qplot(oes.w, w.trend.mu, data = df.wage)
+
+df.wage$Input.Title <- with(df.wage, reorder(Input.Title, w.trend.mu, mean))
+
+# Estimated trends in wages 
+g.wage.trends <- ggplot(data = na.omit(subset(df.wage,log(tot.emp) > 13)),  aes(y = Input.Title, x = w.trend.mu)) +
+    geom_point() +
+    theme_bw() 
+
+ggsave("../../writeup/plots/wage_trends.png", g.wage.trends, width=7, height=10)
+
+# Self-reported knowledge about jobs 
+df.wage$Input.Title <- with(df.wage, reorder(Input.Title, know.mu, mean))
+
+g.know <- ggplot(data = na.omit(subset(df.wage,log(tot.emp) > 13)),  aes(y = Input.Title, x = know.mu)) + geom_point() +
+    xlab("Mean of (Do you know what this job is? -1 = No, 0 = Maybe, 1 = Yes") +
+    ylab("Job Title") + theme_bw()
+
+pdf("../../writeup/plots/knowledge_by_occupation.pdf")
+print(g.know)
+dev.off()
+
+df.goofs <- subset(df.wage, log(tot.emp) > 13 & abs(log(mturk.w) - log(oes.w)) > .40)
+
+ggplot(data = df.wage, aes(
+           x = log(mturk.w),
+           y = log(oes.w))) + geom_point(aes(size = log(tot.emp))) +
+                                            geom_smooth(method = "lm") + geom_abline(a = 1, b = 0) +
+    geom_text(data = df.goofs,
+              aes(label = Input.Title))
+
+# what predicts error rate? FE approach
+m <- lm(error ~ Answer.know_anyone + Answer.know_job + log(TOT_EMP), data = mturk.df)
+summary(m)
+
+
+# What job titles do people find confusion?
+
+m <- lmer(know ~ (1|Input.Title) + log(TOT_EMP), data = mturk.df)
+
+df.resid <- data.frame(ranef(m)$Input.Title)
+
+colnames(df.resid) <- 'Residual'
+
+df.resid$job <- factor(rownames(df.resid))
+                                        
+df.resid$job <- with(df.resid, reorder(job, Residual, mean))
+
+ggplot(data = df.resid, aes(x = Residual, y = job)) + geom_point() 
+
+qplot(log(TOT_EMP), social, data = mturk.df) + geom_smooth() 
+
+# How knowledge about job (ratio of awared respondents) is related to TOT_EMP
+tb <- with(mturk.df, table(cut_interval(TOT_EMP, 10), I(know==1)))
+tb <- data.frame(dont=tb[,1], know=tb[,2], ratio=tb[,2]/(tb[,1]+tb[,2]))
+q <- ggplot(data=tb, aes(x=1:10, y=ratio)) + geom_smooth() + geom_point() + xlab("TOT_EMP") +
+        scale_x_discrete(limits=levels(cut_interval(log(mturk.df$TOT_EMP),10))) +
+    theme_bw() 
+q
+ggsave("../../writeup/plots/knowledge_emp.png", q, width=8, height=5)
+
+
+# Additional var for both know and social
+mturk.df$qualified <- with(mturk.df, know>0 | social>-2)
+
+m.error.emp <- lm(error ~ know*social + log(TOT_EMP), data = mturk.df)
+m.error <- lm(error ~ know*social, data = mturk.df)
+
+mtable(m.error, m.error.emp)
+
+##
+## Error of prediction models
+##
+m <- lm(error ~ Answer.know_anyone + Answer.know_job + log(TOT_EMP) + H_WAGE, data = mturk.df)
+summary(m)
+
 m1 <- glm(error ~ know*social + log(TOT_EMP) + log(H_WAGE), data = mturk.df)
 m2 <- glm(error ~ know*social + log(H_WAGE), data = mturk.df)
 m3 <- glm(error ~ social + log(H_WAGE) + log(TOT_EMP), data=mturk.df)
@@ -27,13 +239,10 @@ models <- list("1" = m1,
                "4" = m4,
                "5" = m5)
 
-
 regression.table(models, list(), "../../writeup/tables/models_error.tex")
 
-g <- ggplot(data = mturk.df, aes(x = log(H_WAGE), y = log(Answer.wage), size = TOT_EMP)) + geom_point() +
+ggplot(data = mturk.df, aes(x = log(H_WAGE), y = log(Answer.wage), size = TOT_EMP)) + geom_point() +
        geom_smooth() + geom_abline(a = 1, b = 0) 
-
-print(g) 
 
 # What about when they know the job? 
 ggplot(data = mturk.df, aes(x = log(H_WAGE), y = log(Answer.wage), size = TOT_EMP)) +
@@ -57,13 +266,15 @@ qplot(Answer.know_anyone, TOT_EMP, data = mturk.df) + geom_boxplot()
 
 
 # MTurks know jobs with lower wages and mass employment?
-m1 <- glm(I(Answer.know_anyone != "0") ~ log(TOT_EMP), data = mturk.df, family="binomial")
+m1 <- glm(I(Answer.know_anyone != "0") ~ TOT_EMP, data = mturk.df, family="binomial")
 m2 <- glm(I(Answer.know_anyone != "0") ~ log(H_WAGE), data = mturk.df, family="binomial")
-m3 <- glm(I(Answer.know_anyone != "0") ~ log(H_WAGE) + log(TOT_EMP), data = mturk.df, family="binomial")
-m4 <- glm(I(Answer.know_anyone != "0") ~ log(H_WAGE)*log(TOT_EMP), data = mturk.df, family="binomial")
+m3 <- glm(I(Answer.know_anyone != "0") ~ log(H_WAGE) + TOT_EMP, data = mturk.df, family="binomial")
+screenreg(list(m1,m2,m3))
 
-models <- list("1" = m1, "2" = m2, "3" = m3, "4" = m4)
-regression.table(models, list(), "../../writeup/tables/models_know_anyone.tex")
+sink("../../writeup/tables/models_know_anyone.tex", append=FALSE, split=FALSE)
+texreg(list(m1,m2,m3), booktabs=T)
+sink()
+
 
 ggplot(data = mturk.df, aes(x = log(H_WAGE), y = error, size = TOT_EMP)) + geom_point() +
   geom_smooth() + geom_abline(a = 1, b = 0) + facet_wrap(~know, ncol=2)
