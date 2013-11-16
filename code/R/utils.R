@@ -86,7 +86,8 @@ import.mturk <- function(fname){
                    "Answer.wage",
                    "Answer.volume_trend",
                    "Answer.wage_trend",
-                   "Answer.comment")]
+                   "Answer.comment",
+                   "WorkerId")]
   
   df[,"Answer.wage"] <- as.data.frame(sapply(df[,"Answer.wage"], gsub, pattern="++", replacement="", fixed=T))
   df[,"Answer.wage"] <- sapply(df[,"Answer.wage"], as.character)
