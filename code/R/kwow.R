@@ -153,9 +153,6 @@ sink()
 ggplot(data = mturk.df, aes(x = log(H_WAGE), y = error, size = TOT_EMP)) + geom_point() +
   geom_smooth() + geom_abline(a = 1, b = 0) + facet_wrap(~know, ncol=2)
 
-m <- lm(error ~ know*social + log(H_WAGE), data = mturk.df)
-summary(m)
-
 ggplot(data = mturk.df, aes(x = log(H_WAGE), y = error, size = TOT_EMP)) + geom_point() +
   geom_smooth() + geom_abline(a = 1, b = 0) 
 
@@ -178,13 +175,21 @@ df1 <- cbind(agg$Input.Title, as.data.frame(agg$Answer.wage))
 df2 <- national.df[,c(-1,-3,-4)]
 
 names(df1) <- names(df2)
+
+l.err <- aggregate(.~Input.Title, data=mturk.df[,c(1,12)], mean)[,2]
+names(l.err) <- sort(national.df$OCC_TITLE)
+l.err <- as.list(l.err)
+
+df1$error <- as.numeric(l.err[df1$OCC_TITLE])
+df2$error <- as.numeric(l.err[df2$OCC_TITLE])
+
 df1$var <- "MTOS"
 df2$var <- "OES"
 
 df <- rbind(df1, df2)
 ## Set order for datasources
 df$var <- factor(df$var, levels=c("OES", "MTOS"))
-rm(df1,df2,agg)
+rm(df1,df2,agg,l.err)
 
 ##
 ## Function to shorten strings
@@ -240,10 +245,21 @@ computer.jobs
 ggsave("../../writeup/plots/computer.jobs.png", computer.jobs, width=8, height=5)
 
 
+## Find jobs with lowest/highest MSE
+df.ord <- df[with(df, order(error)), ]
+df.ord <- (df.ord[df.ord$var=="OES", ])[1:10, c("OCC_TITLE", "H_MEAN", "error")]
+
+low.error.jobs <- wage.boxplots(df, df.ord$OCC_TITLE[1:9])
+low.error.jobs
+ggsave("../../writeup/plots/low.error.jobs.png", low.error.jobs, width=8, height=5)
 
 
+df.ord <- df[with(df, order(-error)), ]
+df.ord <- (df.ord[df.ord$var=="OES", ])[1:10, c("OCC_TITLE", "H_MEAN", "error")]
 
-
+high.error.jobs <- wage.boxplots(df, df.ord$OCC_TITLE[1:9])
+high.error.jobs
+ggsave("../../writeup/plots/high.error.jobs.png", high.error.jobs, width=8, height=5)
 
 #
 # CODE BELOW IS DEPRECIATED 
