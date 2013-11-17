@@ -34,7 +34,7 @@ library(stringr)
 library(lme4)
 library(memisc)
 library(plyr)
-library(texreg)
+#library(texreg)
 
 # If JJHmisc is missing, run: 
 #  library(devtools)
@@ -260,7 +260,9 @@ ggplot(data = mturk.df, aes(x = log(H_WAGE), y = log(Answer.wage), size = TOT_EM
 
 m1 <- lm(I(Answer.know_anyone != "0") ~ TOT_EMP, data = mturk.df)
 m2 <- glm(I(Answer.know_anyone != "0") ~ TOT_EMP, data = mturk.df, family="binomial")
-screenreg(list(m1,m2))
+
+regression.table(list("1" = m1, "2" = m2), list(), "../../writeup/tables/social_knowledge.tex")
+
 
 qplot(Answer.know_anyone, TOT_EMP, data = mturk.df) + geom_boxplot()
 
@@ -269,12 +271,8 @@ qplot(Answer.know_anyone, TOT_EMP, data = mturk.df) + geom_boxplot()
 m1 <- glm(I(Answer.know_anyone != "0") ~ TOT_EMP, data = mturk.df, family="binomial")
 m2 <- glm(I(Answer.know_anyone != "0") ~ log(H_WAGE), data = mturk.df, family="binomial")
 m3 <- glm(I(Answer.know_anyone != "0") ~ log(H_WAGE) + TOT_EMP, data = mturk.df, family="binomial")
-screenreg(list(m1,m2,m3))
 
-sink("../../writeup/tables/models_know_anyone.tex", append=FALSE, split=FALSE)
-texreg(list(m1,m2,m3), booktabs=T)
-sink()
-
+regression.table(list("1" = m1, "2" = m2, "3" = m3), list(), "../../writeup/tables/models_know_anyone.tex")
 
 ggplot(data = mturk.df, aes(x = log(H_WAGE), y = error, size = TOT_EMP)) + geom_point() +
   geom_smooth() + geom_abline(a = 1, b = 0) + facet_wrap(~know, ncol=2)
