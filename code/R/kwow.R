@@ -102,7 +102,7 @@ g.knowledge_by_wage <- ggplot(data=tb,
         scale_x_discrete(limits=levels(cut_interval(log(mturk.df$H_WAGE),10))) +
     theme_bw() 
 
-print(q)
+print(g.knowledge_by_wage)
 
 ggsave("../../writeup/plots/knowledge_wage.png", g.knowledge_by_wage, width=8, height=5)
 
