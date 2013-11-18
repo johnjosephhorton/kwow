@@ -24,100 +24,158 @@
 
 \begin{document} 
 
-\title{What determines (perceived) wages?}
+\title{Perceived Wages}
 
 \date{\today}
 
-\author{ John J. Horton \\ NYU Stern \footnote{ Author contact information, datasets and code are currently or will be available at \href{http://www.john-joseph-horton.com/}{http://www.john-joseph-horton.com/}. } }
+\author{ John J. Horton \\ NYU Stern\footnote{Author contact information, datasets and code are currently or will be available at \href{http://www.john-joseph-horton.com/}{http://www.john-joseph-horton.com/}. } }
 \maketitle
 
 \begin{abstract}
-\noindent  Here is a really great abstract.  \newline
+\noindent  Using a convenience sample of workers, I test their perceptions of hourly wages and actual hourly wages for the top one hundred BLS occupations, as measured by employment. 
+Estmation errors are decreasing in the prevelance of an occupation. 
+Knowing someone who has that occupation also decreases error rates. 
+There appears to be a U-shaped pattern in knowledge about occupations
+Workers do not appear to know random subsets of people with an occupation: knowledge is substantially clustered. \newline 
+\newline 
 \noindent JEL J01, J24, J3
 \end{abstract} 
 
 \section{Introduction}
-\section{Conceptual Framework} 
 
-Would-be labor force participants need knowledge about what various occupations pay--and will pay in the future---to plan their careers and make wise human capital decisions. 
+Workers need know what various occupations pay--and will pay in the future---to plan their careers. 
+Systematic informational gaps could be consequential, leading to misallocation of job search efforts and human capital investments. 
+However, to the extent that these gaps exist, they might be cheaply fixable: 
+several studies have highlighted the powerful effects obtainable from purely informational interventions (e.g., \cite{jensen2010perceived}, \cite{dupas2009teenagers}, \cite{card2010inequality}). 
+At least part of the motivation of government statistical efforts like the OES is precisely this allocative efficiency goal. 
 
-Numerous studies have documented that simply providing information can have strong effects on behavior (for example, \cite{jensen2010perceived} for the returns to education and \cite{dupas2009teenagers} to the benefits of changed sexual behavior).  
+The purpose of this study is to measure information gaps and explore whether any patterns emerge across occupations. 
+This was done using a convenience sample of US-based workers on their knowledge about the top (by May 2013 employment figures) 100 BLS occupations.  
+For each occupation, participants were asked: 
+\begin{enumerate}
+\item Whether they know what the job consists of 
+\item Whether they know anyone with that job 
+\item The hourly wage for that job 
+\item Whether wages and employment for that occupation will rise or fall in the future.  
+\end{enumerate} 
 
-
-These kinds of information interventions are predictated on some kind
-of incomplete information that can be remedied. 
-
-
-This was the justification for including the Knowledge of the World of Work (KWW) test in the NLSY. 
-The original KWW consisted of matching job descriptions to job titles and a section of relative comparisons of wages. 
-The KWW was predictive of positive future economic success and was correlated with higher wages, greater tenure etc \citep{kohen1975133}. 
-It is unclear whether KWW was just measuring intelligence of ability---KWW is sometimes used as an instrument for IQ to deal with measurement error. 
-
-
-This study does a number of things. 
-It examines the correlates of 
-
-Presumably would-be labor market participants learn about wages from media sources, friends and family and, perhaps, official government statistics. 
-
-Corrective informational interventions 
-
-Perhaps more knowledgeable 
-
-Identifying deficiencies 
-
-\cite{jensen2010perceived} 
-
+For each occupation, 30 evaluations were performed. 
 The short time taken to answer questions suggests that workers are not doing research. 
+There was no incentive for correct answers. 
 
-The wisdom of crowds hypotheses suggests that combining 
+The focus on the analysis was to:
+-characterize performance and see whether the ``wisdom of crowds'' hypotheses holds.
+-find poorly labeled occupations in the BLS/OES 
+-see what occupations are misperceived. 
+-see how total employment and social knowledge mediate performance in estimating hourly wages 
+-test whether social knowledge is ``segmented'' by wage  
 
-Estimates of the mean hourly wages for a selection of BLS occupations by workers on Mechanical Turk explains over 70\% of the variation in wages according to the OES (Occupational Employment Statistics).  
+There is substantial variation across occupations in whether they are known by the sample. 
+First, individual error rates (MSE between predicted and actual hourly wage) are decreasing the total employment in that occupation. 
+This is both re-assuring and unsurprising. 
+Suggesting a mechanism, the more people workers know with that occupation, the better their estimates.  
+Knowledge of an occupation seems to be substantially wage-biased, in that workers are more accurate when predicting the hourly wage of low-wage jobs. 
+This is true in percentages.  
+The wisdom of crowds hypotheses suggests that combining the noisy signals of a large number of individuals can lead to very accurate predictions. 
+This is more or less the case here: the mean worker rating for each occupation explains 70\% of the variation in actual log hourly wages.  
 
-Error rates are decreasing the total employment in that occupation. 
-The more people workers know with that occupation, the more 
+%% This was the justification for including the Knowledge of the World of Work (KWW) test in the NLSY. 
+%% The original KWW consisted of matching job descriptions to job titles and a section of relative comparisons of wages. 
+%% The KWW was predictive of positive future economic success and was correlated with higher wages, greater tenure etc \citep{kohen1975133}. 
+%% It is unclear whether KWW was just measuring intelligence of ability---KWW is sometimes used as an instrument for IQ to deal with measurement error. 
 
-\cite{snowberg2011prediction}
-\cite{kohen1975} 
-\cite{dupas2009teenagers} 
-
--Test whether social knowledge is mediated by the total employment 
--Correct perception errors 
--Test whether workers are clustered in their wage perceptions
-
-For each of the top 99 BLS occupations---as measured by total occupation---I asked workers on Mechanical Turk several questions: 
-\begin{itemize}
-\item Did they know approximately what this job consists of? 
-\item How many people did they know with that job? 
-\item What was their estimate of the hourly wage for that job 
-\item What was their estimate of wages for this job in the future.
-\item What was their estimate of the future employer for this job. 
-\end{itemize} 
-
-
-How important is it to know someone who has this job? 
-Do various correlations exist in this population? 
-
-It is not difficult to assess this knowledge. 
-
-\cite{smith1999wealth} had some great ideas! 
+%\cite{snowberg2011prediction}
+%\cite{kohen1975} 
 
 \section{Results}
 
+The sample of workers answering questions on MTurk. 
+What we lack in representativeness, we gain in numbers. 
+
+If a pattern or causal effect exists in one population, there is always a question of generalizability. 
+
+\subsection{Discussion} 
+What if the sample of respondents is just a sample of low-wage workers? 
+
+- We can ask workers for their incomes 
+- We can show in the literature that this is not a particularly biased group 
+- We can use Google Survey, a nationally representative sample, to adjust 
+
+What if high-way jobs are just less common?
+Controlling for the total employment in that category does not make the effect go away. 
+
+What if the hourly/annual salary throws things off? 
+
+Do high-way jobs just have more variance? 
+
+\subsection{Knowledge of what different occupations are} 
+
+In Figure~\ref{fig:knoweldge_by_occupation}, we plot the mean knowledge index by occupations.  
+
 \begin{figure}
-\caption{Knowledge by occupation title} 
+\caption{Self-reported knowledge by BLS occupation title \label{fig:knowledge_by_occupation}} 
 \centering
-\begin{minipage}{0.85 \linewidth}
+\begin{minipage}{0.95 \linewidth}
 \includegraphics[width = \linewidth]{./plots/knowledge_by_occupation.pdf}
 \end{minipage}  
 \end{figure} 
 
+In Figure~\ref{fig:knowledge_by_wage} we show the fraction of respondents reporting that they know what an occupation is, binned by hourly wage. 
+A clear U-shaped pattern is apparent: respondnents know more about low- and high-wage occupations, but less about the middle. 
+This probably reflects universal experience with low-wage jobs like waitressing and cleaning and high-wage professional jobs like doctor and lawyer. 
+
 \begin{figure}
-\caption{Wage and self-reported knowledge of what job consists of} 
+\caption{Hourly wage and occupational knowledge \label{fig:knowledge_by_wage}} 
 \centering
-\begin{minipage}{0.85 \linewidth}
+\begin{minipage}{0.95 \linewidth}
 \includegraphics[width = \linewidth]{./plots/knowledge_wage.png}
 \end{minipage}  
 \end{figure} 
+
+\subsection{Personal knowledge of someone working with an occupation} 
+
+\begin{figure}
+\caption{Social index by BLS occupation title} \label{fig:social_by_occupation}  
+\centering
+\begin{minipage}{0.95 \linewidth}
+\includegraphics[width = \linewidth]{./plots/social_by_occupation.pdf}
+\end{minipage}  
+\end{figure} 
+
+\subsection{Prediction} 
+
+In Table~\ref{tab:error_prediction} we regress MSE in hourly wage estimates on a number of predictors. 
+
+\begin{table}
+\centering 
+\caption{Mean square error of hourly wage predictions \label{tab:error_prediction}}
+\input{./tables/error_prediction.tex}  
+\end{table} 
+
+
+Figure~\ref{fig:by_occupation_boxplots} shows that workers generally underestimat the returns at high end of the labor market. 
+
+\begin{figure}
+\caption{Box plots showing distribution of respondent hourly wage perceptions by occupation \label{fig:by_occupation_boxplots}} 
+\centering 
+\includegraphics[width = \linewidth]{./plots/box_plots_by_occupation.pdf} 
+\end{figure} 
+
+Figure~\ref{fig:prediction_scatter} shows the scatter plot of predicted wages verus actual hourly wages. 
+
+\begin{figure}
+\caption{Perceived hourly wages versus actual hourly wages \label{fig:prediction_scatter}} 
+\centering 
+\includegraphics[width = \linewidth]{./plots/prediction_scatter.pdf} 
+\end{figure} 
+
+\subsection{Clustering} 
+
+\begin{table}
+\centering 
+\caption{Clustering of social knowledge by wage}
+\input{./tables/clustering.tex} 
+\end{table} 
 
 
 \begin{figure}
@@ -138,13 +196,14 @@ It is not difficult to assess this knowledge.
 \end{figure} 
 
 
-\input{tables/rse1.tex}
 
-\input{tables/rse2.tex}
 
-\begin{tiny} 
+%\input{tables/rse1.tex}
+%\input{tables/rse2.tex}
+
+\begin{small} 
 \input{tables/models_error.tex} 
-\end{tiny} 
+\end{small} 
 
 \begin{tiny} 
 \caption{Know anyone}
