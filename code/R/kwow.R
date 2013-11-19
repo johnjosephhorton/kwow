@@ -18,11 +18,120 @@ rm(list=ls(all=TRUE))
 gc(reset=TRUE)
 set.seed(12345)
 
-##
-## Data utils
-##
-source("utils.R")
 
+#@ Function to import Data from Bureau of Labor Statistics, Department of Labor
+## Imports TOP.N jobs from specified OCC.CAT
+##
+## ARGS:
+## fname - path to CSV file with original data
+## TOP.N - top jobs to import
+## OCC.CAT - occupation categories
+##
+###############################################
+
+import.top.national <- function(fname, TOP.N=100, OCC.CAT="broad"){
+  
+  if(!file.exists(fname)){
+    print(sprintf("Sorry! The file '%s' does not exist!", fname))
+    return(NULL)
+  }
+  
+  ## Replaces '*' and '**' with NA
+  df.raw <- read.table(fname, header=T, sep=",", fill=T, na.strings=c("*", "**"))
+  ## Filter for category(-ies)
+  df <- df.raw[df.raw$OCC_GROUP %in% OCC.CAT,]
+  
+  ## Masks all columns with numerical values
+  convert.cols <- colnames(df)[c(-1,-2,-3,-19,-20)]
+  ## Masks columns with hourly and annual data respectively
+  cols.hourly <- colnames(df)[c(6,9:13)]
+  cols.annual <- colnames(df)[c(7,14:18)]
+  ## Replaces comma in numbers
+  df[,convert.cols] <- as.data.frame(sapply(df[,convert.cols], gsub, pattern=",", replacement=""))
+  ## Replaces '#' with Inf
+  ## df[,convert.cols] <- as.data.frame(sapply(df[,convert.cols], gsub, pattern="#", replacement=Inf))
+  
+  ## Replace '#' with 90.00 for hourly data
+  df[,cols.hourly] <- as.data.frame(sapply(df[,cols.hourly], gsub, pattern="#", replacement="90.00"))
+  ## Replace '#' with 187'200 for annual data
+  df[,cols.annual] <- as.data.frame(sapply(df[,cols.annual], gsub, pattern="#", replacement="187200"))
+  
+  ## Double convert factor-to-numeric
+  df[,convert.cols] <- sapply(df[,convert.cols], as.character)
+  df[,convert.cols] <- sapply(df[,convert.cols], as.numeric)
+  ## Convert first 3 columns to characters
+  df[,1:3] <- sapply(df[,1:3], as.character)
+  
+  ## For annually-paid jobs converts annual wages to hourly
+  df[!is.na(df$ANNUAL) & df$ANNUAL==T, cols.hourly] <-
+    df[!is.na(df$ANNUAL) & df$ANNUAL==T, cols.annual]/2080
+
+  df$imputed.hourly <- with(df, !is.na(df$ANNUAL) & df$ANNUAL==T)
+  
+  ## Order by Total employment (NOTE: original data is already ordered)
+  df <- df[with(df, order(-TOT_EMP)), ]
+  ## Select TOP.N records
+  df <- df[1:ifelse(nrow(df)>TOP.N, TOP.N, nrow(df)), ]
+  rownames(df) <- 1:nrow(df)
+
+  print(colnames(df))
+  df[,c("OCC_CODE", "OCC_TITLE", "TOT_EMP", "EMP_PRSE", "H_MEAN", "MEAN_PRSE", 
+"H_PCT10", "H_PCT25", "H_MEDIAN", "H_PCT75", "H_PCT90", "imputed.hourly")]
+  
+}
+
+
+###############################################
+## Function to import Data from MTurk Survey
+##
+## ARGS:
+## fname - path to CSV file with original data
+##
+###############################################
+
+import.mturk <- function(fname){
+  
+  if(!file.exists(fname)){
+    print(sprintf("Sorry! The file '%s' does not exist!", fname))
+    return(NULL)
+  }
+  df.raw <- read.table(fname, header=T, sep=",", fill=T)
+  df <- df.raw[, c("Input.Title",
+                   "Answer.know_job",
+                   "Answer.know_anyone",
+                   "Answer.wage",
+                   "Answer.volume_trend",
+                   "Answer.wage_trend",
+                   "Answer.comment",
+                   "WorkerId")]
+  
+  df[,"Answer.wage"] <- as.data.frame(sapply(df[,"Answer.wage"], gsub, pattern="++", replacement="", fixed=T))
+  df[,"Answer.wage"] <- sapply(df[,"Answer.wage"], as.character)
+  df[,"Answer.wage"] <- sapply(df[,"Answer.wage"], as.numeric)
+  
+  char.cols <- c("Input.Title","Answer.comment")
+  df[,char.cols] <- sapply(df[,char.cols], as.character)
+  
+  # Reformulate anyone not as factor
+  df$know <- as.numeric(as.character(with(df, factor(Answer.know_job,
+                                                       levels = c("No", "Maybe", "Yes"),
+                                                       labels = c("-1","0","1")))))
+  
+  # Reformulate social not as factor
+  df$social <- as.numeric(as.character(with(df, factor(Answer.know_anyone,
+                                                         levels = c("0", "1", "2", "3_10", "10_plus"),
+                                                         labels = c("-2","-1","0","1","2")))))
+
+  df$w.trend <- as.numeric(as.character(with(df,
+                                              factor(Answer.wage_trend,
+                                                     levels = c("GoDown", "StayTheSame", "GoUp"),
+                                                     labels = c("-1","0","1")))))
+
+    
+  df
+}
+
+national.df <- import.top.national("../../data/national_M2012_dl.csv", 99)
 
 ## Libraries
 library(xtable)
@@ -34,10 +143,11 @@ library(lme4)
 library(memisc)
 library(plyr)
 
-# If JJHmisc is missing, run: 
+#  If JJHmisc is missing, run: 
 #  library(devtools)
 #  install_github("JJHmisc", "johnjosephhorton")
 library(JJHmisc)
+
 ##
 ## Data from Bureau of Labor Statistics, Department of Labor
 ##
@@ -60,6 +170,9 @@ names(mturk.df)[which("Answer.know_job" == names(mturk.df))] <- "know.job"
 names(mturk.df)[which("Answer.know_anyone" == names(mturk.df))] <- "social.knowledge"
 names(mturk.df)[which("Input.Title" == names(mturk.df))] <- "title"
 names(mturk.df)[which("Answer.wage" == names(mturk.df))] <- "predicted.wage"
+
+SHORT.TITLE.LENGTH <- 30
+mturk.df$short.title <- with(mturk.df, abbreviate(title, SHORT.TITLE.LENGTH))
 
 getNationalMeasures <- function(field.name, title.name = "title"){
     l <- national.df[, field.name]
@@ -105,56 +218,64 @@ pdf("../../writeup/plots/knowledge_by_wage.pdf", width = 8, height = 5)
  print(g.knowledge_by_wage)
 dev.off()
 
+################################################
+# Characterizing error in individual predictions 
+################################################
 
+qplot(pct.error, prediction.delta, data = mturk.df)
 
+mturk.df$error <- with(mturk.df, abs( log(actual.mean.wage) - log(predicted.wage) ))
 
-mturk.df$w.trend <- as.numeric(as.character(with(mturk.df,
-                                              factor(Answer.wage_trend,
-                                                     levels = c("GoDown", "StayTheSame", "GoUp"),
-                                                     labels = c("-1","0","1")))))
-
-
-df.wage <- ddply(mturk.df, .(Input.Title), summarise,
-                 mturk.w = mean(Answer.wage),
-                 mturk.w.weighted = mean(Answer.wage, weight = know),
-                 oes.w = mean(H_WAGE),
-                 tot.emp = mean(TOT_EMP),
-                 know.mu = mean(know),
-                 w.trend.mu = mean(w.trend),
-                 social.mu = mean(social))
-
-df.wage$error <- with(df.wage, log(oes.w) - log(mturk.w))
-
-
-m.1 <- lm(error ~ social + know + log(TOT_EMP), data = mturk.df)
-m.2 <- lmer(error ~ social + know + (1|Input.Title), data = mturk.df)
-m.3 <- lmer(error ~ social + know + (1|Input.Title) + (1|WorkerId), data = mturk.df)
-
-renames <- list()
-regression.table(list("(1)" = m.1, "(2)" = m.2, "(3)" = m.3), renames, "../../writeup/tables/error_prediction.tex")
-
-m <- lmer(log(error) ~ log(H_WAGE) + (1|WorkerId), data = subset(mturk.df, social > -2 & know > 0))
+m.1 <- lm(error ~ social + know + log(tot.emp), data = mturk.df)
+m.2 <- lmer(error ~ social + know + (1|title), data = mturk.df)
+m.3 <- lmer(error ~ social + know + (1|title) + (1|WorkerId), data = mturk.df)
 
 mtable(m.1, m.2, m.3)
 
-# Does social predict know?
-m <- lm(know ~ social + log(TOT_EMP), data = mturk.df)
+models <- list()
+renames <- list()
+renames[["log(tot.emp)"]] <- "Log total employment"
 
-# Within a worker, is knowledge of a job independent of its wage?
-#m <- lmer(Answer.wage ~ 1 + (H_WAGE | 
+renames[["know"]] <- "Knows what job consists of"
+renames[["social"]] <- "Knows someone with the job"
 
-# What's the occupational breakdown of "know"?
+regression.table(list("(1)" = m.1, "(2)" = m.2, "(3)" = m.3), renames, "../../writeup/tables/error_prediction.tex")
 
+##############################
+# Occupation-specific approach 
+##############################
 
-# Are higher wage occupations less well-known? 
-m <- lm(error ~ oes.w, data = df.wage)
+df.wage <- ddply(mturk.df, .(title), summarise,
+                 mturk.w = mean(predicted.wage),
+                 oes.w = mean(actual.mean.wage),
+                 tot.emp = mean(tot.emp),
+                 know.mu = mean(know),
+                 social.mu = mean(social),
+                 error = log(oes.w) - log(mturk.w))
 
-# How much variation in wages does worker mean predictions explain? 
-m <- lm(log(oes.w) ~ log(mturk.w), data = df.wage)
+df.wage.outliers <- subset(df.wage, abs(log(oes.w) - log(mturk.w)) > .50)
+                           
+g.predicted.v.actual <- ggplot(data = df.wage, aes(x = log(mturk.w), y = log(oes.w))) +
+    geom_point() +
+    geom_smooth() +
+    geom_abline(a = 1, b = 0, linetype = "dashed") +
+    geom_text(data = df.wage.outliers, aes(label = title), size = 2, vjust = -1) + theme_bw()
 
-m <- lm(log(oes.w) ~ log(mturk.w.weighted), data = df.wage)
+pdf("../../writeup/plots/predicted_v_actual.pdf")
+print(g.predicted.v.actual)
+dev.off()
 
-m <- lm(log(oes.w) ~ log(mturk.w), data = df.wage, weights = tot.emp)
+##################
+# OUTLIER RUN-DOWN
+##################
+
+df.wage$title <- with(df.wage, reorder(title, error, mean))
+df.wage$mistake.type <- with(df.wage, factor(ifelse(error > 0, "Underestimate", "Overestimate")))
+
+g.error.type <- ggplot(data = df.wage, aes(x = error, y = title)) + geom_point(aes(colour = mistake.type)) 
+pdf("../../writeup/plots/error_type.pdf", width = 7, height = 10)
+ print(g.error.type)
+dev.off()
 
 # Trends
 qplot(oes.w, w.trend.mu, data = df.wage)
@@ -171,12 +292,13 @@ ggsave("../../writeup/plots/wage_trends.png", g.wage.trends, width=7, height=10)
 ############################
 # Knowledge of jobs by title
 ############################
-df.wage$Input.Title <- with(df.wage, reorder(Input.Title, know.mu, mean))
+df.wage$title <- with(df.wage, reorder(title, know.mu, mean))
 
 g.know <- ggplot(data = na.omit(subset(df.wage,log(tot.emp) > 13)),
-                 aes(y = Input.Title, x = know.mu)) + geom_point() +
+                 aes(y = title, x = know.mu)) +
+    geom_point() +
     xlab("Mean of (Do you know what this job is? -1 = No, 0 = Maybe, 1 = Yes") +
-    ylab("Job Title") +
+    ylab("") +
     theme_bw()
 
 pdf("../../writeup/plots/knowledge_by_occupation.pdf", width = 7, height = 10)
@@ -187,12 +309,12 @@ dev.off()
 # Know someone by title 
 #######################
 
-df.wage$Input.Title <- with(df.wage, reorder(Input.Title, social.mu, mean))
+df.wage$title <- with(df.wage, reorder(title, social.mu, mean))
 
 g.social <- ggplot(data = na.omit(subset(df.wage,log(tot.emp) > 13)),
-                 aes(y = Input.Title, x = social.mu)) + geom_point() +
+                 aes(y = title, x = social.mu)) + geom_point() +
     xlab("Mean of social index") +
-    ylab("Job Title") +
+    ylab("") +
     theme_bw()
 
 print(g.social)
@@ -205,18 +327,18 @@ dev.off()
 # WAGE PREDICTION 
 #################
 
-
 shortenName <- function(x, n){
-    if(nchar(x) > n){
-        paste0(substring(x, 1, n - 2), "...")
-    } else {
-        x
-    }
+   abbreviate(x, n)
 }
 
-g.scatter <- ggplot(data = mturk.df, aes(x = log(H_WAGE), log(Answer.wage))) + geom_point() + geom_smooth() + theme_bw() + geom_abline(a = 1, b = 0) +
+g.scatter <- ggplot(data = mturk.df, aes(x = log(actual.mean.wage), log(Answer.wage))) +
+    geom_point() +
+    geom_smooth() +
+    theme_bw() + geom_abline(a = 1, b = 0) +
     xlab("Actual log hourly wage") +
     ylab("Predicted log hourly wage")
+
+print(g.scatter)
 
 pdf("../../writeup/plots/prediction_scatter.pdf", width = 12, heigh = 7)
 print(g.scatter)
@@ -224,7 +346,7 @@ dev.off()
 
 mturk.df$title <- with(mturk.df, sapply(as.character(Input.Title), function(x) shortenName(x, 20)))
 
-mturk.df$title <- with(mturk.df, reorder(title, H_WAGE, mean))
+mturk.df$title <- with(mturk.df, reorder(title, actual.mean.wage, mean))
 
 #############################
 # Box plots of wage knowledge 
@@ -252,10 +374,10 @@ dev.off()
 ##########################################
 
 
-m.lm <- lm(error ~ log(TOT_EMP) + know + social + log(H_WAGE), data = mturk.df)
+m.lm <- lm(error ~ log(TOT_EMP) + know + social + log(actual.mean.wage), data = mturk.df)
 
 
-m.lmer <- lmer(error ~ log(TOT_EMP) + know + social + log(H_WAGE) + (1|WorkerId), data = mturk.df)
+m.lmer <- lmer(error ~ log(TOT_EMP) + know + social + log(actual.mean.wage) + (1|WorkerId), data = mturk.df)
 mtable(m.lm, m.lmer)
 
 m.lmer <- lmer(error ~ log(TOT_EMP) + know + social + (1|WorkerId), data = mturk.df)
@@ -272,15 +394,16 @@ m.lmer <- lmer(error ~ log(TOT_EMP) + know + social + (1|WorkerId), data = mturk
 
 by.worker.df <- ddply(mturk.df, .(WorkerId), transform,
                       num.known = sum(social > -2), 
-                      num.obs = length(WorkerId), 
-                      z = sum(log(H_WAGE[social > -2])))
+                      num.obs = length(WorkerId),
+                      z = sum(log(actual.mean.wage[social > -2])))
 
-by.worker.df$mean.wage.others.social <- with(by.worker.df, ifelse(social > -2, (z - log(H_WAGE))/(num.known - 1), z/(num.known)))
+by.worker.df$mean.wage.others.social <- with(by.worker.df, ifelse(social > -2, (z - log(actual.mean.wage))/(num.known - 1), z/(num.known)))
 
-m.lm <- lm(I(social > -2) ~ log(H_WAGE) * mean.wage.others.social + log(TOT_EMP), data = by.worker.df)
-m.lmer <- lmer(I(social > -2) ~ log(H_WAGE) * mean.wage.others.social + log(TOT_EMP) + (1|WorkerId), data = by.worker.df)
+m.1 <- lm(I(social > -2) ~ log(actual.mean.wage) * mean.wage.others.social + log(tot.emp), data = by.worker.df)
+m.2 <- lmer(I(social > -2) ~ log(actual.mean.wage) * mean.wage.others.social + log(tot.emp) + (1|WorkerId), data = by.worker.df)
+m.3 <- lmer(I(social > -2) ~ log(actual.mean.wage) * mean.wage.others.social + (1|WorkerId) + (1|title), data = by.worker.df)
 
-models <- list("(1)" = m.lm, "(2)" = m.lmer)
+models <- list("(1)" = m.1, "(2)" = m.2, "(3)"  = m.3)
 renames <- list() 
 regression.table(models, renames, "../../writeup/tables/clustering.tex")
 
@@ -288,9 +411,6 @@ regression.table(models, renames, "../../writeup/tables/clustering.tex")
 ###########################
 # SCATTER PLOT - NEEDS WORK
 ###########################
-ggplot(data = df.wage, aes(x = log(tot.emp))) + geom_point(aes(y = social.mu)) + geom_point(aes(y = know.mu), colour = "red")
-
-
 
 df.goofs <- subset(df.wage, log(tot.emp) > 13 & abs(log(mturk.w) - log(oes.w)) > .40)
 
@@ -343,14 +463,14 @@ mtable(m.error, m.error.emp)
 ##
 ## Error of prediction models
 ##
-m <- lm(error ~ Answer.know_anyone + Answer.know_job + log(TOT_EMP) + H_WAGE, data = mturk.df)
+m <- lm(error ~ Answer.know_anyone + Answer.know_job + log(TOT_EMP) + actual.mean.wage, data = mturk.df)
 summary(m)
 
-m1 <- glm(error ~ know*social + log(TOT_EMP) + log(H_WAGE), data = mturk.df)
-m2 <- glm(error ~ know*social + log(H_WAGE), data = mturk.df)
-m3 <- glm(error ~ social + log(H_WAGE) + log(TOT_EMP), data=mturk.df)
-m4 <- lmer(error ~ know*social + log(TOT_EMP) + log(H_WAGE) + (1|Input.Title) , data = mturk.df)
-m5 <- glm(error ~ know*social + log(TOT_EMP) + log(H_WAGE) + I(log(Answer.wage)>3), data = mturk.df)
+m1 <- glm(error ~ know*social + log(TOT_EMP) + log(actual.mean.wage), data = mturk.df)
+m2 <- glm(error ~ know*social + log(actual.mean.wage), data = mturk.df)
+m3 <- glm(error ~ social + log(actual.mean.wage) + log(TOT_EMP), data=mturk.df)
+m4 <- lmer(error ~ know*social + log(TOT_EMP) + log(actual.mean.wage) + (1|Input.Title) , data = mturk.df)
+m5 <- glm(error ~ know*social + log(TOT_EMP) + log(actual.mean.wage) + I(log(Answer.wage)>3), data = mturk.df)
 
 models <- list("1" = m1,
                "2" = m2,
@@ -360,19 +480,19 @@ models <- list("1" = m1,
 
 regression.table(models, list(), "../../writeup/tables/models_error.tex")
 
-ggplot(data = mturk.df, aes(x = log(H_WAGE), y = log(Answer.wage), size = TOT_EMP)) + geom_point() +
+ggplot(data = mturk.df, aes(x = log(actual.mean.wage), y = log(Answer.wage), size = TOT_EMP)) + geom_point() +
        geom_smooth() + geom_abline(a = 1, b = 0) 
 
 # What about when they know the job? 
-ggplot(data = mturk.df, aes(x = log(H_WAGE), y = log(Answer.wage), size = TOT_EMP)) +
+ggplot(data = mturk.df, aes(x = log(actual.mean.wage), y = log(Answer.wage), size = TOT_EMP)) +
     geom_point() +
        geom_smooth() + geom_abline(a = 1, b = 0) + facet_wrap(~Answer.know_job, ncol = 3)
 
-ggplot(data = mturk.df, aes(x = log(H_WAGE), y = log(Answer.wage), size = TOT_EMP)) +
+ggplot(data = mturk.df, aes(x = log(actual.mean.wage), y = log(Answer.wage), size = TOT_EMP)) +
     geom_point() +
        geom_smooth() + geom_abline(a = 1, b = 0) + facet_wrap(~Answer.know_anyone, ncol = 3)
 
-ggplot(data = mturk.df, aes(x = log(H_WAGE), y = log(Answer.wage), size = TOT_EMP)) +
+ggplot(data = mturk.df, aes(x = log(actual.mean.wage), y = log(Answer.wage), size = TOT_EMP)) +
   geom_point() +
      geom_smooth() + geom_abline(a = 1, b = 0) + facet_wrap(~qualified, ncol = 3)
 
@@ -388,15 +508,15 @@ qplot(Answer.know_anyone, TOT_EMP, data = mturk.df) + geom_boxplot()
 
 # MTurks know jobs with lower wages and mass employment?
 m1 <- glm(I(Answer.know_anyone != "0") ~ TOT_EMP, data = mturk.df, family="binomial")
-m2 <- glm(I(Answer.know_anyone != "0") ~ log(H_WAGE), data = mturk.df, family="binomial")
-m3 <- glm(I(Answer.know_anyone != "0") ~ log(H_WAGE) + TOT_EMP, data = mturk.df, family="binomial")
+m2 <- glm(I(Answer.know_anyone != "0") ~ log(actual.mean.wage), data = mturk.df, family="binomial")
+m3 <- glm(I(Answer.know_anyone != "0") ~ log(actual.mean.wage) + TOT_EMP, data = mturk.df, family="binomial")
 
 regression.table(list("1" = m1, "2" = m2, "3" = m3), list(), "../../writeup/tables/models_know_anyone.tex")
 
-ggplot(data = mturk.df, aes(x = log(H_WAGE), y = error, size = TOT_EMP)) + geom_point() +
+ggplot(data = mturk.df, aes(x = log(actual.mean.wage), y = error, size = TOT_EMP)) + geom_point() +
   geom_smooth() + geom_abline(a = 1, b = 0) + facet_wrap(~know, ncol=2)
 
-ggplot(data = mturk.df, aes(x = log(H_WAGE), y = error, size = TOT_EMP)) + geom_point() +
+ggplot(data = mturk.df, aes(x = log(actual.mean.wage), y = error, size = TOT_EMP)) + geom_point() +
   geom_smooth() + geom_abline(a = 1, b = 0) 
 
 
@@ -528,67 +648,3 @@ high.error.jobs <- wage.boxplots(df, df.ord$OCC_TITLE[1:9])
 high.error.jobs
 ggsave("../../writeup/plots/high.error.jobs.png", high.error.jobs, width=8, height=5)
 
-#
-# CODE BELOW IS DEPRECIATED 
-#
-
-
-
-
-## ## Comparation of RSE's
-## stat <- summary(data.frame(OES=df1$EMP_PRSE, MTSO=df$Answer.wage[,3]))
-## tab <- xtable(stat, caption="RSE for Hourly Wages in OES and MTSO datasets (all obs.)",
-##               label="tab:rse_oes_mtso1")
-
-## # Output to a file 
-## sink("../../writeup/tables/rse1.tex", append=FALSE, split=FALSE)
-## tab
-## sink()
-
-## ##
-## ## Filter only informed respondents
-## ## Who a) know the job; b) know any people in the job
-## ##
-## mturk.df.knowledge <- with(mturk.df, mturk.df[Answer.know_job=="Yes" & Answer.know_anyone!=0, ])
-
-## agg <- aggregate(.~Input.Title, data = mturk.df.knowledge[,c(1,4)], FUN=national.stats)
-## df2 <- merge(national.df, agg, by.x="OCC_TITLE", by.y="Input.Title")
-
-## ## Comparation of RSE's
-## stat <- summary(data.frame(OES=df2$EMP_PRSE, MTSO=df2$Answer.wage[,3]))
-## tab <- xtable(stat, caption="RSE for Hourly Wages in OES and MTSO datasets (filtered)",
-##               label="tab:rse_oes_mtso2")
-
-## # Output to a file 
-## sink("../../writeup/tables/rse2.tex", append=FALSE, split=FALSE)
-## tab
-## sink()
-
-## ## Jobs with no informed respondents
-## national.df$OCC_TITLE[!(unique(national.df$OCC_TITLE) %in% unique(df2$OCC_TITLE))]
-
-
-## ##
-## ## Basic plots
-## ##
-
-
-
-## # head(df1)
-## # plots.df <- data.frame(job=sapply(df1$OCC_TITLE,shorten.str), h.mean.oes=df1$H_MEAN, h.mean.mtos=df1$Answer.wage[,1]) #[1:20,]
-
-## plots.df <- data.frame(job=df$OCC_CODE, h.mean.oes=df$H_MEAN, h.mean.mtos=df$Answer.wage[,1]) #[1:20,]
-
-## plots.df <- plots.df[with(plots.df, order(-h.mean.oes)), ]
-## plots.df <- within(plots.df, job<-factor(job, levels=job))
-## plots.df <- melt(data=plots.df, id.vars="job")
-
-## plot.mean.h <- 
-##   ggplot(plots.df, aes(x=job, y=value, fill=variable)) + 
-##   geom_bar(alpha=.5, position="dodge", stat="identity") + 
-##   theme(axis.text.x=element_text(angle=90, hjust=0, vjust=0.5)) + 
-##   ggtitle("Mean hourly wage")
-
-## plot.mean.h
-
-## ggsave("../../writeup/plots/mean.h.wage.png", plot.mean.h, width=8, height=5)

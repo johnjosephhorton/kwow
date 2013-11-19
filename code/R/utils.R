@@ -103,7 +103,7 @@ import.mturk <- function(fname){
   
   # Reformulate social not as factor
   df$social <- as.numeric(as.character(with(df, factor(Answer.know_anyone,
-                                                         levels = c("0", "1", "2", "3-10", "10_plus"),
+                                                         levels = c("0", "1", "2", "3_10", "10_plus"),
                                                          labels = c("-2","-1","0","1","2")))))
     
   df

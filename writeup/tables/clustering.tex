@@ -1,0 +1,41 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Calls:
+% (1):  lm(formula = I(social > -2) ~ log(actual.mean.wage) * mean.wage.others.social + log(tot.emp), data = by.worker.df) 
+% (2):  lmer(formula = I(social > -2) ~ log(actual.mean.wage) * mean.wage.others.social + log(tot.emp) + (1 | WorkerId), data = by.worker.df) 
+% (3):  lmer(formula = I(social > -2) ~ log(actual.mean.wage) * mean.wage.others.social + (1 | WorkerId) + (1 | title), data = by.worker.df) 
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{tabular}{lcD{.}{.}{7}cD{.}{.}{7}cD{.}{.}{7}}
+\toprule
+&&\multicolumn{1}{c}{(1)} && \multicolumn{1}{c}{(2)} && \multicolumn{1}{c}{(3)}\\
+\midrule
+(Intercept)                                             &  &  3.574^{***} &&  2.699^{**}  &&  4.880^{***}\\
+                                                        &  &  (1.015)     &&  (0.977)     &&  (0.929)    \\
+log(actual.mean.wage)                                   &  & -1.510^{***} && -1.244^{***} && -1.390^{***}\\
+                                                        &  &  (0.327)     &&  (0.306)     &&  (0.296)    \\
+mean.wage.others.social                                 &  & -1.626^{***} && -1.318^{***} && -1.406^{***}\\
+                                                        &  &  (0.332)     &&  (0.320)     &&  (0.307)    \\
+log(tot.emp)                                            &  &  0.131^{***} &&  0.131^{***} &&             \\
+                                                        &  &  (0.015)     &&  (0.014)     &&             \\
+log(actual.mean.wage) $\times$ mean.wage.others.social &  &  0.504^{***} &&  0.415^{***} &&  0.447^{***}\\
+                                                        &  &  (0.109)     &&  (0.102)     &&  (0.098)    \\
+Var((Intercept)|WorkerId)                               &  &              &&   0.045      &&   0.040     \\
+                                                        &  &              &&              &&             \\
+Var(|Residual)                                          &  &              &&   0.198      &&   0.179     \\
+                                                        &  &              &&              &&             \\
+Var((Intercept)|title)                                  &  &              &&              &&   0.027     \\
+                                                        &  &              &&              &&             \\
+\midrule
+R-squared                                               &  &      0.040   &&              &&             \\
+adj. R-squared                                          &  &      0.039   &&              &&             \\
+sigma                                                   &  &      0.489   &&              &&             \\
+F                                                       &  &     26.252   &&              &&             \\
+p                                                       &  &      0.000   &&              &&             \\
+Log-likelihood                                          &  &  -1754.623   &&  -1609.371   &&  -1555.602  \\
+Deviance                                                &  &    596.067   &&   3218.743   &&   3111.204  \\
+AIC                                                     &  &   3521.245   &&   3232.743   &&   3125.204  \\
+BIC                                                     &  &   3556.182   &&   3273.503   &&   3165.964  \\
+N                                                       &  &   2497       &&   2497       &&   2497      \\
+\bottomrule
+\end{tabular}
