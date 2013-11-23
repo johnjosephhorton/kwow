@@ -49,6 +49,8 @@ sapply(national.df, class)
 # Impute volume trend estimations
 national.df <- import.occupation.trend("../../data/occupation.table.1.2.csv", national.df)
 
+# Impute education requirements
+national.df <- import.education("../../data/education.categories.csv", national.df)
 
 # Data from MTurk
 mturk.df <- import.mturk("../../data/mturk_output.csv")

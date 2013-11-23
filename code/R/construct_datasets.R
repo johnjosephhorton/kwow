@@ -83,7 +83,7 @@ import.occupation.trend <- function(fname, n.df){
   
   df <- na.omit(read.table(fname, header=F, skip=5, sep=","))
   df <- df[, c(-5,-6,-8,-9)]
-  names(df) <- c("OCC_TITLE", "OCC_CODE", "TOT_EMP2010", "TOT_EMP2020", "CHANGE")
+  names(df) <- c("OCC_TITLE", "OCC_CODE", "TOT_EMP2010", "TOT_EMP2020", "EMP_CHANGE")
   
   # replaces comma in numbers
   df[,c(3:5)] <- as.data.frame(sapply(df[,c(3:5)], gsub, pattern=",", replacement=""))
@@ -91,7 +91,7 @@ import.occupation.trend <- function(fname, n.df){
   df[,c(1:5)] <- sapply(df[,c(1:5)], as.character)  
   df[,c(3:5)] <- sapply(df[,c(3:5)], as.numeric)
   
-  # as far as in 'occupation.csv' OCC_CODE is 'detailed' we need to convert it in 'broad'
+  # as far as in 'occupation.csv' OCC_CODE is 'detailed' we need to convert it to 'broad'
   df$OCC_BROAD <- sapply(df$OCC_CODE, function(s) paste0(substr(s,1,6),"0"))
   
   # jobs not in broad category
@@ -122,9 +122,73 @@ import.occupation.trend <- function(fname, n.df){
   n.df <- n.df[with(n.df, order(-TOT_EMP)), ]
   
   # Let's conisder +/-5% change as 'StayTheSame'
-  n.df$CHANGE <- with(n.df, (TOT_EMP2020-TOT_EMP)/TOT_EMP)
+  n.df$EMP_CHANGE <- with(n.df, (TOT_EMP2020-TOT_EMP)/TOT_EMP)
   n.df$volume.trend <- 
-    cut(n.df$CHANGE, breaks=c(-Inf, -0.05, 0.05, Inf), labels=c("GoDown","StayTheSame","GoUp"))
+    cut(n.df$EMP_CHANGE, breaks=c(-Inf, -0.05, 0.05, Inf), labels=c("GoDown","StayTheSame","GoUp"))
+    
+  n.df
+}
+
+
+## Function to import occupation data from BLS
+##
+## ARGS:
+## fname - path to CSV file with education data by category
+## n.df - data.frame, constructed with 'import.top.national'
+##
+
+import.education <- function(fname, n.df){
+  
+  if(!file.exists(fname)){
+    print(sprintf("Sorry! The file '%s' does not exist!", fname))
+    return(NULL)
+  }
+  
+  df <- na.omit(read.table(fname, header=F, skip=3, sep=","))
+  # Only first three columns, last line is comment
+  df <- df[-nrow(df), c(1:3)]
+  names(df) <- c("OCC_TITLE", "OCC_CODE", "ENTRY_EDUCATION")
+  
+  # Convert entry eduction to factor
+  education.levels <- c("Less than high school",
+                        "High school diploma or equivalent",
+                        "Postsecondary non-degree award",
+                        "Some college, no degree",
+                        "Associate's degree",
+                        "Bachelor's degree",
+                        "Master's degree",
+                        "Doctoral or professional degree")
+  df$ENTRY_EDUCATION  <- factor(df$ENTRY_EDUCATION, levels=education.levels,labels=education.levels)
+  
+  # as far as in 'education.csv' OCC_CODE is 'detailed' we need to convert it to 'broad'
+  df$OCC_BROAD <- sapply(df$OCC_CODE, function(s) paste0(substr(s,1,6),"0"))
+  
+  # jobs not in broad category
+  n.df[which(!(n.df$OCC_CODE %in% df$OCC_BROAD)),]
+  
+  ##
+  ## NOTE: There are codes mismatch!!!
+  ##
+  
+  # 1) 'Registered Nurses': 29-1140 (national), 29-1111 (occupation)
+  # 2) 'Miscellaneous Teachers and Instructors' 25-3090 (national)
+  #    'Teachers and Instructors, All Other' 25-3999 (ocupation)
+  # 3) 'Miscellaneous Postsecondary Teachers' 25-1190 (national)
+  #    'Postsecondary Teachers' 25-1000 (occupation, minor group)
+  
+  # change codes just for estimation purposes
+  df[which(df$OCC_CODE %in% c("29-1111", "25-3999", "25-1000")), "OCC_BROAD"] <- 
+    c("29-1140","25-3090","25-1190")
+  
+  # Minimal education requirements within detailed category
+  df.broad <- ddply(df, .(OCC_BROAD), summarise,
+                    entry.edu = sort(ENTRY_EDUCATION)[1])
+  
+  df.broad <- subset(df.broad, df.broad$OCC_BROAD %in% n.df$OCC_CODE)
+  
+  n.df <- n.df[with(n.df, order(OCC_CODE)), ]
+  n.df$ENTRY_EDUCATION <- df.broad$entry.edu
+  n.df <- n.df[with(n.df, order(-TOT_EMP)), ]
     
   n.df
 }
