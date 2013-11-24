@@ -1,0 +1,1462 @@
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/TeX Live for SUSE Linux) (format=pdflatex 2013.11.20)  24 NOV 2013 09:12
+entering extended mode
+ \write18 enabled.
+ %&-line parsing enabled.
+**occupations.tex
+(./occupations.tex
+LaTeX2e <2011/06/27>
+Babel <3.9f> and hyphenation patterns for 78 languages loaded.
+(/usr/share/texmf/tex/latex/base/article.cls
+Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
+(/usr/share/texmf/tex/latex/base/size10.clo
+File: size10.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
+)
+\c@part=\count79
+\c@section=\count80
+\c@subsection=\count81
+\c@subsubsection=\count82
+\c@paragraph=\count83
+\c@subparagraph=\count84
+\c@figure=\count85
+\c@table=\count86
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+)
+(/usr/share/texmf/tex/latex/graphics/graphicx.sty
+Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texmf/tex/latex/graphics/keyval.sty
+Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
+\KV@toks@=\toks14
+)
+(/usr/share/texmf/tex/latex/graphics/graphics.sty
+Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texmf/tex/latex/graphics/trig.sty
+Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
+)
+(/usr/share/texmf/tex/latex/latexconfig/graphics.cfg
+File: graphics.cfg 2010/04/23 v1.9 graphics configuration of TeX Live
+)
+Package graphics Info: Driver file: pdftex.def on input line 91.
+
+(/usr/share/texmf/tex/latex/pdftex-def/pdftex.def
+File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
+
+(/usr/share/texmf/tex/generic/oberdiek/infwarerr.sty
+Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
+)
+(/usr/share/texmf/tex/generic/oberdiek/ltxcmds.sty
+Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
+)
+\Gread@gobject=\count87
+))
+\Gin@req@height=\dimen103
+\Gin@req@width=\dimen104
+)
+(/usr/share/texmf/tex/latex/graphics/color.sty
+Package: color 2005/11/14 v1.0j Standard LaTeX Color (DPC)
+
+(/usr/share/texmf/tex/latex/latexconfig/color.cfg
+File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
+)
+Package color Info: Driver file: pdftex.def on input line 130.
+)
+(/usr/share/texmf/tex/latex/framed/framed.sty
+Package: framed 2011/10/22 v 0.96: framed or shaded text with page breaks
+\OuterFrameSep=\skip43
+\fb@frw=\dimen105
+\fb@frh=\dimen106
+\FrameRule=\dimen107
+\FrameSep=\dimen108
+)
+(/usr/share/texmf/tex/latex/base/alltt.sty
+Package: alltt 1997/06/16 v2.0g defines alltt environment
+)
+(/usr/share/texmf/tex/latex/booktabs/booktabs.sty
+Package: booktabs 2005/04/14 v1.61803 publication quality tables
+\heavyrulewidth=\dimen109
+\lightrulewidth=\dimen110
+\cmidrulewidth=\dimen111
+\belowrulesep=\dimen112
+\belowbottomsep=\dimen113
+\aboverulesep=\dimen114
+\abovetopsep=\dimen115
+\cmidrulesep=\dimen116
+\cmidrulekern=\dimen117
+\defaultaddspace=\dimen118
+\@cmidla=\count88
+\@cmidlb=\count89
+\@aboverulesep=\dimen119
+\@belowrulesep=\dimen120
+\@thisruleclass=\count90
+\@lastruleclass=\count91
+\@thisrulewidth=\dimen121
+)
+(/usr/share/texmf/tex/latex/tools/dcolumn.sty
+Package: dcolumn 2001/05/28 v1.06 decimal alignment package (DPC)
+
+(/usr/share/texmf/tex/latex/tools/array.sty
+Package: array 2008/09/09 v2.4c Tabular extension package (FMi)
+\col@sep=\dimen122
+\extrarowheight=\dimen123
+\NC@list=\toks15
+\extratabsurround=\skip44
+\backup@length=\skip45
+))
+(/usr/share/texmf/tex/latex/oberdiek/epstopdf.sty
+Package: epstopdf 2010/02/09 v2.5 Conversion with epstopdf on the fly (HO)
+
+(/usr/share/texmf/tex/latex/oberdiek/epstopdf-base.sty
+Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
+
+(/usr/share/texmf/tex/latex/oberdiek/grfext.sty
+Package: grfext 2010/08/19 v1.1 Manage graphics extensions (HO)
+
+(/usr/share/texmf/tex/generic/oberdiek/kvdefinekeys.sty
+Package: kvdefinekeys 2011/04/07 v1.3 Define keys (HO)
+))
+(/usr/share/texmf/tex/latex/oberdiek/kvoptions.sty
+Package: kvoptions 2011/06/30 v3.11 Key value format for package options (HO)
+
+(/usr/share/texmf/tex/generic/oberdiek/kvsetkeys.sty
+Package: kvsetkeys 2012/04/25 v1.16 Key value parser (HO)
+
+(/usr/share/texmf/tex/generic/oberdiek/etexcmds.sty
+Package: etexcmds 2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
+
+(/usr/share/texmf/tex/generic/oberdiek/ifluatex.sty
+Package: ifluatex 2010/03/01 v1.3 Provides the ifluatex switch (HO)
+Package ifluatex Info: LuaTeX not detected.
+)
+Package etexcmds Info: Could not find \expanded.
+(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
+(etexcmds)             that some package has redefined \expanded.
+(etexcmds)             In the latter case, load this package earlier.
+)))
+(/usr/share/texmf/tex/generic/oberdiek/pdftexcmds.sty
+Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO
+)
+
+(/usr/share/texmf/tex/generic/oberdiek/ifpdf.sty
+Package: ifpdf 2011/01/30 v2.3 Provides the ifpdf switch (HO)
+Package ifpdf Info: pdfTeX in PDF mode is detected.
+)
+Package pdftexcmds Info: LuaTeX not detected.
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+)
+Package grfext Info: Graphics extension search list:
+(grfext)             [.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPE
+G,.JBIG2,.JB2,.eps]
+(grfext)             \AppendGraphicsExtensions on input line 452.
+
+(/usr/share/texmf/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
+e
+)))
+(/usr/share/texmf/tex/latex/fourier/fourier.sty
+Package: fourier 2005/01/01 1.4 fourier-GUTenberg package
+
+(/usr/share/texmf/tex/latex/base/fontenc.sty
+Package: fontenc 2005/09/27 v1.99g Standard LaTeX package
+
+(/usr/share/texmf/tex/latex/base/t1enc.def
+File: t1enc.def 2005/09/27 v1.99g Standard LaTeX file
+LaTeX Font Info:    Redeclaring font encoding T1 on input line 43.
+))
+(/usr/share/texmf/tex/latex/base/textcomp.sty
+Package: textcomp 2005/09/27 v1.99g Standard LaTeX package
+Package textcomp Info: Sub-encoding information:
+(textcomp)               5 = only ISO-Adobe without \textcurrency
+(textcomp)               4 = 5 + \texteuro
+(textcomp)               3 = 4 + \textohm
+(textcomp)               2 = 3 + \textestimated + \textcurrency
+(textcomp)               1 = TS1 - \textcircled - \t
+(textcomp)               0 = TS1 (full)
+(textcomp)             Font families with sub-encoding setting implement
+(textcomp)             only a restricted character set as indicated.
+(textcomp)             Family '?' is the default used for unknown fonts.
+(textcomp)             See the documentation for details.
+Package textcomp Info: Setting ? sub-encoding to TS1/1 on input line 71.
+
+(/usr/share/texmf/tex/latex/base/ts1enc.def
+File: ts1enc.def 2001/06/05 v3.0e (jk/car/fm) Standard LaTeX file
+)
+LaTeX Info: Redefining \oldstylenums on input line 266.
+Package textcomp Info: Setting cmr sub-encoding to TS1/0 on input line 281.
+Package textcomp Info: Setting cmss sub-encoding to TS1/0 on input line 282.
+Package textcomp Info: Setting cmtt sub-encoding to TS1/0 on input line 283.
+Package textcomp Info: Setting cmvtt sub-encoding to TS1/0 on input line 284.
+Package textcomp Info: Setting cmbr sub-encoding to TS1/0 on input line 285.
+Package textcomp Info: Setting cmtl sub-encoding to TS1/0 on input line 286.
+Package textcomp Info: Setting ccr sub-encoding to TS1/0 on input line 287.
+Package textcomp Info: Setting ptm sub-encoding to TS1/4 on input line 288.
+Package textcomp Info: Setting pcr sub-encoding to TS1/4 on input line 289.
+Package textcomp Info: Setting phv sub-encoding to TS1/4 on input line 290.
+Package textcomp Info: Setting ppl sub-encoding to TS1/3 on input line 291.
+Package textcomp Info: Setting pag sub-encoding to TS1/4 on input line 292.
+Package textcomp Info: Setting pbk sub-encoding to TS1/4 on input line 293.
+Package textcomp Info: Setting pnc sub-encoding to TS1/4 on input line 294.
+Package textcomp Info: Setting pzc sub-encoding to TS1/4 on input line 295.
+Package textcomp Info: Setting bch sub-encoding to TS1/4 on input line 296.
+Package textcomp Info: Setting put sub-encoding to TS1/5 on input line 297.
+Package textcomp Info: Setting uag sub-encoding to TS1/5 on input line 298.
+Package textcomp Info: Setting ugq sub-encoding to TS1/5 on input line 299.
+Package textcomp Info: Setting ul8 sub-encoding to TS1/4 on input line 300.
+Package textcomp Info: Setting ul9 sub-encoding to TS1/4 on input line 301.
+Package textcomp Info: Setting augie sub-encoding to TS1/5 on input line 302.
+Package textcomp Info: Setting dayrom sub-encoding to TS1/3 on input line 303.
+Package textcomp Info: Setting dayroms sub-encoding to TS1/3 on input line 304.
+
+Package textcomp Info: Setting pxr sub-encoding to TS1/0 on input line 305.
+Package textcomp Info: Setting pxss sub-encoding to TS1/0 on input line 306.
+Package textcomp Info: Setting pxtt sub-encoding to TS1/0 on input line 307.
+Package textcomp Info: Setting txr sub-encoding to TS1/0 on input line 308.
+Package textcomp Info: Setting txss sub-encoding to TS1/0 on input line 309.
+Package textcomp Info: Setting txtt sub-encoding to TS1/0 on input line 310.
+Package textcomp Info: Setting lmr sub-encoding to TS1/0 on input line 311.
+Package textcomp Info: Setting lmdh sub-encoding to TS1/0 on input line 312.
+Package textcomp Info: Setting lmss sub-encoding to TS1/0 on input line 313.
+Package textcomp Info: Setting lmssq sub-encoding to TS1/0 on input line 314.
+Package textcomp Info: Setting lmvtt sub-encoding to TS1/0 on input line 315.
+Package textcomp Info: Setting qhv sub-encoding to TS1/0 on input line 316.
+Package textcomp Info: Setting qag sub-encoding to TS1/0 on input line 317.
+Package textcomp Info: Setting qbk sub-encoding to TS1/0 on input line 318.
+Package textcomp Info: Setting qcr sub-encoding to TS1/0 on input line 319.
+Package textcomp Info: Setting qcs sub-encoding to TS1/0 on input line 320.
+Package textcomp Info: Setting qpl sub-encoding to TS1/0 on input line 321.
+Package textcomp Info: Setting qtm sub-encoding to TS1/0 on input line 322.
+Package textcomp Info: Setting qzc sub-encoding to TS1/0 on input line 323.
+Package textcomp Info: Setting qhvc sub-encoding to TS1/0 on input line 324.
+Package textcomp Info: Setting futs sub-encoding to TS1/4 on input line 325.
+Package textcomp Info: Setting futx sub-encoding to TS1/4 on input line 326.
+Package textcomp Info: Setting futj sub-encoding to TS1/4 on input line 327.
+Package textcomp Info: Setting hlh sub-encoding to TS1/3 on input line 328.
+Package textcomp Info: Setting hls sub-encoding to TS1/3 on input line 329.
+Package textcomp Info: Setting hlst sub-encoding to TS1/3 on input line 330.
+Package textcomp Info: Setting hlct sub-encoding to TS1/5 on input line 331.
+Package textcomp Info: Setting hlx sub-encoding to TS1/5 on input line 332.
+Package textcomp Info: Setting hlce sub-encoding to TS1/5 on input line 333.
+Package textcomp Info: Setting hlcn sub-encoding to TS1/5 on input line 334.
+Package textcomp Info: Setting hlcw sub-encoding to TS1/5 on input line 335.
+Package textcomp Info: Setting hlcf sub-encoding to TS1/5 on input line 336.
+Package textcomp Info: Setting pplx sub-encoding to TS1/3 on input line 337.
+Package textcomp Info: Setting pplj sub-encoding to TS1/3 on input line 338.
+Package textcomp Info: Setting ptmx sub-encoding to TS1/4 on input line 339.
+Package textcomp Info: Setting ptmj sub-encoding to TS1/4 on input line 340.
+)
+(/usr/share/texmf/tex/latex/fourier/fourier-orns.sty
+Package: fourier-orns 2004/01/30 1.1 fourier-ornaments package
+)
+LaTeX Font Info:    Redeclaring symbol font `operators' on input line 50.
+LaTeX Font Info:    Encoding `OT1' has changed to `T1' for symbol font
+(Font)              `operators' in the math version `normal' on input line 50.
+LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
+(Font)                  OT1/cmr/m/n --> T1/futs/m/n on input line 50.
+LaTeX Font Info:    Encoding `OT1' has changed to `T1' for symbol font
+(Font)              `operators' in the math version `bold' on input line 50.
+LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
+(Font)                  OT1/cmr/bx/n --> T1/futs/m/n on input line 50.
+LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
+(Font)                  T1/futs/m/n --> T1/futs/b/n on input line 51.
+LaTeX Font Info:    Redeclaring symbol font `letters' on input line 59.
+LaTeX Font Info:    Encoding `OML' has changed to `FML' for symbol font
+(Font)              `letters' in the math version `normal' on input line 59.
+LaTeX Font Info:    Overwriting symbol font `letters' in version `normal'
+(Font)                  OML/cmm/m/it --> FML/futmi/m/it on input line 59.
+LaTeX Font Info:    Encoding `OML' has changed to `FML' for symbol font
+(Font)              `letters' in the math version `bold' on input line 59.
+LaTeX Font Info:    Overwriting symbol font `letters' in version `bold'
+(Font)                  OML/cmm/b/it --> FML/futmi/m/it on input line 59.
+\symotherletters=\mathgroup4
+LaTeX Font Info:    Overwriting symbol font `letters' in version `bold'
+(Font)                  FML/futmi/m/it --> FML/futmi/b/it on input line 61.
+LaTeX Font Info:    Overwriting symbol font `otherletters' in version `bold'
+(Font)                  FML/futm/m/it --> FML/futm/b/it on input line 62.
+LaTeX Font Info:    Redeclaring math symbol \Gamma on input line 63.
+LaTeX Font Info:    Redeclaring math symbol \Delta on input line 64.
+LaTeX Font Info:    Redeclaring math symbol \Theta on input line 65.
+LaTeX Font Info:    Redeclaring math symbol \Lambda on input line 66.
+LaTeX Font Info:    Redeclaring math symbol \Xi on input line 67.
+LaTeX Font Info:    Redeclaring math symbol \Pi on input line 68.
+LaTeX Font Info:    Redeclaring math symbol \Sigma on input line 69.
+LaTeX Font Info:    Redeclaring math symbol \Upsilon on input line 70.
+LaTeX Font Info:    Redeclaring math symbol \Phi on input line 71.
+LaTeX Font Info:    Redeclaring math symbol \Psi on input line 72.
+LaTeX Font Info:    Redeclaring math symbol \Omega on input line 73.
+LaTeX Font Info:    Redeclaring symbol font `symbols' on input line 113.
+LaTeX Font Info:    Encoding `OMS' has changed to `FMS' for symbol font
+(Font)              `symbols' in the math version `normal' on input line 113.
+LaTeX Font Info:    Overwriting symbol font `symbols' in version `normal'
+(Font)                  OMS/cmsy/m/n --> FMS/futm/m/n on input line 113.
+LaTeX Font Info:    Encoding `OMS' has changed to `FMS' for symbol font
+(Font)              `symbols' in the math version `bold' on input line 113.
+LaTeX Font Info:    Overwriting symbol font `symbols' in version `bold'
+(Font)                  OMS/cmsy/b/n --> FMS/futm/m/n on input line 113.
+LaTeX Font Info:    Redeclaring symbol font `largesymbols' on input line 114.
+LaTeX Font Info:    Encoding `OMX' has changed to `FMX' for symbol font
+(Font)              `largesymbols' in the math version `normal' on input line 1
+14.
+LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `normal'
+(Font)                  OMX/cmex/m/n --> FMX/futm/m/n on input line 114.
+LaTeX Font Info:    Encoding `OMX' has changed to `FMX' for symbol font
+(Font)              `largesymbols' in the math version `bold' on input line 114
+.
+LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `bold'
+(Font)                  OMX/cmex/m/n --> FMX/futm/m/n on input line 114.
+LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 115.
+LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
+(Font)                  OT1/cmr/bx/n --> T1/futs/bx/n on input line 115.
+LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
+(Font)                  OT1/cmr/bx/n --> T1/futs/bx/n on input line 115.
+LaTeX Font Info:    Redeclaring math alphabet \mathrm on input line 116.
+LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 117.
+LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
+(Font)                  OT1/cmr/m/it --> T1/futs/m/it on input line 117.
+LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
+(Font)                  OT1/cmr/bx/it --> T1/futs/m/it on input line 117.
+LaTeX Font Info:    Redeclaring math alphabet \mathcal on input line 118.
+LaTeX Font Info:    Redeclaring math symbol \parallel on input line 134.
+LaTeX Font Info:    Redeclaring math symbol \hbar on input line 148.
+LaTeX Font Info:    Redeclaring math symbol \varkappa on input line 186.
+LaTeX Font Info:    Redeclaring math symbol \varvarrho on input line 187.
+LaTeX Font Info:    Redeclaring math delimiter \Vert on input line 210.
+LaTeX Font Info:    Redeclaring math delimiter \vert on input line 215.
+LaTeX Font Info:    Redeclaring math delimiter \Downarrow on input line 225.
+LaTeX Font Info:    Redeclaring math delimiter \backslash on input line 227.
+LaTeX Font Info:    Redeclaring math delimiter \rangle on input line 229.
+LaTeX Font Info:    Redeclaring math delimiter \langle on input line 231.
+LaTeX Font Info:    Redeclaring math delimiter \rbrace on input line 233.
+LaTeX Font Info:    Redeclaring math delimiter \lbrace on input line 235.
+LaTeX Font Info:    Redeclaring math delimiter \rceil on input line 237.
+LaTeX Font Info:    Redeclaring math delimiter \lceil on input line 239.
+LaTeX Font Info:    Redeclaring math delimiter \rfloor on input line 241.
+LaTeX Font Info:    Redeclaring math delimiter \lfloor on input line 243.
+LaTeX Font Info:    Redeclaring math accent \acute on input line 247.
+LaTeX Font Info:    Redeclaring math accent \grave on input line 248.
+LaTeX Font Info:    Redeclaring math accent \ddot on input line 249.
+LaTeX Font Info:    Redeclaring math accent \tilde on input line 250.
+LaTeX Font Info:    Redeclaring math accent \bar on input line 251.
+LaTeX Font Info:    Redeclaring math accent \breve on input line 252.
+LaTeX Font Info:    Redeclaring math accent \check on input line 253.
+LaTeX Font Info:    Redeclaring math accent \hat on input line 254.
+LaTeX Font Info:    Redeclaring math accent \dot on input line 255.
+LaTeX Font Info:    Redeclaring math accent \mathring on input line 256.
+\symUfutm=\mathgroup5
+)
+(/usr/share/texmf/tex/latex/preprint/fullpage.sty
+Package: fullpage 1999/02/23 1.1 (PWD)
+\FP@margin=\skip46
+)
+(/usr/share/texmf/tex/latex/hyperref/hyperref.sty
+Package: hyperref 2012/11/06 v6.83m Hypertext links for LaTeX
+
+(/usr/share/texmf/tex/generic/oberdiek/hobsub-hyperref.sty
+Package: hobsub-hyperref 2012/05/28 v1.13 Bundle oberdiek, subset hyperref (HO)
+
+
+(/usr/share/texmf/tex/generic/oberdiek/hobsub-generic.sty
+Package: hobsub-generic 2012/05/28 v1.13 Bundle oberdiek, subset generic (HO)
+Package: hobsub 2012/05/28 v1.13 Construct package bundles (HO)
+Package hobsub Info: Skipping package `infwarerr' (already loaded).
+Package hobsub Info: Skipping package `ltxcmds' (already loaded).
+Package hobsub Info: Skipping package `ifluatex' (already loaded).
+Package: ifvtex 2010/03/01 v1.5 Detect VTeX and its facilities (HO)
+Package ifvtex Info: VTeX not detected.
+Package: intcalc 2007/09/27 v1.1 Expandable calculations with integers (HO)
+Package hobsub Info: Skipping package `ifpdf' (already loaded).
+Package hobsub Info: Skipping package `etexcmds' (already loaded).
+Package hobsub Info: Skipping package `kvsetkeys' (already loaded).
+Package hobsub Info: Skipping package `kvdefinekeys' (already loaded).
+Package hobsub Info: Skipping package `pdftexcmds' (already loaded).
+Package: pdfescape 2011/11/25 v1.13 Implements pdfTeX's escape features (HO)
+Package: bigintcalc 2012/04/08 v1.3 Expandable calculations on big integers (HO
+)
+Package: bitset 2011/01/30 v1.1 Handle bit-vector datatype (HO)
+Package: uniquecounter 2011/01/30 v1.2 Provide unlimited unique counter (HO)
+)
+Package hobsub Info: Skipping package `hobsub' (already loaded).
+Package: letltxmacro 2010/09/02 v1.4 Let assignment for LaTeX macros (HO)
+Package: hopatch 2012/05/28 v1.2 Wrapper for package hooks (HO)
+Package: xcolor-patch 2011/01/30 xcolor patch
+Package: atveryend 2011/06/30 v1.8 Hooks at the very end of document (HO)
+Package atveryend Info: \enddocument detected (standard20110627).
+Package: atbegshi 2011/10/05 v1.16 At begin shipout hook (HO)
+Package: refcount 2011/10/16 v3.4 Data extraction from label references (HO)
+Package: hycolor 2011/01/30 v1.7 Color options for hyperref/bookmark (HO)
+)
+(/usr/share/texmf/tex/generic/ifxetex/ifxetex.sty
+Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
+)
+(/usr/share/texmf/tex/latex/oberdiek/auxhook.sty
+Package: auxhook 2011/03/04 v1.3 Hooks for auxiliary files (HO)
+)
+\@linkdim=\dimen124
+\Hy@linkcounter=\count92
+\Hy@pagecounter=\count93
+
+(/usr/share/texmf/tex/latex/hyperref/pd1enc.def
+File: pd1enc.def 2012/11/06 v6.83m Hyperref: PDFDocEncoding definition (HO)
+)
+\Hy@SavedSpaceFactor=\count94
+
+(/usr/share/texmf/tex/latex/latexconfig/hyperref.cfg
+File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
+)
+Package hyperref Info: Hyper figures OFF on input line 4443.
+Package hyperref Info: Link nesting OFF on input line 4448.
+Package hyperref Info: Hyper index ON on input line 4451.
+Package hyperref Info: Plain pages OFF on input line 4458.
+Package hyperref Info: Backreferencing OFF on input line 4463.
+Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
+Package hyperref Info: Bookmarks ON on input line 4688.
+\c@Hy@tempcnt=\count95
+
+(/usr/share/texmf/tex/latex/url/url.sty
+\Urlmuskip=\muskip10
+Package: url 2006/04/12  ver 3.3  Verb mode for urls, etc.
+)
+LaTeX Info: Redefining \url on input line 5041.
+\XeTeXLinkMargin=\dimen125
+\Fld@menulength=\count96
+\Field@Width=\dimen126
+\Fld@charsize=\dimen127
+Package hyperref Info: Hyper figures OFF on input line 6295.
+Package hyperref Info: Link nesting OFF on input line 6300.
+Package hyperref Info: Hyper index ON on input line 6303.
+Package hyperref Info: backreferencing OFF on input line 6310.
+Package hyperref Info: Link coloring OFF on input line 6315.
+Package hyperref Info: Link coloring with OCG OFF on input line 6320.
+Package hyperref Info: PDF/A mode OFF on input line 6325.
+LaTeX Info: Redefining \ref on input line 6365.
+LaTeX Info: Redefining \pageref on input line 6369.
+\Hy@abspage=\count97
+\c@Item=\count98
+\c@Hfootnote=\count99
+)
+
+Package hyperref Message: Driver (autodetected): hpdftex.
+
+(/usr/share/texmf/tex/latex/hyperref/hpdftex.def
+File: hpdftex.def 2012/11/06 v6.83m Hyperref driver for pdfTeX
+\Fld@listcount=\count100
+\c@bookmark@seq@number=\count101
+
+(/usr/share/texmf/tex/latex/oberdiek/rerunfilecheck.sty
+Package: rerunfilecheck 2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
+Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
+82.
+)
+\Hy@SectionHShift=\skip47
+)
+(/usr/share/texmf/tex/latex/tools/longtable.sty
+Package: longtable 2004/02/01 v4.11 Multi-page Table package (DPC)
+\LTleft=\skip48
+\LTright=\skip49
+\LTpre=\skip50
+\LTpost=\skip51
+\LTchunksize=\count102
+\LTcapwidth=\dimen128
+\LT@head=\box26
+\LT@firsthead=\box27
+\LT@foot=\box28
+\LT@lastfoot=\box29
+\LT@cols=\count103
+\LT@rows=\count104
+\c@LT@tables=\count105
+\c@LT@chunks=\count106
+\LT@p@ftn=\toks16
+)
+(/usr/share/texmf/tex/latex/natbib/natbib.sty
+Package: natbib 2010/09/13 8.31b (PWD, AO)
+\bibhang=\skip52
+\bibsep=\skip53
+LaTeX Info: Redefining \cite on input line 694.
+\c@NAT@ctr=\count107
+)
+(/usr/share/texmf/tex/latex/rotating/rotating.sty
+Package: rotating 2009/03/28 v2.16a rotated objects in LaTeX
+
+(/usr/share/texmf/tex/latex/base/ifthen.sty
+Package: ifthen 2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
+)
+\c@r@tfl@t=\count108
+\rotFPtop=\skip54
+\rotFPbot=\skip55
+\rot@float@box=\box30
+\rot@mess@toks=\toks17
+)
+(/usr/share/texmf/tex/latex/tools/tabularx.sty
+Package: tabularx 1999/01/07 v2.07 `tabularx' package (DPC)
+\TX@col@width=\dimen129
+\TX@old@table=\dimen130
+\TX@old@col=\dimen131
+\TX@target=\dimen132
+\TX@delta=\dimen133
+\TX@cols=\count109
+\TX@ftn=\toks18
+)
+(/usr/share/texmf/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2013/01/14 v2.14 AMS math features
+\@mathmargin=\skip56
+
+For additional information on amsmath, use the `?' option.
+(/usr/share/texmf/tex/latex/amsmath/amstext.sty
+Package: amstext 2000/06/29 v2.01
+
+(/usr/share/texmf/tex/latex/amsmath/amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0
+\@emptytoks=\toks19
+\ex@=\dimen134
+))
+(/usr/share/texmf/tex/latex/amsmath/amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d
+\pmbraise@=\dimen135
+)
+(/usr/share/texmf/tex/latex/amsmath/amsopn.sty
+Package: amsopn 1999/12/14 v2.01 operator names
+)
+\inf@bad=\count110
+LaTeX Info: Redefining \frac on input line 210.
+\uproot@=\count111
+\leftroot@=\count112
+LaTeX Info: Redefining \overline on input line 306.
+\classnum@=\count113
+\DOTSCASE@=\count114
+LaTeX Info: Redefining \ldots on input line 378.
+LaTeX Info: Redefining \dots on input line 381.
+LaTeX Info: Redefining \cdots on input line 466.
+\Mathstrutbox@=\box31
+\strutbox@=\box32
+\big@size=\dimen136
+LaTeX Font Info:    Redeclaring font encoding OML on input line 566.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 567.
+\macc@depth=\count115
+\c@MaxMatrixCols=\count116
+\dotsspace@=\muskip11
+\c@parentequation=\count117
+\dspbrk@lvl=\count118
+\tag@help=\toks20
+\row@=\count119
+\column@=\count120
+\maxfields@=\count121
+\andhelp@=\toks21
+\eqnshift@=\dimen137
+\alignsep@=\dimen138
+\tagshift@=\dimen139
+\tagwidth@=\dimen140
+\totwidth@=\dimen141
+\lineht@=\dimen142
+\@envbody=\toks22
+\multlinegap=\skip57
+\multlinetaggap=\skip58
+\mathdisplay@stack=\toks23
+LaTeX Info: Redefining \[ on input line 2665.
+LaTeX Info: Redefining \] on input line 2666.
+)
+Package hyperref Info: Option `colorlinks' set `true' on input line 70.
+
+(/usr/share/texmf/tex/latex/geometry/geometry.sty
+Package: geometry 2010/09/12 v5.6 Page Geometry
+\Gm@cnth=\count122
+\Gm@cntv=\count123
+\c@Gm@tempcnt=\count124
+\Gm@bindingoffset=\dimen143
+\Gm@wd@mp=\dimen144
+\Gm@odd@mp=\dimen145
+\Gm@even@mp=\dimen146
+\Gm@layoutwidth=\dimen147
+\Gm@layoutheight=\dimen148
+\Gm@layouthoffset=\dimen149
+\Gm@layoutvoffset=\dimen150
+\Gm@dimlist=\toks24
+) (./occupations.aux)
+\openout1 = `occupations.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 75.
+LaTeX Font Info:    ... okay on input line 75.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 75.
+LaTeX Font Info:    ... okay on input line 75.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 75.
+LaTeX Font Info:    ... okay on input line 75.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 75.
+LaTeX Font Info:    ... okay on input line 75.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 75.
+LaTeX Font Info:    ... okay on input line 75.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 75.
+LaTeX Font Info:    ... okay on input line 75.
+LaTeX Font Info:    Checking defaults for FML/futm/m/it on input line 75.
+LaTeX Font Info:    Try loading font information for FML+futm on input line 75.
+
+
+(/usr/share/texmf/tex/latex/fourier/fmlfutm.fd
+File: fmlfutm.fd 2004/10/30 Fontinst v1.926 font definitions for FML/futm.
+)
+LaTeX Font Info:    ... okay on input line 75.
+LaTeX Font Info:    Checking defaults for FMS/futm/m/n on input line 75.
+LaTeX Font Info:    Try loading font information for FMS+futm on input line 75.
+
+
+(/usr/share/texmf/tex/latex/fourier/fmsfutm.fd
+File: fmsfutm.fd 2004/10/30 Fontinst v1.926 font definitions for FMS/futm.
+)
+LaTeX Font Info:    ... okay on input line 75.
+LaTeX Font Info:    Checking defaults for FMX/futm/m/n on input line 75.
+LaTeX Font Info:    Try loading font information for FMX+futm on input line 75.
+
+
+(/usr/share/texmf/tex/latex/fourier/fmxfutm.fd
+File: fmxfutm.fd futm-extension
+)
+LaTeX Font Info:    ... okay on input line 75.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 75.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 75.
+
+(/usr/share/texmf/tex/latex/base/ts1cmr.fd
+File: ts1cmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    ... okay on input line 75.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 75.
+LaTeX Font Info:    ... okay on input line 75.
+LaTeX Font Info:    Try loading font information for T1+futs on input line 75.
+
+(/usr/share/texmf/tex/latex/fourier/t1futs.fd
+File: t1futs.fd 2004/03/02 Fontinst v1.926 font definitions for T1/futs.
+)
+(/usr/share/texmf/tex/context/base/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count125
+\scratchdimen=\dimen151
+\scratchbox=\box33
+\nofMPsegments=\count126
+\nofMParguments=\count127
+\everyMPshowfont=\toks25
+\MPscratchCnt=\count128
+\MPscratchDim=\dimen152
+\MPnumerator=\count129
+\makeMPintoPDFobject=\count130
+\everyMPtoPDFconversion=\toks26
+)
+\AtBeginShipoutBox=\box34
+Package hyperref Info: Link coloring ON on input line 75.
+ (/usr/share/texmf/tex/latex/hyperref/nameref.sty
+Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
+
+(/usr/share/texmf/tex/generic/oberdiek/gettitlestring.sty
+Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
+)
+\c@section@level=\count131
+)
+LaTeX Info: Redefining \ref on input line 75.
+LaTeX Info: Redefining \pageref on input line 75.
+LaTeX Info: Redefining \nameref on input line 75.
+ (./occupations.out) (./occupations.out)
+\@outlinefile=\write3
+\openout3 = `occupations.out'.
+
+
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+*geometry* verbose mode - [ preamble ] result:
+* driver: pdftex
+* paper: a4paper
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: 
+* h-part:(L,W,R)=(56.9055pt, 497.92325pt, 42.67912pt)
+* v-part:(T,H,B)=(56.9055pt, 731.23584pt, 56.9055pt)
+* \paperwidth=597.50787pt
+* \paperheight=845.04684pt
+* \textwidth=497.92325pt
+* \textheight=731.23584pt
+* \oddsidemargin=-15.36449pt
+* \evensidemargin=-15.36449pt
+* \topmargin=-15.36449pt
+* \headheight=0.0pt
+* \headsep=0.0pt
+* \topskip=10.0pt
+* \footskip=30.0pt
+* \marginparwidth=57.0pt
+* \marginparsep=11.0pt
+* \columnsep=10.0pt
+* \skip\footins=9.0pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidefalse
+* \@mparswitchfalse
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+LaTeX Font Info:    Try loading font information for FML+futmi on input line 80
+.
+(/usr/share/texmf/tex/latex/fourier/fmlfutmi.fd
+File: fmlfutmi.fd 2004/10/30 Fontinst v1.926 font definitions for FML/futmi.
+)
+LaTeX Font Info:    Font shape `FMX/futm/m/n' will be
+(Font)              scaled to size 11.03998pt on input line 80.
+LaTeX Font Info:    Font shape `FMX/futm/m/n' will be
+(Font)              scaled to size 8.27998pt on input line 80.
+LaTeX Font Info:    Font shape `FMX/futm/m/n' will be
+(Font)              scaled to size 6.43999pt on input line 80.
+LaTeX Font Info:    Font shape `U/futm/m/n' will be
+(Font)              scaled to size 11.03998pt on input line 80.
+LaTeX Font Info:    Font shape `U/futm/m/n' will be
+(Font)              scaled to size 8.27998pt on input line 80.
+LaTeX Font Info:    Font shape `U/futm/m/n' will be
+(Font)              scaled to size 6.43999pt on input line 80.
+
+
+LaTeX Warning: No \author given.
+
+LaTeX Font Info:    Font shape `T1/futs/bx/n' in size <14.4> not available
+(Font)              Font shape `T1/futs/b/n' tried instead on input line 85.
+LaTeX Font Info:    Font shape `T1/futs/bx/n' in size <10> not available
+(Font)              Font shape `T1/futs/b/n' tried instead on input line 85.
+LaTeX Font Info:    Font shape `FMX/futm/m/n' will be
+(Font)              scaled to size 7.35999pt on input line 90.
+LaTeX Font Info:    Font shape `FMX/futm/m/n' will be
+(Font)              scaled to size 6.25598pt on input line 90.
+LaTeX Font Info:    Font shape `FMX/futm/m/n' will be
+(Font)              scaled to size 5.51999pt on input line 90.
+LaTeX Font Info:    Font shape `U/futm/m/n' will be
+(Font)              scaled to size 7.35999pt on input line 90.
+LaTeX Font Info:    Font shape `U/futm/m/n' will be
+(Font)              scaled to size 6.25598pt on input line 90.
+LaTeX Font Info:    Font shape `U/futm/m/n' will be
+(Font)              scaled to size 5.51999pt on input line 90.
+LaTeX Font Info:    Font shape `T1/futs/bx/n' in size <8> not available
+(Font)              Font shape `T1/futs/b/n' tried instead on input line 91.
+LaTeX Font Info:    Font shape `T1/futs/bx/n' in size <6.8> not available
+(Font)              Font shape `T1/futs/b/n' tried instead on input line 91.
+LaTeX Font Info:    Font shape `T1/futs/bx/n' in size <6> not available
+(Font)              Font shape `T1/futs/b/n' tried instead on input line 91.
+<figure/unnamed-chunk-21.pdf, id=402, 361.35pt x 144.54pt>
+File: figure/unnamed-chunk-21.pdf Graphic file (type pdf)
+
+<use figure/unnamed-chunk-21.pdf>
+Package pdftex.def Info: figure/unnamed-chunk-21.pdf used on input line 147.
+(pdftex.def)             Requested size: 361.34912pt x 144.53963pt.
+ [1
+
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./figure/unnamed-chunk-21.
+pdf>]
+<figure/unnamed-chunk-22.pdf, id=424, 361.35pt x 144.54pt>
+File: figure/unnamed-chunk-22.pdf Graphic file (type pdf)
+
+<use figure/unnamed-chunk-22.pdf>
+Package pdftex.def Info: figure/unnamed-chunk-22.pdf used on input line 214.
+(pdftex.def)             Requested size: 361.34912pt x 144.53963pt.
+ [2 <./figure/unnamed-chunk-22.pdf>]
+<figure/unnamed-chunk-23.pdf, id=439, 361.35pt x 144.54pt>
+File: figure/unnamed-chunk-23.pdf Graphic file (type pdf)
+
+<use figure/unnamed-chunk-23.pdf>
+Package pdftex.def Info: figure/unnamed-chunk-23.pdf used on input line 281.
+(pdftex.def)             Requested size: 361.34912pt x 144.53963pt.
+ [3 <./figure/unnamed-chunk-23.pdf>]
+<figure/unnamed-chunk-24.pdf, id=454, 361.35pt x 144.54pt>
+File: figure/unnamed-chunk-24.pdf Graphic file (type pdf)
+
+<use figure/unnamed-chunk-24.pdf>
+Package pdftex.def Info: figure/unnamed-chunk-24.pdf used on input line 348.
+(pdftex.def)             Requested size: 361.34912pt x 144.53963pt.
+ [4 <./figure/unnamed-chunk-24.pdf>]
+<figure/unnamed-chunk-25.pdf, id=471, 361.35pt x 144.54pt>
+File: figure/unnamed-chunk-25.pdf Graphic file (type pdf)
+
+<use figure/unnamed-chunk-25.pdf>
+Package pdftex.def Info: figure/unnamed-chunk-25.pdf used on input line 415.
+(pdftex.def)             Requested size: 361.34912pt x 144.53963pt.
+ [5 <./figure/unnamed-chunk-25.pdf>]
+<figure/unnamed-chunk-26.pdf, id=487, 361.35pt x 144.54pt>
+File: figure/unnamed-chunk-26.pdf Graphic file (type pdf)
+
+<use figure/unnamed-chunk-26.pdf>
+Package pdftex.def Info: figure/unnamed-chunk-26.pdf used on input line 482.
+(pdftex.def)             Requested size: 361.34912pt x 144.53963pt.
+ [6 <./figure/unnamed-chunk-26.pdf>]
+<figure/unnamed-chunk-27.pdf, id=501, 361.35pt x 144.54pt>
+File: figure/unnamed-chunk-27.pdf Graphic file (type pdf)
+
+<use figure/unnamed-chunk-27.pdf>
+Package pdftex.def Info: figure/unnamed-chunk-27.pdf used on input line 549.
+(pdftex.def)             Requested size: 361.34912pt x 144.53963pt.
+ [7 <./figure/unnamed-chunk-27.pdf>]
+<figure/unnamed-chunk-28.pdf, id=518, 361.35pt x 144.54pt>
+File: figure/unnamed-chunk-28.pdf Graphic file (type pdf)
+
+<use figure/unnamed-chunk-28.pdf>
+Package pdftex.def Info: figure/unnamed-chunk-28.pdf used on input line 616.
+(pdftex.def)             Requested size: 361.34912pt x 144.53963pt.
+ [8 <./figure/unnamed-chunk-28.pdf>]
+<figure/unnamed-chunk-29.pdf, id=533, 361.35pt x 144.54pt>
+File: figure/unnamed-chunk-29.pdf Graphic file (type pdf)
+
+<use figure/unnamed-chunk-29.pdf>
+Package pdftex.def Info: figure/unnamed-chunk-29.pdf used on input line 683.
+(pdftex.def)             Requested size: 361.34912pt x 144.53963pt.
+ [9 <./figure/unnamed-chunk-29.pdf>]
+<figure/unnamed-chunk-210.pdf, id=550, 361.35pt x 144.54pt>
+File: figure/unnamed-chunk-210.pdf Graphic file (type pdf)
+
+<use figure/unnamed-chunk-210.pdf>
+Package pdftex.def Info: figure/unnamed-chunk-210.pdf used on input line 750.
+(pdftex.def)             Requested size: 361.34912pt x 144.53963pt.
+ [10 <./figure/unnamed-chunk-210.pdf>]
+<figure/unnamed-chunk-211.pdf, id=564, 361.35pt x 144.54pt>
+File: figure/unnamed-chunk-211.pdf Graphic file (type pdf)
+
+<use figure/unnamed-chunk-211.pdf>
+Package pdftex.def Info: figure/unnamed-chunk-211.pdf used on input line 817.
+(pdftex.def)             Requested size: 361.34912pt x 144.53963pt.
+ [11 <./figure/unnamed-chunk-211.pdf>]
+<figure/unnamed-chunk-212.pdf, id=578, 361.35pt x 144.54pt>
+File: figure/unnamed-chunk-212.pdf Graphic file (type pdf)
+
+<use figure/unnamed-chunk-212.pdf>
+Package pdftex.def Info: figure/unnamed-chunk-212.pdf used on input line 884.
+(pdftex.def)             Requested size: 361.34912pt x 144.53963pt.
+ [12 <./figure/unnamed-chunk-212.pdf>]
+<figure/unnamed-chunk-213.pdf, id=597, 361.35pt x 144.54pt>
+File: figure/unnamed-chunk-213.pdf Graphic file (type pdf)
+
+<use figure/unnamed-chunk-213.pdf>
+Package pdftex.def Info: figure/unnamed-chunk-213.pdf used on input line 951.
+(pdftex.def)             Requested size: 361.34912pt x 144.53963pt.
+ [13 <./figure/unnamed-chunk-213.pdf>]
+<figure/unnamed-chunk-214.pdf, id=614, 361.35pt x 144.54pt>
+File: figure/unnamed-chunk-214.pdf Graphic file (type pdf)
+
+<use figure/unnamed-chunk-214.pdf>
+Package pdftex.def Info: figure/unnamed-chunk-214.pdf used on input line 1018.
+(pdftex.def)             Requested size: 361.34912pt x 144.53963pt.
+ [14 <./figure/unnamed-chunk-214.pdf>]
+<figure/unnamed-chunk-215.pdf, id=628, 361.35pt x 144.54pt>
+File: figure/unnamed-chunk-215.pdf Graphic file (type pdf)
+
+<use figure/unnamed-chunk-215.pdf>
+Package pdftex.def Info: figure/unnamed-chunk-215.pdf used on input line 1085.
+(pdftex.def)             Requested size: 361.34912pt x 144.53963pt.
+ [15 <./figure/unnamed-chunk-215.pdf>]
+<figure/unnamed-chunk-216.pdf, id=643, 361.35pt x 144.54pt>
+File: figure/unnamed-chunk-216.pdf Graphic file (type pdf)
+
+<use figure/unnamed-chunk-216.pdf>
+Package pdftex.def Info: figure/unnamed-chunk-216.pdf used on input line 1152.
+(pdftex.def)             Requested size: 361.34912pt x 144.53963pt.
+ [16 <./figure/unnamed-chunk-216.pdf>]
+<figure/unnamed-chunk-217.pdf, id=658, 361.35pt x 144.54pt>
+File: figure/unnamed-chunk-217.pdf Graphic file (type pdf)
+
+<use figure/unnamed-chunk-217.pdf>
+Package pdftex.def Info: figure/unnamed-chunk-217.pdf used on input line 1219.
+(pdftex.def)             Requested size: 361.34912pt x 144.53963pt.
+ [17 <./figure/unnamed-chunk-217.pdf>]
+<figure/unnamed-chunk-218.pdf, id=672, 361.35pt x 144.54pt>
+File: figure/unnamed-chunk-218.pdf Graphic file (type pdf)
+
+<use figure/unnamed-chunk-218.pdf>
+Package pdftex.def Info: figure/unnamed-chunk-218.pdf used on input line 1286.
+(pdftex.def)             Requested size: 361.34912pt x 144.53963pt.
+ [18 <./figure/unnamed-chunk-218.pdf>]
+<figure/unnamed-chunk-219.pdf, id=687, 361.35pt x 144.54pt>
+File: figure/unnamed-chunk-219.pdf Graphic file (type pdf)
+
+<use figure/unnamed-chunk-219.pdf>
+Package pdftex.def Info: figure/unnamed-chunk-219.pdf used on input line 1353.
+(pdftex.def)             Requested size: 361.34912pt x 144.53963pt.
+ [19 <./figure/unnamed-chunk-219.pdf>]
+<figure/unnamed-chunk-220.pdf, id=705, 361.35pt x 144.54pt>
+File: figure/unnamed-chunk-220.pdf Graphic file (type pdf)
+
+<use figure/unnamed-chunk-220.pdf>
+Package pdftex.def Info: figure/unnamed-chunk-220.pdf used on input line 1420.
+(pdftex.def)             Requested size: 361.34912pt x 144.53963pt.
+ [20 <./figure/unnamed-chunk-220.pdf>]
+<figure/unnamed-chunk-221.pdf, id=719, 361.35pt x 144.54pt>
+File: figure/unnamed-chunk-221.pdf Graphic file (type pdf)
+
+<use figure/unnamed-chunk-221.pdf>
+Package pdftex.def Info: figure/unnamed-chunk-221.pdf used on input line 1487.
+(pdftex.def)             Requested size: 361.34912pt x 144.53963pt.
+ [21 <./figure/unnamed-chunk-221.pdf>]
+<figure/unnamed-chunk-222.pdf, id=740, 361.35pt x 144.54pt>
+File: figure/unnamed-chunk-222.pdf Graphic file (type pdf)
+
+<use figure/unnamed-chunk-222.pdf>
+Package pdftex.def Info: figure/unnamed-chunk-222.pdf used on input line 1554.
+(pdftex.def)             Requested size: 361.34912pt x 144.53963pt.
+ [22 <./figure/unnamed-chunk-222.pdf>]
+<figure/unnamed-chunk-223.pdf, id=757, 361.35pt x 144.54pt>
+File: figure/unnamed-chunk-223.pdf Graphic file (type pdf)
+
+<use figure/unnamed-chunk-223.pdf>
+Package pdftex.def Info: figure/unnamed-chunk-223.pdf used on input line 1621.
+(pdftex.def)             Requested size: 361.34912pt x 144.53963pt.
+ [23 <./figure/unnamed-chunk-223.pdf>]
+<figure/unnamed-chunk-224.pdf, id=772, 361.35pt x 144.54pt>
+File: figure/unnamed-chunk-224.pdf Graphic file (type pdf)
+
+<use figure/unnamed-chunk-224.pdf>
+Package pdftex.def Info: figure/unnamed-chunk-224.pdf used on input line 1688.
+(pdftex.def)             Requested size: 361.34912pt x 144.53963pt.
+ [24 <./figure/unnamed-chunk-224.pdf>]
+<figure/unnamed-chunk-225.pdf, id=786, 361.35pt x 144.54pt>
+File: figure/unnamed-chunk-225.pdf Graphic file (type pdf)
+
+<use figure/unnamed-chunk-225.pdf>
+Package pdftex.def Info: figure/unnamed-chunk-225.pdf used on input line 1755.
+(pdftex.def)             Requested size: 361.34912pt x 144.53963pt.
+ [25 <./figure/unnamed-chunk-225.pdf>]
+<figure/unnamed-chunk-226.pdf, id=801, 361.35pt x 144.54pt>
+File: figure/unnamed-chunk-226.pdf Graphic file (type pdf)
+
+<use figure/unnamed-chunk-226.pdf>
+Package pdftex.def Info: figure/unnamed-chunk-226.pdf used on input line 1822.
+(pdftex.def)             Requested size: 361.34912pt x 144.53963pt.
+ [26 <./figure/unnamed-chunk-226.pdf>]
+<figure/unnamed-chunk-227.pdf, id=816, 361.35pt x 144.54pt>
+File: figure/unnamed-chunk-227.pdf Graphic file (type pdf)
+
+<use figure/unnamed-chunk-227.pdf>
+Package pdftex.def Info: figure/unnamed-chunk-227.pdf used on input line 1889.
+(pdftex.def)             Requested size: 361.34912pt x 144.53963pt.
+ [27 <./figure/unnamed-chunk-227.pdf>]
+<figure/unnamed-chunk-228.pdf, id=831, 361.35pt x 144.54pt>
+File: figure/unnamed-chunk-228.pdf Graphic file (type pdf)
+
+<use figure/unnamed-chunk-228.pdf>
+Package pdftex.def Info: figure/unnamed-chunk-228.pdf used on input line 1956.
+(pdftex.def)             Requested size: 361.34912pt x 144.53963pt.
+ [28 <./figure/unnamed-chunk-228.pdf>]
+<figure/unnamed-chunk-229.pdf, id=845, 361.35pt x 144.54pt>
+File: figure/unnamed-chunk-229.pdf Graphic file (type pdf)
+
+<use figure/unnamed-chunk-229.pdf>
+Package pdftex.def Info: figure/unnamed-chunk-229.pdf used on input line 2023.
+(pdftex.def)             Requested size: 361.34912pt x 144.53963pt.
+ [29 <./figure/unnamed-chunk-229.pdf>]
+<figure/unnamed-chunk-230.pdf, id=859, 361.35pt x 144.54pt>
+File: figure/unnamed-chunk-230.pdf Graphic file (type pdf)
+
+<use figure/unnamed-chunk-230.pdf>
+Package pdftex.def Info: figure/unnamed-chunk-230.pdf used on input line 2090.
+(pdftex.def)             Requested size: 361.34912pt x 144.53963pt.
+ [30 <./figure/unnamed-chunk-230.pdf>]
+<figure/unnamed-chunk-231.pdf, id=873, 361.35pt x 144.54pt>
+File: figure/unnamed-chunk-231.pdf Graphic file (type pdf)
+
+<use figure/unnamed-chunk-231.pdf>
+Package pdftex.def Info: figure/unnamed-chunk-231.pdf used on input line 2157.
+(pdftex.def)             Requested size: 361.34912pt x 144.53963pt.
+ [31 <./figure/unnamed-chunk-231.pdf>]
+<figure/unnamed-chunk-232.pdf, id=890, 361.35pt x 144.54pt>
+File: figure/unnamed-chunk-232.pdf Graphic file (type pdf)
+
+<use figure/unnamed-chunk-232.pdf>
+Package pdftex.def Info: figure/unnamed-chunk-232.pdf used on input line 2224.
+(pdftex.def)             Requested size: 361.34912pt x 144.53963pt.
+ [32 <./figure/unnamed-chunk-232.pdf>]
+<figure/unnamed-chunk-233.pdf, id=907, 361.35pt x 144.54pt>
+File: figure/unnamed-chunk-233.pdf Graphic file (type pdf)
+
+<use figure/unnamed-chunk-233.pdf>
+Package pdftex.def Info: figure/unnamed-chunk-233.pdf used on input line 2291.
+(pdftex.def)             Requested size: 361.34912pt x 144.53963pt.
+ [33 <./figure/unnamed-chunk-233.pdf>]
+<figure/unnamed-chunk-234.pdf, id=922, 361.35pt x 144.54pt>
+File: figure/unnamed-chunk-234.pdf Graphic file (type pdf)
+
+<use figure/unnamed-chunk-234.pdf>
+Package pdftex.def Info: figure/unnamed-chunk-234.pdf used on input line 2358.
+(pdftex.def)             Requested size: 361.34912pt x 144.53963pt.
+ [34 <./figure/unnamed-chunk-234.pdf>]
+<figure/unnamed-chunk-235.pdf, id=944, 361.35pt x 144.54pt>
+File: figure/unnamed-chunk-235.pdf Graphic file (type pdf)
+
+<use figure/unnamed-chunk-235.pdf>
+Package pdftex.def Info: figure/unnamed-chunk-235.pdf used on input line 2425.
+(pdftex.def)             Requested size: 361.34912pt x 144.53963pt.
+ [35 <./figure/unnamed-chunk-235.pdf>]
+<figure/unnamed-chunk-236.pdf, id=958, 361.35pt x 144.54pt>
+File: figure/unnamed-chunk-236.pdf Graphic file (type pdf)
+
+<use figure/unnamed-chunk-236.pdf>
+Package pdftex.def Info: figure/unnamed-chunk-236.pdf used on input line 2492.
+(pdftex.def)             Requested size: 361.34912pt x 144.53963pt.
+ [36 <./figure/unnamed-chunk-236.pdf>]
+<figure/unnamed-chunk-237.pdf, id=972, 361.35pt x 144.54pt>
+File: figure/unnamed-chunk-237.pdf Graphic file (type pdf)
+
+<use figure/unnamed-chunk-237.pdf>
+Package pdftex.def Info: figure/unnamed-chunk-237.pdf used on input line 2559.
+(pdftex.def)             Requested size: 361.34912pt x 144.53963pt.
+ [37 <./figure/unnamed-chunk-237.pdf>]
+<figure/unnamed-chunk-238.pdf, id=989, 361.35pt x 144.54pt>
+File: figure/unnamed-chunk-238.pdf Graphic file (type pdf)
+
+<use figure/unnamed-chunk-238.pdf>
+Package pdftex.def Info: figure/unnamed-chunk-238.pdf used on input line 2626.
+(pdftex.def)             Requested size: 361.34912pt x 144.53963pt.
+ [38 <./figure/unnamed-chunk-238.pdf>]
+<figure/unnamed-chunk-239.pdf, id=1004, 361.35pt x 144.54pt>
+File: figure/unnamed-chunk-239.pdf Graphic file (type pdf)
+
+<use figure/unnamed-chunk-239.pdf>
+Package pdftex.def Info: figure/unnamed-chunk-239.pdf used on input line 2693.
+(pdftex.def)             Requested size: 361.34912pt x 144.53963pt.
+ [39 <./figure/unnamed-chunk-239.pdf>]
+<figure/unnamed-chunk-240.pdf, id=1019, 361.35pt x 144.54pt>
+File: figure/unnamed-chunk-240.pdf Graphic file (type pdf)
+
+<use figure/unnamed-chunk-240.pdf>
+Package pdftex.def Info: figure/unnamed-chunk-240.pdf used on input line 2760.
+(pdftex.def)             Requested size: 361.34912pt x 144.53963pt.
+ [40 <./figure/unnamed-chunk-240.pdf>]
+<figure/unnamed-chunk-241.pdf, id=1033, 361.35pt x 144.54pt>
+File: figure/unnamed-chunk-241.pdf Graphic file (type pdf)
+
+<use figure/unnamed-chunk-241.pdf>
+Package pdftex.def Info: figure/unnamed-chunk-241.pdf used on input line 2827.
+(pdftex.def)             Requested size: 361.34912pt x 144.53963pt.
+ [41 <./figure/unnamed-chunk-241.pdf>]
+<figure/unnamed-chunk-242.pdf, id=1047, 361.35pt x 144.54pt>
+File: figure/unnamed-chunk-242.pdf Graphic file (type pdf)
+
+<use figure/unnamed-chunk-242.pdf>
+Package pdftex.def Info: figure/unnamed-chunk-242.pdf used on input line 2894.
+(pdftex.def)             Requested size: 361.34912pt x 144.53963pt.
+ [42 <./figure/unnamed-chunk-242.pdf>]
+<figure/unnamed-chunk-243.pdf, id=1067, 361.35pt x 144.54pt>
+File: figure/unnamed-chunk-243.pdf Graphic file (type pdf)
+
+<use figure/unnamed-chunk-243.pdf>
+Package pdftex.def Info: figure/unnamed-chunk-243.pdf used on input line 2961.
+(pdftex.def)             Requested size: 361.34912pt x 144.53963pt.
+ [43 <./figure/unnamed-chunk-243.pdf>]
+<figure/unnamed-chunk-244.pdf, id=1083, 361.35pt x 144.54pt>
+File: figure/unnamed-chunk-244.pdf Graphic file (type pdf)
+
+<use figure/unnamed-chunk-244.pdf>
+Package pdftex.def Info: figure/unnamed-chunk-244.pdf used on input line 3028.
+(pdftex.def)             Requested size: 361.34912pt x 144.53963pt.
+ [44 <./figure/unnamed-chunk-244.pdf>]
+<figure/unnamed-chunk-245.pdf, id=1098, 361.35pt x 144.54pt>
+File: figure/unnamed-chunk-245.pdf Graphic file (type pdf)
+
+<use figure/unnamed-chunk-245.pdf>
+Package pdftex.def Info: figure/unnamed-chunk-245.pdf used on input line 3095.
+(pdftex.def)             Requested size: 361.34912pt x 144.53963pt.
+ [45 <./figure/unnamed-chunk-245.pdf>]
+<figure/unnamed-chunk-246.pdf, id=1114, 361.35pt x 144.54pt>
+File: figure/unnamed-chunk-246.pdf Graphic file (type pdf)
+
+<use figure/unnamed-chunk-246.pdf>
+Package pdftex.def Info: figure/unnamed-chunk-246.pdf used on input line 3162.
+(pdftex.def)             Requested size: 361.34912pt x 144.53963pt.
+ [46 <./figure/unnamed-chunk-246.pdf>]
+<figure/unnamed-chunk-247.pdf, id=1132, 361.35pt x 144.54pt>
+File: figure/unnamed-chunk-247.pdf Graphic file (type pdf)
+
+<use figure/unnamed-chunk-247.pdf>
+Package pdftex.def Info: figure/unnamed-chunk-247.pdf used on input line 3229.
+(pdftex.def)             Requested size: 361.34912pt x 144.53963pt.
+ [47 <./figure/unnamed-chunk-247.pdf>]
+<figure/unnamed-chunk-248.pdf, id=1146, 361.35pt x 144.54pt>
+File: figure/unnamed-chunk-248.pdf Graphic file (type pdf)
+
+<use figure/unnamed-chunk-248.pdf>
+Package pdftex.def Info: figure/unnamed-chunk-248.pdf used on input line 3296.
+(pdftex.def)             Requested size: 361.34912pt x 144.53963pt.
+ [48 <./figure/unnamed-chunk-248.pdf>]
+<figure/unnamed-chunk-249.pdf, id=1167, 361.35pt x 144.54pt>
+File: figure/unnamed-chunk-249.pdf Graphic file (type pdf)
+
+<use figure/unnamed-chunk-249.pdf>
+Package pdftex.def Info: figure/unnamed-chunk-249.pdf used on input line 3363.
+(pdftex.def)             Requested size: 361.34912pt x 144.53963pt.
+ [49 <./figure/unnamed-chunk-249.pdf>]
+<figure/unnamed-chunk-250.pdf, id=1184, 361.35pt x 144.54pt>
+File: figure/unnamed-chunk-250.pdf Graphic file (type pdf)
+
+<use figure/unnamed-chunk-250.pdf>
+Package pdftex.def Info: figure/unnamed-chunk-250.pdf used on input line 3430.
+(pdftex.def)             Requested size: 361.34912pt x 144.53963pt.
+ [50 <./figure/unnamed-chunk-250.pdf>]
+<figure/unnamed-chunk-251.pdf, id=1203, 361.35pt x 144.54pt>
+File: figure/unnamed-chunk-251.pdf Graphic file (type pdf)
+
+<use figure/unnamed-chunk-251.pdf>
+Package pdftex.def Info: figure/unnamed-chunk-251.pdf used on input line 3497.
+(pdftex.def)             Requested size: 361.34912pt x 144.53963pt.
+ [51 <./figure/unnamed-chunk-251.pdf>]
+<figure/unnamed-chunk-252.pdf, id=1218, 361.35pt x 144.54pt>
+File: figure/unnamed-chunk-252.pdf Graphic file (type pdf)
+
+<use figure/unnamed-chunk-252.pdf>
+Package pdftex.def Info: figure/unnamed-chunk-252.pdf used on input line 3564.
+(pdftex.def)             Requested size: 361.34912pt x 144.53963pt.
+ [52 <./figure/unnamed-chunk-252.pdf>]
+<figure/unnamed-chunk-253.pdf, id=1240, 361.35pt x 144.54pt>
+File: figure/unnamed-chunk-253.pdf Graphic file (type pdf)
+
+<use figure/unnamed-chunk-253.pdf>
+Package pdftex.def Info: figure/unnamed-chunk-253.pdf used on input line 3631.
+(pdftex.def)             Requested size: 361.34912pt x 144.53963pt.
+ [53 <./figure/unnamed-chunk-253.pdf>]
+<figure/unnamed-chunk-254.pdf, id=1257, 361.35pt x 144.54pt>
+File: figure/unnamed-chunk-254.pdf Graphic file (type pdf)
+
+<use figure/unnamed-chunk-254.pdf>
+Package pdftex.def Info: figure/unnamed-chunk-254.pdf used on input line 3698.
+(pdftex.def)             Requested size: 361.34912pt x 144.53963pt.
+ [54 <./figure/unnamed-chunk-254.pdf>]
+<figure/unnamed-chunk-255.pdf, id=1271, 361.35pt x 144.54pt>
+File: figure/unnamed-chunk-255.pdf Graphic file (type pdf)
+
+<use figure/unnamed-chunk-255.pdf>
+Package pdftex.def Info: figure/unnamed-chunk-255.pdf used on input line 3765.
+(pdftex.def)             Requested size: 361.34912pt x 144.53963pt.
+ [55 <./figure/unnamed-chunk-255.pdf>]
+<figure/unnamed-chunk-256.pdf, id=1286, 361.35pt x 144.54pt>
+File: figure/unnamed-chunk-256.pdf Graphic file (type pdf)
+
+<use figure/unnamed-chunk-256.pdf>
+Package pdftex.def Info: figure/unnamed-chunk-256.pdf used on input line 3832.
+(pdftex.def)             Requested size: 361.34912pt x 144.53963pt.
+ [56 <./figure/unnamed-chunk-256.pdf>]
+<figure/unnamed-chunk-257.pdf, id=1301, 361.35pt x 144.54pt>
+File: figure/unnamed-chunk-257.pdf Graphic file (type pdf)
+
+<use figure/unnamed-chunk-257.pdf>
+Package pdftex.def Info: figure/unnamed-chunk-257.pdf used on input line 3899.
+(pdftex.def)             Requested size: 361.34912pt x 144.53963pt.
+ [57 <./figure/unnamed-chunk-257.pdf>]
+<figure/unnamed-chunk-258.pdf, id=1316, 361.35pt x 144.54pt>
+File: figure/unnamed-chunk-258.pdf Graphic file (type pdf)
+
+<use figure/unnamed-chunk-258.pdf>
+Package pdftex.def Info: figure/unnamed-chunk-258.pdf used on input line 3966.
+(pdftex.def)             Requested size: 361.34912pt x 144.53963pt.
+ [58 <./figure/unnamed-chunk-258.pdf>]
+<figure/unnamed-chunk-259.pdf, id=1330, 361.35pt x 144.54pt>
+File: figure/unnamed-chunk-259.pdf Graphic file (type pdf)
+
+<use figure/unnamed-chunk-259.pdf>
+Package pdftex.def Info: figure/unnamed-chunk-259.pdf used on input line 4033.
+(pdftex.def)             Requested size: 361.34912pt x 144.53963pt.
+ [59 <./figure/unnamed-chunk-259.pdf>]
+<figure/unnamed-chunk-260.pdf, id=1345, 361.35pt x 144.54pt>
+File: figure/unnamed-chunk-260.pdf Graphic file (type pdf)
+
+<use figure/unnamed-chunk-260.pdf>
+Package pdftex.def Info: figure/unnamed-chunk-260.pdf used on input line 4100.
+(pdftex.def)             Requested size: 361.34912pt x 144.53963pt.
+ [60 <./figure/unnamed-chunk-260.pdf>]
+<figure/unnamed-chunk-261.pdf, id=1359, 361.35pt x 144.54pt>
+File: figure/unnamed-chunk-261.pdf Graphic file (type pdf)
+
+<use figure/unnamed-chunk-261.pdf>
+Package pdftex.def Info: figure/unnamed-chunk-261.pdf used on input line 4167.
+(pdftex.def)             Requested size: 361.34912pt x 144.53963pt.
+ [61 <./figure/unnamed-chunk-261.pdf>]
+<figure/unnamed-chunk-262.pdf, id=1374, 361.35pt x 144.54pt>
+File: figure/unnamed-chunk-262.pdf Graphic file (type pdf)
+
+<use figure/unnamed-chunk-262.pdf>
+Package pdftex.def Info: figure/unnamed-chunk-262.pdf used on input line 4234.
+(pdftex.def)             Requested size: 361.34912pt x 144.53963pt.
+ [62 <./figure/unnamed-chunk-262.pdf>]
+<figure/unnamed-chunk-263.pdf, id=1389, 361.35pt x 144.54pt>
+File: figure/unnamed-chunk-263.pdf Graphic file (type pdf)
+
+<use figure/unnamed-chunk-263.pdf>
+Package pdftex.def Info: figure/unnamed-chunk-263.pdf used on input line 4301.
+(pdftex.def)             Requested size: 361.34912pt x 144.53963pt.
+ [63 <./figure/unnamed-chunk-263.pdf>]
+<figure/unnamed-chunk-264.pdf, id=1405, 361.35pt x 144.54pt>
+File: figure/unnamed-chunk-264.pdf Graphic file (type pdf)
+
+<use figure/unnamed-chunk-264.pdf>
+Package pdftex.def Info: figure/unnamed-chunk-264.pdf used on input line 4368.
+(pdftex.def)             Requested size: 361.34912pt x 144.53963pt.
+ [64 <./figure/unnamed-chunk-264.pdf>]
+<figure/unnamed-chunk-265.pdf, id=1421, 361.35pt x 144.54pt>
+File: figure/unnamed-chunk-265.pdf Graphic file (type pdf)
+
+<use figure/unnamed-chunk-265.pdf>
+Package pdftex.def Info: figure/unnamed-chunk-265.pdf used on input line 4435.
+(pdftex.def)             Requested size: 361.34912pt x 144.53963pt.
+ [65 <./figure/unnamed-chunk-265.pdf>]
+<figure/unnamed-chunk-266.pdf, id=1435, 361.35pt x 144.54pt>
+File: figure/unnamed-chunk-266.pdf Graphic file (type pdf)
+
+<use figure/unnamed-chunk-266.pdf>
+Package pdftex.def Info: figure/unnamed-chunk-266.pdf used on input line 4502.
+(pdftex.def)             Requested size: 361.34912pt x 144.53963pt.
+ [66 <./figure/unnamed-chunk-266.pdf>]
+<figure/unnamed-chunk-267.pdf, id=1450, 361.35pt x 144.54pt>
+File: figure/unnamed-chunk-267.pdf Graphic file (type pdf)
+
+<use figure/unnamed-chunk-267.pdf>
+Package pdftex.def Info: figure/unnamed-chunk-267.pdf used on input line 4569.
+(pdftex.def)             Requested size: 361.34912pt x 144.53963pt.
+ [67 <./figure/unnamed-chunk-267.pdf>]
+<figure/unnamed-chunk-268.pdf, id=1466, 361.35pt x 144.54pt>
+File: figure/unnamed-chunk-268.pdf Graphic file (type pdf)
+
+<use figure/unnamed-chunk-268.pdf>
+Package pdftex.def Info: figure/unnamed-chunk-268.pdf used on input line 4636.
+(pdftex.def)             Requested size: 361.34912pt x 144.53963pt.
+ [68 <./figure/unnamed-chunk-268.pdf>]
+<figure/unnamed-chunk-269.pdf, id=1480, 361.35pt x 144.54pt>
+File: figure/unnamed-chunk-269.pdf Graphic file (type pdf)
+
+<use figure/unnamed-chunk-269.pdf>
+Package pdftex.def Info: figure/unnamed-chunk-269.pdf used on input line 4703.
+(pdftex.def)             Requested size: 361.34912pt x 144.53963pt.
+ [69 <./figure/unnamed-chunk-269.pdf>]
+<figure/unnamed-chunk-270.pdf, id=1498, 361.35pt x 144.54pt>
+File: figure/unnamed-chunk-270.pdf Graphic file (type pdf)
+
+<use figure/unnamed-chunk-270.pdf>
+Package pdftex.def Info: figure/unnamed-chunk-270.pdf used on input line 4770.
+(pdftex.def)             Requested size: 361.34912pt x 144.53963pt.
+ [70 <./figure/unnamed-chunk-270.pdf>]
+<figure/unnamed-chunk-271.pdf, id=1512, 361.35pt x 144.54pt>
+File: figure/unnamed-chunk-271.pdf Graphic file (type pdf)
+
+<use figure/unnamed-chunk-271.pdf>
+Package pdftex.def Info: figure/unnamed-chunk-271.pdf used on input line 4837.
+(pdftex.def)             Requested size: 361.34912pt x 144.53963pt.
+ [71 <./figure/unnamed-chunk-271.pdf>]
+<figure/unnamed-chunk-272.pdf, id=1528, 361.35pt x 144.54pt>
+File: figure/unnamed-chunk-272.pdf Graphic file (type pdf)
+
+<use figure/unnamed-chunk-272.pdf>
+Package pdftex.def Info: figure/unnamed-chunk-272.pdf used on input line 4904.
+(pdftex.def)             Requested size: 361.34912pt x 144.53963pt.
+ [72 <./figure/unnamed-chunk-272.pdf>]
+<figure/unnamed-chunk-273.pdf, id=1546, 361.35pt x 144.54pt>
+File: figure/unnamed-chunk-273.pdf Graphic file (type pdf)
+
+<use figure/unnamed-chunk-273.pdf>
+Package pdftex.def Info: figure/unnamed-chunk-273.pdf used on input line 4971.
+(pdftex.def)             Requested size: 361.34912pt x 144.53963pt.
+ [73 <./figure/unnamed-chunk-273.pdf>]
+<figure/unnamed-chunk-274.pdf, id=1561, 361.35pt x 144.54pt>
+File: figure/unnamed-chunk-274.pdf Graphic file (type pdf)
+
+<use figure/unnamed-chunk-274.pdf>
+Package pdftex.def Info: figure/unnamed-chunk-274.pdf used on input line 5038.
+(pdftex.def)             Requested size: 361.34912pt x 144.53963pt.
+ [74 <./figure/unnamed-chunk-274.pdf>]
+<figure/unnamed-chunk-275.pdf, id=1575, 361.35pt x 144.54pt>
+File: figure/unnamed-chunk-275.pdf Graphic file (type pdf)
+
+<use figure/unnamed-chunk-275.pdf>
+Package pdftex.def Info: figure/unnamed-chunk-275.pdf used on input line 5105.
+(pdftex.def)             Requested size: 361.34912pt x 144.53963pt.
+ [75 <./figure/unnamed-chunk-275.pdf>]
+<figure/unnamed-chunk-276.pdf, id=1591, 361.35pt x 144.54pt>
+File: figure/unnamed-chunk-276.pdf Graphic file (type pdf)
+
+<use figure/unnamed-chunk-276.pdf>
+Package pdftex.def Info: figure/unnamed-chunk-276.pdf used on input line 5172.
+(pdftex.def)             Requested size: 361.34912pt x 144.53963pt.
+ [76 <./figure/unnamed-chunk-276.pdf>]
+<figure/unnamed-chunk-277.pdf, id=1612, 361.35pt x 144.54pt>
+File: figure/unnamed-chunk-277.pdf Graphic file (type pdf)
+
+<use figure/unnamed-chunk-277.pdf>
+Package pdftex.def Info: figure/unnamed-chunk-277.pdf used on input line 5239.
+(pdftex.def)             Requested size: 361.34912pt x 144.53963pt.
+ [77 <./figure/unnamed-chunk-277.pdf>]
+<figure/unnamed-chunk-278.pdf, id=1629, 361.35pt x 144.54pt>
+File: figure/unnamed-chunk-278.pdf Graphic file (type pdf)
+
+<use figure/unnamed-chunk-278.pdf>
+Package pdftex.def Info: figure/unnamed-chunk-278.pdf used on input line 5306.
+(pdftex.def)             Requested size: 361.34912pt x 144.53963pt.
+ [78 <./figure/unnamed-chunk-278.pdf>]
+<figure/unnamed-chunk-279.pdf, id=1646, 361.35pt x 144.54pt>
+File: figure/unnamed-chunk-279.pdf Graphic file (type pdf)
+
+<use figure/unnamed-chunk-279.pdf>
+Package pdftex.def Info: figure/unnamed-chunk-279.pdf used on input line 5373.
+(pdftex.def)             Requested size: 361.34912pt x 144.53963pt.
+ [79 <./figure/unnamed-chunk-279.pdf>]
+<figure/unnamed-chunk-280.pdf, id=1661, 361.35pt x 144.54pt>
+File: figure/unnamed-chunk-280.pdf Graphic file (type pdf)
+
+<use figure/unnamed-chunk-280.pdf>
+Package pdftex.def Info: figure/unnamed-chunk-280.pdf used on input line 5440.
+(pdftex.def)             Requested size: 361.34912pt x 144.53963pt.
+ [80 <./figure/unnamed-chunk-280.pdf>]
+<figure/unnamed-chunk-281.pdf, id=1682, 361.35pt x 144.54pt>
+File: figure/unnamed-chunk-281.pdf Graphic file (type pdf)
+
+<use figure/unnamed-chunk-281.pdf>
+Package pdftex.def Info: figure/unnamed-chunk-281.pdf used on input line 5507.
+(pdftex.def)             Requested size: 361.34912pt x 144.53963pt.
+ [81 <./figure/unnamed-chunk-281.pdf>]
+<figure/unnamed-chunk-282.pdf, id=1699, 361.35pt x 144.54pt>
+File: figure/unnamed-chunk-282.pdf Graphic file (type pdf)
+
+<use figure/unnamed-chunk-282.pdf>
+Package pdftex.def Info: figure/unnamed-chunk-282.pdf used on input line 5574.
+(pdftex.def)             Requested size: 361.34912pt x 144.53963pt.
+ [82 <./figure/unnamed-chunk-282.pdf>]
+<figure/unnamed-chunk-283.pdf, id=1713, 361.35pt x 144.54pt>
+File: figure/unnamed-chunk-283.pdf Graphic file (type pdf)
+
+<use figure/unnamed-chunk-283.pdf>
+Package pdftex.def Info: figure/unnamed-chunk-283.pdf used on input line 5641.
+(pdftex.def)             Requested size: 361.34912pt x 144.53963pt.
+ [83 <./figure/unnamed-chunk-283.pdf>]
+<figure/unnamed-chunk-284.pdf, id=1729, 361.35pt x 144.54pt>
+File: figure/unnamed-chunk-284.pdf Graphic file (type pdf)
+
+<use figure/unnamed-chunk-284.pdf>
+Package pdftex.def Info: figure/unnamed-chunk-284.pdf used on input line 5708.
+(pdftex.def)             Requested size: 361.34912pt x 144.53963pt.
+ [84 <./figure/unnamed-chunk-284.pdf>]
+<figure/unnamed-chunk-285.pdf, id=1743, 361.35pt x 144.54pt>
+File: figure/unnamed-chunk-285.pdf Graphic file (type pdf)
+
+<use figure/unnamed-chunk-285.pdf>
+Package pdftex.def Info: figure/unnamed-chunk-285.pdf used on input line 5775.
+(pdftex.def)             Requested size: 361.34912pt x 144.53963pt.
+ [85 <./figure/unnamed-chunk-285.pdf>]
+<figure/unnamed-chunk-286.pdf, id=1758, 361.35pt x 144.54pt>
+File: figure/unnamed-chunk-286.pdf Graphic file (type pdf)
+
+<use figure/unnamed-chunk-286.pdf>
+Package pdftex.def Info: figure/unnamed-chunk-286.pdf used on input line 5842.
+(pdftex.def)             Requested size: 361.34912pt x 144.53963pt.
+ [86 <./figure/unnamed-chunk-286.pdf>]
+<figure/unnamed-chunk-287.pdf, id=1772, 361.35pt x 144.54pt>
+File: figure/unnamed-chunk-287.pdf Graphic file (type pdf)
+
+<use figure/unnamed-chunk-287.pdf>
+Package pdftex.def Info: figure/unnamed-chunk-287.pdf used on input line 5909.
+(pdftex.def)             Requested size: 361.34912pt x 144.53963pt.
+ [87 <./figure/unnamed-chunk-287.pdf>]
+<figure/unnamed-chunk-288.pdf, id=1787, 361.35pt x 144.54pt>
+File: figure/unnamed-chunk-288.pdf Graphic file (type pdf)
+
+<use figure/unnamed-chunk-288.pdf>
+Package pdftex.def Info: figure/unnamed-chunk-288.pdf used on input line 5976.
+(pdftex.def)             Requested size: 361.34912pt x 144.53963pt.
+ [88 <./figure/unnamed-chunk-288.pdf>]
+<figure/unnamed-chunk-289.pdf, id=1802, 361.35pt x 144.54pt>
+File: figure/unnamed-chunk-289.pdf Graphic file (type pdf)
+
+<use figure/unnamed-chunk-289.pdf>
+Package pdftex.def Info: figure/unnamed-chunk-289.pdf used on input line 6043.
+(pdftex.def)             Requested size: 361.34912pt x 144.53963pt.
+ [89 <./figure/unnamed-chunk-289.pdf>]
+<figure/unnamed-chunk-290.pdf, id=1819, 361.35pt x 144.54pt>
+File: figure/unnamed-chunk-290.pdf Graphic file (type pdf)
+
+<use figure/unnamed-chunk-290.pdf>
+Package pdftex.def Info: figure/unnamed-chunk-290.pdf used on input line 6110.
+(pdftex.def)             Requested size: 361.34912pt x 144.53963pt.
+ [90 <./figure/unnamed-chunk-290.pdf>]
+<figure/unnamed-chunk-291.pdf, id=1834, 361.35pt x 144.54pt>
+File: figure/unnamed-chunk-291.pdf Graphic file (type pdf)
+
+<use figure/unnamed-chunk-291.pdf>
+Package pdftex.def Info: figure/unnamed-chunk-291.pdf used on input line 6177.
+(pdftex.def)             Requested size: 361.34912pt x 144.53963pt.
+ [91 <./figure/unnamed-chunk-291.pdf>]
+<figure/unnamed-chunk-292.pdf, id=1849, 361.35pt x 144.54pt>
+File: figure/unnamed-chunk-292.pdf Graphic file (type pdf)
+
+<use figure/unnamed-chunk-292.pdf>
+Package pdftex.def Info: figure/unnamed-chunk-292.pdf used on input line 6244.
+(pdftex.def)             Requested size: 361.34912pt x 144.53963pt.
+ [92 <./figure/unnamed-chunk-292.pdf>]
+<figure/unnamed-chunk-293.pdf, id=1867, 361.35pt x 144.54pt>
+File: figure/unnamed-chunk-293.pdf Graphic file (type pdf)
+
+<use figure/unnamed-chunk-293.pdf>
+Package pdftex.def Info: figure/unnamed-chunk-293.pdf used on input line 6311.
+(pdftex.def)             Requested size: 361.34912pt x 144.53963pt.
+ [93 <./figure/unnamed-chunk-293.pdf>]
+<figure/unnamed-chunk-294.pdf, id=1881, 361.35pt x 144.54pt>
+File: figure/unnamed-chunk-294.pdf Graphic file (type pdf)
+
+<use figure/unnamed-chunk-294.pdf>
+Package pdftex.def Info: figure/unnamed-chunk-294.pdf used on input line 6378.
+(pdftex.def)             Requested size: 361.34912pt x 144.53963pt.
+ [94 <./figure/unnamed-chunk-294.pdf>]
+<figure/unnamed-chunk-295.pdf, id=1895, 361.35pt x 144.54pt>
+File: figure/unnamed-chunk-295.pdf Graphic file (type pdf)
+
+<use figure/unnamed-chunk-295.pdf>
+Package pdftex.def Info: figure/unnamed-chunk-295.pdf used on input line 6445.
+(pdftex.def)             Requested size: 361.34912pt x 144.53963pt.
+ [95 <./figure/unnamed-chunk-295.pdf>]
+<figure/unnamed-chunk-296.pdf, id=1909, 361.35pt x 144.54pt>
+File: figure/unnamed-chunk-296.pdf Graphic file (type pdf)
+
+<use figure/unnamed-chunk-296.pdf>
+Package pdftex.def Info: figure/unnamed-chunk-296.pdf used on input line 6512.
+(pdftex.def)             Requested size: 361.34912pt x 144.53963pt.
+ [96 <./figure/unnamed-chunk-296.pdf>]
+<figure/unnamed-chunk-297.pdf, id=1931, 361.35pt x 144.54pt>
+File: figure/unnamed-chunk-297.pdf Graphic file (type pdf)
+
+<use figure/unnamed-chunk-297.pdf>
+Package pdftex.def Info: figure/unnamed-chunk-297.pdf used on input line 6579.
+(pdftex.def)             Requested size: 361.34912pt x 144.53963pt.
+ [97 <./figure/unnamed-chunk-297.pdf>]
+<figure/unnamed-chunk-298.pdf, id=1951, 361.35pt x 144.54pt>
+File: figure/unnamed-chunk-298.pdf Graphic file (type pdf)
+
+<use figure/unnamed-chunk-298.pdf>
+Package pdftex.def Info: figure/unnamed-chunk-298.pdf used on input line 6646.
+(pdftex.def)             Requested size: 361.34912pt x 144.53963pt.
+ [98 <./figure/unnamed-chunk-298.pdf>]
+<figure/unnamed-chunk-299.pdf, id=1965, 361.35pt x 144.54pt>
+File: figure/unnamed-chunk-299.pdf Graphic file (type pdf)
+
+<use figure/unnamed-chunk-299.pdf>
+Package pdftex.def Info: figure/unnamed-chunk-299.pdf used on input line 6713.
+(pdftex.def)             Requested size: 361.34912pt x 144.53963pt.
+ [99 <./figure/unnamed-chunk-299.pdf>]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 6722.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 6722.
+
+(./occupations.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 6722.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 6722.
+
+Package rerunfilecheck Info: File `occupations.out' has not changed.
+(rerunfilecheck)             Checksum: E5DF50B511A0A7410E0F9B7FA1C75E9B;7026.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 6722.
+ ) 
+Here is how much of TeX's memory you used:
+ 9019 strings out of 493315
+ 132109 string characters out of 6145892
+ 220055 words of memory out of 5000000
+ 11828 multiletter control sequences out of 15000+600000
+ 84179 words of font info for 75 fonts, out of 8000000 for 9000
+ 957 hyphenation exceptions out of 8191
+ 42i,13n,28p,1329b,325s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texmf/fonts/enc/dvips/base/8r.enc}</usr/share/texmf/fonts/type1/p
+ublic/fourier/fourier-mex.pfb></usr/share/texmf/fonts/type1/adobe/utopia/putb8a
+.pfb></usr/share/texmf/fonts/type1/adobe/utopia/putr8a.pfb>
+Output written on occupations.pdf (99 pages, 683750 bytes).
+PDF statistics:
+ 2080 PDF objects out of 2487 (max. 8388607)
+ 1760 compressed objects within 18 object streams
+ 397 named destinations out of 1000 (max. 500000)
+ 1288 words of extra memory for PDF output out of 10000 (max. 10000000)
+

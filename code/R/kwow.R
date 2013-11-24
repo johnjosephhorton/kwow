@@ -79,6 +79,17 @@ mturk.df <- within(mturk.df, {
   know.someone <- I(!is.na(social.knowledge) & social.knowledge != "0")
 })
 
+
+###############################################
+## Save data for knitr report
+###############################################
+
+save(national.df, file="../../knitr/bls.data")
+save(mturk.df, file="../../knitr/mturk.data")
+
+###############################################
+
+
 ##########################################
 # Knowledge of what a job is, by wage band
 ##########################################
