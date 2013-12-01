@@ -34,23 +34,28 @@ library(plyr)
 #  If JJHmisc is missing, run: 
 #  library(devtools)
 #  install_github("JJHmisc", "johnjosephhorton")
-library(JJHmisc)
+# library(JJHmisc)
+
+#
+# Can't install JJHmisc after OS re-install
+#
+
+library(texreg)
 
 ##
 ## Data from Bureau of Labor Statistics, Department of Labor
 ##
-
 national.df <- import.top.national("../../data/national_M2012_dl.csv", 99)
-
-nrow(national.df)
-head(national.df)
-sapply(national.df, class)
 
 # Impute volume trend estimations
 national.df <- import.occupation.trend("../../data/occupation.table.1.2.csv", national.df)
 
 # Impute education requirements
 national.df <- import.education("../../data/education.categories.csv", national.df)
+
+nrow(national.df)
+head(national.df)
+sapply(national.df, class)
 
 # Data from MTurk
 mturk.df <- import.mturk("../../data/mturk_output.csv")
@@ -74,9 +79,12 @@ mturk.df <- within(mturk.df, {
   actual.mean.wage <- getNationalMeasures("H_MEAN")
   actual.median.wage <- getNationalMeasures("H_MEDIAN")
   tot.emp <- getNationalMeasures("TOT_EMP")
+  actual.v.trend <- getNationalMeasures("v.trend")
+  v.trend.error <- abs(actual.v.trend - v.trend)
   pct.mean.error <- abs((actual.mean.wage - predicted.wage)/actual.mean.wage)
   prediction.delta <- log(actual.mean.wage) - log(predicted.wage)
   know.someone <- I(!is.na(social.knowledge) & social.knowledge != "0")
+  error <- abs( log(actual.mean.wage) - log(predicted.wage) )
 })
 
 
@@ -88,6 +96,30 @@ save(national.df, file="../../knitr/bls.data")
 save(mturk.df, file="../../knitr/mturk.data")
 
 ###############################################
+
+m.1 <- lm(error ~ social + know + log(tot.emp), data = mturk.df)
+m.2 <- lmer(error ~ social + know + (1|title), data = mturk.df)
+m.3 <- lmer(error ~ social + know + (1|title) + (1|WorkerId), data = mturk.df)
+
+# mtable(m.1, m.2, m.3)
+screenreg(list(m.1, m.2, m.3))
+
+
+################################################
+#
+# Volume Trend Error
+#
+################################################
+with(mturk.df, table(v.trend, v.trend.error))
+
+# ggplot(mturk.df, aes(x=v.trend.error, y=error)) + geom_point()
+#   geom_histogram(position="dodge", binwidth=0.5)
+
+m.1 <- glm(I(v.trend.error>0) ~ social + know + log(tot.emp) + actual.mean.wage, data = mturk.df, family="binomial")
+m.2 <- lmer(I(v.trend.error>0) ~ social + know + (1|title), data = mturk.df)
+m.3 <- lmer(I(v.trend.error>0) ~ social + know + (1|title) + (1|WorkerId), data = mturk.df)
+
+screenreg(list(m.1, m.2, m.3))
 
 
 ##########################################
@@ -130,7 +162,8 @@ m.1 <- lm(error ~ social + know + log(tot.emp), data = mturk.df)
 m.2 <- lmer(error ~ social + know + (1|title), data = mturk.df)
 m.3 <- lmer(error ~ social + know + (1|title) + (1|WorkerId), data = mturk.df)
 
-mtable(m.1, m.2, m.3)
+# mtable(m.1, m.2, m.3)
+screenreg(list(m.1, m.2, m.3))
 
 models <- list()
 renames <- list()
@@ -302,7 +335,8 @@ m.1 <- lm(I(social > -2) ~ log(actual.mean.wage) * mean.wage.others.social + log
 m.2 <- lmer(I(social > -2) ~ log(actual.mean.wage) * mean.wage.others.social + log(tot.emp) + (1|WorkerId), data = by.worker.df)
 m.3 <- lmer(I(social > -2) ~ log(actual.mean.wage) * mean.wage.others.social + (1|WorkerId) + (1|title), data = by.worker.df)
 
-mtable(m.1,m.2,m.3)
+# mtable(m.1,m.2,m.3)
+screenreg(list(m.1, m.2, m.3))
 
 models <- list("(1)" = m.1, "(2)" = m.2, "(3)"  = m.3)
 renames <- list() 

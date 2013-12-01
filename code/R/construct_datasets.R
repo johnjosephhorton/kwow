@@ -125,7 +125,12 @@ import.occupation.trend <- function(fname, n.df){
   n.df$EMP_CHANGE <- with(n.df, (TOT_EMP2020-TOT_EMP)/TOT_EMP)
   n.df$volume.trend <- 
     cut(n.df$EMP_CHANGE, breaks=c(-Inf, -0.05, 0.05, Inf), labels=c("GoDown","StayTheSame","GoUp"))
-    
+  
+  n.df$v.trend <- as.numeric(as.character(with(n.df,
+                                               factor(volume.trend,
+                                                      levels = c("GoDown", "StayTheSame", "GoUp"),
+                                                      labels = c("-1","0","1")))))
+  
   n.df
 }
 
@@ -232,6 +237,11 @@ import.mturk <- function(fname){
   df$social <- as.numeric(as.character(with(df, factor(Answer.know_anyone,
                                                        levels = c("0", "1", "2", "3_10", "10_plus"),
                                                        labels = c("-2","-1","0","1","2")))))
+  
+  df$v.trend <- as.numeric(as.character(with(df,
+                                             factor(Answer.volume_trend,
+                                                    levels = c("GoDown", "StayTheSame", "GoUp"),
+                                                    labels = c("-1","0","1")))))
   
   df$w.trend <- as.numeric(as.character(with(df,
                                              factor(Answer.wage_trend,
