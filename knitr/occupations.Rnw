@@ -1,0 +1,107 @@
+\documentclass[a4paper,10pt]{article}
+
+\usepackage{booktabs}
+\usepackage{dcolumn} 
+\usepackage{epstopdf}
+\usepackage{fourier}
+\usepackage{fullpage}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{longtable} 
+\usepackage{natbib}
+\usepackage{rotating}
+\usepackage{tabularx}
+\usepackage{amsmath}
+
+\hypersetup{
+  colorlinks=TRUE,
+  citecolor=blue,
+  linkcolor=red,
+  urlcolor=blue
+}
+
+\usepackage[left=2cm,right=1.5cm,top=2cm,bottom=2cm]{geometry}
+
+\begin{document}
+
+\title{Occupations Report}
+\date{\today}
+\maketitle
+
+<<echo=FALSE,results='hide',message=FALSE>>=
+library(reporttools)
+library(XML)
+library(stringr)
+library(ggplot2)
+library(reshape2)
+
+load("bls.data")
+load("mturk.data")
+
+# Parsing BLS page
+url <- "http://www.bls.gov/oes/current/oes_stru.htm"
+doc <- htmlTreeParse(url, useInternalNodes = T)
+urls.df <- data.frame(href=unlist(xpathApply(doc, "//a[@href]", xmlGetAttr, "href")),
+                      text=unlist(xpathApply(doc, "//a[@href]", xmlValue)))
+
+# Filtering URLs we don't need 
+filter <- !is.na(str_match(urls.df$href, "oes[0-9]+.htm"))
+urls.df <- subset(urls.df, filter)
+
+# Extracting codes
+urls.df$code <- with(urls.df, paste0(substr(href,4,5),"-",substr(href,6,9)))
+urls.df$broad <- sapply(urls.df$code, function(s) paste0(substr(s,1,6),"0"))
+@
+
+
+<<echo=FALSE, results='asis', message=FALSE, fig.height=2, fig.width=5, fig.align='center'>>=
+# correct mturk variables for LaTex output
+mturk.df$social.knowledge <- factor(gsub("_", "-", mturk.df$social.knowledge),
+                                    levels=c("0", "1", "2", "3-10", "10-plus"),
+                                    labels=c("0", "1", "2", "3-10", "10-plus"))
+
+for(i in 1:nrow(national.df)){
+  cat(paste0("\\section{", national.df$OCC_TITLE[i], "}"))
+  cat(paste0("\\textbf{Occupation code:} ", national.df$OCC_CODE[i], "\\newline"))
+  cat(paste0("\\textbf{Typical entry education:} ", national.df$ENTRY_EDUCATION[i], "\\newline"))
+  
+  cat("\\textbf{Detailed occupations:}\\newline")
+  
+  u.df <- subset(urls.df, urls.df$broad==national.df$OCC_CODE[i])
+  for(j in 1:nrow(u.df)){
+    cat(paste0(j, ". (", u.df$code[j], ") ", " \\href{http://www.bls.gov/oes/current/", 
+               u.df$href[j], "}{", u.df$text[j], "}\\newline"))
+  }
+  
+  # Summary statistics
+  m.df <- subset(mturk.df, title==national.df$OCC_TITLE[i])
+  report.vars <- m.df[, c("know.job",
+                        "social.knowledge",
+                        "Answer.volume_trend",
+                        "Answer.wage_trend")]
+  
+  tableNominal(vars=report.vars,
+               cap="Summary statistics, nominal variables (MTurk data)",
+               lab=paste0("tab1:", national.df$OCC_CODE[i]), longtable=F)
+  tableContinuous(vars=data.frame(wage=m.df[,"predicted.wage"]),
+                  cap="Summary statistics, continuous variables (MTurk data)",
+                  lab=paste0("tab2:", national.df$OCC_CODE[i]), longtable=F)
+
+  # boxplot for predicted wages
+  melted.m.df <- melt(m.df[,c("predicted.wage","actual.mean.wage","actual.median.wage")],
+                      id.vars="predicted.wage")
+  melted.m.df$title <- m.df$title
+  
+  g.plot <- ggplot(data=melted.m.df, aes(x=title, y=predicted.wage)) + geom_boxplot() +
+                   geom_point(aes(y=value, colour=variable), size=3) +
+                   xlab("BLS Occupation") + ylab("Hourly wage") +
+                   coord_flip() + theme_bw() +
+                   theme(text=element_text(size = 10))
+  print(g.plot)
+  
+  cat("\\newpage")
+}
+@
+
+
+\end{document}
