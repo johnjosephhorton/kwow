@@ -31,14 +31,20 @@ library(lme4)
 library(memisc)
 library(plyr)
 
-#  If JJHmisc is missing, run: 
-#  library(devtools)
-#  install_github("JJHmisc", "johnjosephhorton")
+# If JJHmisc is missing, run: 
+# library(devtools)
+# install_github("JJHmisc", "johnjosephhorton")
 # library(JJHmisc)
 
 #
-# Can't install JJHmisc after OS re-install
-#
+# Can't install JJHmisc 
+# * installing *source* package 'JJHmisc' ...
+# ** R
+# Error in .install_package_code_files(".", instdir) : 
+#   files in '/tmp/Rtmp9DOoip/devtoolse7b3365db19/JJHmisc-master/R' missing from 'Collate' field:
+#   wasItUsed.R
+# writeImage.R
+# ERROR: unable to collate and parse R files for package 'JJHmisc'
 
 library(texreg)
 
@@ -110,12 +116,35 @@ screenreg(list(m.1, m.2, m.3))
 # Volume Trend Error
 #
 ################################################
+
+ex.indx <- which((!mturk.df$v.trend %in% c(-1:1)) | (mturk.df$know.job==""))
+
+df.1 <- ddply(mturk.df[-ex.indx,], .(v.trend, know.job), summarise, predicted=length(WorkerId))
+df.2 <- ddply(mturk.df[-ex.indx,], .(actual.v.trend), summarise, actual=length(WorkerId))
+
+# calculate portion instead of sum
+tots <- ddply(df.1, .(know.job), summarise, sum(predicted))
+df.1 <- ddply(df.1, .(know.job, v.trend), summarise, predicted=predicted/tots[,2][tots$know.job==know.job])
+df.2$actual <- df.2$actual/sum(df.2$actual)
+
+df.trend <- merge(df.1, df.2, by.x="v.trend", by.y="actual.v.trend")
+df.trend <- melt(data=df.trend, id.vars = c("v.trend","know.job"))
+rm(df.1, df.2)
+
+q <- ggplot(data=df.trend, aes(x=v.trend, y=value, fill=variable)) + 
+  geom_bar(stat="identity", position=position_dodge()) + 
+  scale_x_continuous(labels=c("GoDown","StayTheSame","GoUp"), breaks=-1:1) +
+  facet_grid(~know.job) + 
+  ylab("Portion of responses") + xlab("Trend change") + ggtitle("Trends prediction w/social knowledge")
+
+q
+ggsave("../../writeup/plots/trends_prediction.png", q, width=8, height=5)
+
 with(mturk.df, table(v.trend, v.trend.error))
 
-# ggplot(mturk.df, aes(x=v.trend.error, y=error)) + geom_point()
-#   geom_histogram(position="dodge", binwidth=0.5)
+# What explains error in trend.change prediction?
 
-m.1 <- glm(I(v.trend.error>0) ~ social + know + log(tot.emp) + actual.mean.wage, data = mturk.df, family="binomial")
+m.1 <- glm(I(v.trend.error>0) ~ social + know + log(tot.emp) + actual.mean.wage + v.trend, data = mturk.df, family="binomial")
 m.2 <- lmer(I(v.trend.error>0) ~ social + know + (1|title), data = mturk.df)
 m.3 <- lmer(I(v.trend.error>0) ~ social + know + (1|title) + (1|WorkerId), data = mturk.df)
 
