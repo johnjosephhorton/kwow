@@ -43,7 +43,7 @@
 <p>How knowledgeable would you say you are about this occupation (skills
  required, conditions of employment etc.)? 
 </p>
-<table id="likert1" width="75%">
+<table id="likert1" width="75%" style="width:530px;">
    <tr valign="top" align="center">
        <td width="20%"><input id="general_knowledge" type="radio" name="General_Knowledge" value="1"><br /><label for="general_knowledge">Know Nothing</label></td>
        <td width="20%"><input type="radio" name="General_Knowledge" value="2"></td>
@@ -66,7 +66,7 @@
 
 <p>I have strong social connections to people employed in this occupation</p>
 
-<table id="likert2" width="75%">
+<table id="likert2" width="75%" style="width:530px;">
      <tr valign="top" align="center">
          <td width="20%"><input id="strongly_disagree" type="radio" name="Social_Likert" value="1"><br /><label for="strongly_disagree">Strongly disagree</label></td>
          <td width="20%"><input type="radio" name="Social_Likert" value="2"></td>
@@ -90,7 +90,7 @@
     document.getElementById("wage_selection_history").value = document.getElementById("wage_selection_history").value + hourly_wage + ";";
   }
 </script>
-<table width="50%" align="left">
+<table width="50%" align="left" style="width:330px;">
   <tr>
     <td>
       <input type="hidden" name="wage_selection_history" id="wage_selection_history" />
@@ -128,15 +128,18 @@
       </select> 
     </td>
     <td>
-      Annual Salary: <span id="annual_salary"></span>
+      Annual Salary: <span id="annual_salary">&nbsp;</span>
     </td>
   </tr>
 </table>
 <br />
 <br />
 
-<p>How prestigious do you view this job on a 1-10 scale (10 being the most prestigious)?</p>
-<table id="likert2" width="75%">
+<p>
+  <br />
+  How prestigious do you view this job on a 1-10 scale (10 being the most prestigious)?
+</p>
+<table id="likert2" width="75%" style="width:530px;">
    <tr valign="top" align="center">
       <td width="10%"><input type="radio" name="prestige" id="prestige_1" value="1"><br /><label for="prestige_1">&nbsp;1&nbsp;</label></td>
       <td width="10%"><input type="radio" name="prestige" id="prestige_2" value="2"><br /><label for="prestige_2">&nbsp;2&nbsp;</label></td>
