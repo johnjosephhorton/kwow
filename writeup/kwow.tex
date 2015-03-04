@@ -24,7 +24,7 @@
   urlcolor=black
 }
 
-
+\newcommand{\qu}[1]{``#1''}
 \newcommand{\starlanguage}{Significance indicators: $p \le 0.05:*$,
   .$p \le 0.01:**$ and $p \le .001:***$.} 
 
@@ -42,15 +42,15 @@
     code are currently or will be available at
     \href{http://www.john-joseph-horton.com/}{http://www.john-joseph-horton.com/}. 
     Thanks to Alex Gedranovich for excellent research assistance. 
-} \and Adam Kapelner\\Queens College}
+} \and Adam Kapelner \\ Department of Mathematics \\ Queens College, CUNY}
 \maketitle
 
 \begin{abstract}
 \noindent  
 A sample of labor market participants were asked to estimate the wage and projected employment growth for a selection of occupations;
 they also reported how many people they knew working in that occupation, which was used to create a ``social knowledge'' index. 
-Collectively, respondents have good knowledge about wages---their wage estimates can explain more than 50\% of the variation in actual log wages.
-And yet they know almost nothing about the direction of projected employment trends, with predictions about future employment being no better than chance. 
+Collectively, respondents have good knowledge about wages --- their wage estimates can explain more than 50\% of the variation in actual log wages as reported by the United States Bureau of Labor Statistics.
+However, it appears they know very little about the direction of projected employment trends; their predictions about future employment are no better than chance. 
 Despite poor overall predictions about employment trends, individual predictions were substantially improved if the respondent had better social knowledge about that occupation.
 \newline 
 \newline 
@@ -60,40 +60,48 @@ Despite poor overall predictions about employment trends, individual predictions
 % \doublespacing
 
 \section{Introduction}
-To plan their careers, labor market participants should know what various occupations pay and the future prospects of those occupations. 
-Misinformation about the current and future prospects of different occupations could lead to poorly considered career and human capital decisions. 
-This paper attempts to asses the quality of labor market knowledge
-held by a convenience sample of the US population drawn from Amazon Mechanical Turk (MTurk) by comparing their per-occupation estimates of wages and employment growth to the Bureau of Labor Statistics (BLS) estimates. 
+When planning a career, a labor market participant should know both what a career can pay and the future prospects of that career.
+Misinformation about the current and future prospects of different occupations could lead to poorly considered career and human capital allocation decisions. 
+This paper attempts to asses the quality of labor market knowledge. To do so, we employ
+a convenience sample of the US population drawn from Amazon Mechanical Turk (MTurk). For the top 100 most common American careers, we compare respondent per-occupation estimates of wages and respondent employment growth estimates to gold-standard estimates provided by the Bureau of Labor Statistics (BLS). 
 The paper also attempts to understand how predictive accuracy is affected by ``social knowledge'' of that occupation, where social knowledge is an index based on how many people the respondent knows working in that occupation.
 
 Collectively, the ``wisdom of crowds'' hypothesis seems to hold regarding wages: 
 excluding some notable exceptions, the mean of estimates of wages were quite accurate. 
 However, respondents did underestimate the wages of higher wage jobs, though it is unclear how much of this is due to the selected nature of respondents. 
-Respondents were asked to say whether the fraction of people employed in an occupation will go up, go down or stay the same. 
-Collectively, they do not better than chance when their answers are compared to the BLS projections. 
-However, the more social knowledge a respondent has about an occupation, the better their prediction on the employment trend for that occupation. 
+%Is lackluster knowledge of high income wages due to some cognitive bias that you know of? Also, I'm not sure what you mean by "selected nature of respondents"
+
+However, the same wisdom of the crowds does not apply when estimating future career projections.
+Respondents were asked whether the fraction of people employed in an occupation will go up, go down or stay the same. 
+Collectively, they do not predict better than chance when their answers are compared to the BLS projections. 
+However, the more social knowledge a respondent has about an occupation, the better their prediction on the employment trend for that occupation. %How much better? (we should probably but a sentence here)
 
 The improvement in predictive accuracy from social knowledge is found despite our controlling for both the respondent and the occupation.
-These controls rule out the possible explanation that some occupations are easier to predict and many people know workers in those occupations; 
-they also rule out the possible explanation that people with more social connections are better predictors.
-While still not causal, the non-causal channels for why social knowledge seems to improve predictive accuracy is far smaller than we had only cross-sectional data. 
+This analysis rules out the possibility that some occupations are easier to predict and many people know workers in those occupations; 
+they also rule out the possibility that people with more social connections are better predictors.
+While still not causal, the non-causal channels for why social knowledge seems to improve predictive accuracy is far smaller than if we had only cross-sectional data. %What does "channels" mean?
+
+%also - did you elicit demographics? Age is a good thing to control for. Young people may know less than older people.
+
 The ability to include both kinds of controls illustrates an offsetting advantage to using MTurk: 
 while still a convenience sample, MTurk provides a way to obtain a large number of responses even for a questionnaire that a ``representative'' sample would find tedious and be unlikely to complete carefully.
 This feature of MTurk is increasingly being used for questions in economics  \citep{kuziemko2013elastic, saez2013generalized}. 
 
+There is also evidence that suggests MTurk convenience samples are better than in-person convenience samples (a common sample published in social science) and can be similar to true probability samples. \citet{Berinsky2012} found MTurk respondents are similar in demographic profile to the gold-standard probability sample except they are younger, more politically liberal and pay more attention to cognitive tasks. We believe that the sample being younger biases our results downwards as younger poeple should be less likely to predict both wages and future trends due to inexperience. We do not believe political orientation of need for cognition will have an effect on the generalizability of the associations this study reveals.
+
 There are conceptually similar papers to this one, but most of have focused on schooling decisions.  
 For example, \cite{dominitz1996} elicited the returns to schooling from a convenience sample of high school students and undergraduates. 
-Another example is \cite{jensen2010perceived}, which also focuses on returns to schooling, but includes an experimental information intervention that increased later schooling.  
-General questions about the labor market---including some questions about various occupations---were part of the NLSY for a brief period (Knowledge of the World of Work (KWW) test) \citep{kohen1975}, though the nature of the questions was quite dissimilar to the questions asked in this paper. 
-This is the first paper I am aware of that focuses explicitly on occupational knowledge.
+Another example is \cite{jensen2010perceived}, which also focuses on returns to schooling, but includes an experimental information intervention that increased later schooling.   %What is an "information intervention"? Maybe this deserves a few more words
+General questions about the labor market --- including some questions about various occupations --- were part of the National Longitudinal Survey (NLSY) for a brief period in the Knowledge of the World of Work (KWW) subtest \citep{kohen1975}, though the nature of the questions was quite dissimilar to the questions asked in this paper. 
+This is the first paper we are aware of that focuses explicitly on occupational knowledge.
 
-There are lots of potential sources of knowledge about careers: career counselors, formal government statistics and informal channels like family and friends. 
-There is a long-standing interest in how informal channels in labor markets affect outcomes\citep{rees1966information, stigler1962information}, but the very informality of these channels has made them difficult to study. 
-However, interest in informal channels---particularly referrals---is going through a renaissance as it becomes easier to run experiments \citep{pallais2013referential} and obtain high-quality administrative data \citep{burks2013value}.   
-This paper focuses on a social ``stage'' earlier than referrals by assessing how social connections mediate the knowledge needed to decide which opportunities to pursue.  
-If the patterns discovered here generalize, gaps in knowledge might be readily fixed: 
-several studies have highlighted the powerful effects obtainable from purely informational interventions (e.g., \cite{dupas2009teenagers}, \cite{card2010inequality}).
-If first-hand social knowledge is an important disseminator of labor market information, it suggests that isolated individuals exposed to a narrow slice of occupational possibilities could be at a labor market disadvantage, contributing to inequality. 
+There are many potential sources of knowledge about careers: career counselors, formal government statistics and informal channels like family and friends. 
+There is a long-standing interest in how informal channels in labor markets affect outcomes \citep{rees1966information, stigler1962information}, but the very informality of these channels has made them difficult to study. 
+Interest in these informal channels --- particularly referrals --- is going through a renaissance as it becomes easier to run experiments \citep{pallais2013referential} and obtain high-quality administrative data \citep{burks2013value}.   
+This paper focuses on a social ``stage'' manifesting earlier than referrals by assessing how social connections mediate the knowledge needed to decide which opportunities to pursue.  
+If the patterns discovered here generalize, gaps in our knowledge might be readily fixed: 
+several studies have highlighted the powerful effects from purely informational interventions (e.g., \citealp{dupas2009teenagers, card2010inequality}).
+If first-hand social knowledge is an important disseminator of labor market information, this suggests that more isolated individuals are exposed to a narrow slice of occupational possibilities putting them at a labor market disadvantage, thereby contributing to inequality. 
 
 % \cite{hlavac2013} for stargazer. 
 % \cite{ward1992} 
@@ -102,43 +110,45 @@ If first-hand social knowledge is an important disseminator of labor market info
 % \cite{dominitz1996} 
 
 \section{Data collection and description} 
-For the top 100 US occupations by employment totals (as measured by the May 2013 OES), respondents from Amazon Mechanical Turk were asked whether: 
-(1) they knew what the occupation consisted of 
-(2) how many people they knew who held that occupation, if any,  
-(3) their estimate of the hourly wage for that occupation
-and (4) whether in the future employment in that occupation would rise, fall or stay the same.\footnote{\url{http://www.bls.gov/oes/}} 
-The actual survey interface presented to respondents is shown in Appendix~\ref{sec:survey}, Figure~\ref{fig:survey}. 
+
+For the top 100 US occupations by employment totals as measured by the May 2013 Occupational Employment Statistics (OES),\footnote{\url{http://www.bls.gov/oes/}}  respondents from Amazon Mechanical Turk were asked
+(1) whether they knew what the occupation consisted of 
+(2) how many people they knew who held the occupation, if any,  
+(3) their estimate of the hourly wage for the occupation
+and (4) whether in the future employment in the occupation would rise, fall or stay the same.
+The actual survey interface presented to respondents is shown in Figure~\ref{fig:survey} in Appendix~\ref{sec:survey}. 
 There were no incentives for correct answers and the short time most workers spent on any tasks suggests they were not performing research. 
 
 A total of \numRaters\, respondents participated in the survey. 
-Each occupation was evaluated by 30 different respondents, though for my analysis I only used occupations where at least 20 out of the 30 respondents knew what the occupation was.
-I then further restricted the sample to only observations where the respondent knew what that occupation was. 
-Appendix~\ref{sec:additional} contains descriptive statistics respondent knowledge about all occupations I originally included in the survey.   
+Each occupation was evaluated by 30 different respondents, though for our analysis we only included occupations where at least 20 out of the 30 respondents knew what the occupation was.
+We then further restricted the sample to only observations where the respondent knew what that occupation was. %I'm not sure what's going on here. I tihnk we only need to talk about one of the restrictions.
+Appendix~\ref{sec:additional} contains descriptive statistics of respondent knowledge about all occupations originally included in the survey.   
 
-For ``ground truth'' on occupational wages, I simply used the estimated hourly mean wage from the OES.
-However, for occupations where hourly wages are not available, computed an estimated hourly wage based on a 40 hour week, for 50 weeks a year.  
-For employment predictions, I took the 2010 employment level for each occupation and computed the fraction of the workforce in that occupation. 
-I did the same using the 2020 employment projections. 
-I then computed percentage changes for those occupations. 
-I classified changes that were +/- 5\% as ``Stay the Same'' (getting a value of $0$) and those greater than 5\% getting a value of $1$ and those with a greater than 5\% decrease getting a value of $-1$.  
+For ``ground truth'' on occupational wages, we simply used the estimated hourly mean wage from the OES.
+However, for occupations where hourly wages are not available, we computed an estimated hourly wage based on a 40 hour week for 50 weeks a year.  
+For employment predictions, we computed the percentage change from the 2010 employment level (the fraction of the workforce in each occupation) to the the 2020 employment projections. 
+I classified changes that were $\pm$ 5\% as ``Stay the Same'' (getting a value of $0$) and those greater than 5\% getting a value of $1$ and those with a greater than 5\% decrease getting a value of $-1$.  
 The actual language of my survey question was ``20 years'' in the future. 
-While this is not the period over which we have a BLS prediction, I worried that with too short of a time period many respondents would choose ``Stay the same'' and hence the request for a 20 year prediction.  
+While this is not the period over which we have official BLS predictions, we worried that with too short of a time period many respondents would choose ``Stay the same'' and hence the request for a 20 year prediction. %I don't understand: why didn't you ask for a "10yr" prediction? I think this needs another sentence of justification.
 
 For the social knowledge measure, respondents were asked how many individuals they knew in an occupation. 
-The choices were $0$, $1$, $3-10$ and more than $10$. 
+The choices were $0$, $1$, $3-10$ and \qu{more than $10$.} 
 To construct a social index, these bins were coded as ``0'', ``1'', ``2'' and ``3'', respectively and then normalized with respect to the population of all responses across occupations. 
 
 \section{Results}
 
 \subsection{Predictions about wages and employment growth}
 
-To compare respondent predictions to BLS estimates, I simply regressed the BLS estimate on the associated respondent estimate. 
-In Column~(1), Table~\ref{tab:predictions}, the outcome variable is the log of the actual mean wage for the occupation. 
+To compare respondent predictions to BLS estimates, we regressed the BLS estimate on the associated respondent estimate. 
+In Column~(1) of Table~\ref{tab:predictions}, the outcome variable is the log of the actual mean wage for the occupation. 
 The regressor is the log of the respondent's wage estimate for that occupation. 
-The regression includes an respondent-specific fixed-effect and standard errors are clustered at the level of the respondent. 
-We can see that not only is the estimated wage highly significant and positive, the $R^2$ for the regression is quite high, with these estimates collectively explaining more than half the variation, even after the degrees of freedom correction. 
+The regression includes a respondent-specific fixed-effect and standard errors are clustered at the level of the respondent. 
+We can see that the estimated wage is not only highly significant and positive, but the $R^2$ for the model is quite high, with these estimates collectively explaining more than half the variation, even after the degrees of freedom correction. 
 
-\input{./tables/predictions.tex} 
+\input{./tables/predictions.tex} %Why is the intercept not shown here? It should be close to zero.
+
+
+%%%%%ADK STOP
 
 The regression approach masks a pattern in responses that is readily visible when actual wages are plotted against mean worker estimates. 
 Figure~\ref{fig:prediction_scatter} is a scatter plot of the log actual wages (y-axis) versus the mean of log predicted wages (x-axis) for each occupation. 
@@ -200,7 +210,7 @@ a reverse causation explanation would mean that accurate beliefs about a particu
 As such, an intervention might be to expose young labor market entrants or near entrants to a wider cross section of individuals in occupations.
  
 \bibliographystyle{aer}
-\bibliography{kwow.bib}
+\bibliography{kwow}
 
 \newpage 
 
@@ -210,7 +220,9 @@ As such, an intervention might be to expose young labor market entrants or near 
 Figure~\ref{fig:survey} shows the actual survey interface.  
 Wages in the drop-down box were listed in dollar increments from \$7 to \$10, two dollar increments from \$10 to \$20, four dollar increments from \$24 to \$36 and then six dollar increments to \$70/hour.  
 
+%Note there's a typo in "Quuestions" in this figure. You may want to correct before submission.
 \begin{figure}
+\centering
 \caption{Survey questions \label{fig:survey}}
 \begin{minipage}{0.75 \linewidth}
 \includegraphics[width = \linewidth]{./images/survey.png}
@@ -243,6 +255,7 @@ In Figure~\ref{fig:knowledge_by_occupation}, we plot the mean knowledge index by
 \includegraphics[width = \linewidth]{./plots/knowledge_by_occupation.pdf}
 \end{minipage}  
 \end{figure} 
+%Can we do 0/1 instead of -1/1 so the proportion can be read from the illustration? (proportions are more visceral than these numbers)
 
 \begin{figure}
 \caption{Social Knowledge Index by BLS occupation title} \label{fig:social_by_occupation}  
