@@ -1,0 +1,125 @@
+Table~\ref{tab:occupation_accuracy} reports several regression where the outcome variable is the MSE in prediction, in log points. 
+In Column~(1), we can see, unsurprisingly, that prediction errors are decreasing in the total employment in that population. 
+Column~(2) adds as a predictor and indicator for whther the respondent knows that the job consists of. 
+This is also negative, as expected, and lowers the employment coefficient.  
+Column~(3) adds the social index predictor, which is negative (albeit not significant) lowers the employment and job knowledge coefficients. 
+Finally, in Column~(4), we add the log mean hourly wage. 
+It is strongly positive---consistent with our graphical evidence---and it also flips the sign of the employment coefficient.  
+It also dramatically increases the adjusted $R^2$ of the regression. 
+In the data, actual occupational wages and employment share have a strong negative correlation, which this sign-reversal reflects. 
+
+\input{./tables/occupation_error.tex}
+
+
+
+% \subsection{Determinants of the occupational knowledge and accuracy} 
+
+% Given the strong effects that wage has on predictive accuracy, a natural question is how social knowledge and job knowledge vary with wage. 
+% Figure~\ref{fig:knowledge_by_wage} plots the fraction of respondents reporting that they know what an occupation is (in TK) and whether they know someone with that occupation (in TK), binned by hourly wage. 
+% A clear U-shaped pattern is apparent: respondnents know more---both socially and substantiively---about low- and high-wage occupations, but less about the middle. 
+% This cuts against the idea that the population of respondents---which generally have low wages---simply does not know anyone at the top of the distribution. 
+% While the reason for the pattern in unclear, it could reflect frequent exposure to service occupations---both high and low-end---but relatively little exposure to managerial, trade and operational occupations that, as a matter of course, do not interact with individual consumers.  
+% Individuals are exposed regularly to low-wage jobs like waitresses and custodial workers and high-wage but professional jobs like doctors, dentists and lawyers, but they have little day-to-day experience with various managers, technical specialists, trade persons etc. that fill up the bulk of the mid-tier occupations. 
+
+% \begin{figure}
+% \caption{Hourly wage and occupational knowledge \label{fig:knowledge_by_wage}} 
+% \centering
+% \begin{minipage}{0.90 \linewidth}
+% \includegraphics[width = \linewidth]{./plots/knowledge_by_wage.pdf}
+% \\
+% \emph{Notes:} This figure shows the mean fraction of respondents either knowing someone or knowing what an occupation consists of, by hourly wage bands. 
+% \end{minipage}  
+% \end{figure} 
+
+
+% \input{./tables/error_prediction.tex}  
+%\input{./tables/panel_models.tex}  
+
+
+
+\begin{figure}
+\begin{minipage}{0.90 \linewidth}
+\includegraphics[width = \linewidth]{./plots/dendrogram.pdf}
+\end{minipage}  
+\end{figure} 
+
+
+Social knowledge itself displays an interesting U-shaped pattern: 
+workers know people with low wage jobs and high wage jobs, but know far fewer people in middle wage occupations. 
+Respondent knowledge is also stratified by occupational income: 
+Workers do not know about random subsets of occupations, but instead, knowing more high occupations makes it more likely that the respondent will know some other high wage occupation. 
+
+
+% TO DO 
+
+% Ask workers for age, gender, income & employment status? 
+% Validate against Google consumer surveys 
+% Check against variance in that occupation---is greater pct error driven by greater variance? 
+
+%% The sample of workers answering questions on MTurk. 
+%% If a pattern or causal effect exists in one population, there is always a question of generalizability. 
+%% What if the sample of respondents is just a sample of low-wage workers? 
+%% - We can ask workers for their incomes 
+%% - We can show in the literature that this is not a particularly biased group 
+%% - We can use Google Survey, a nationally representative sample, to adjust 
+%% What if high-way jobs are just less common? Controlling for the total employment in that category does not make the effect go away. 
+%% What if the hourly/annual salary throws things off? 
+%% Do high-way jobs just have more variance? 
+%% Was the hourly range top-coded? We started using different binnings that the top, which mechanically reduces predictive accuracy.  
+%% Should the panel estimates have clustered standard errors? 
+%% Is the BLS 'major' category the right one? The ``Managerial, Other'' type occupations are not really adding much to the analysis. 
+%% Turn both knowledge measures into Likert scales 
+
+%% Future work 
+%% Wage profile tenure 
+%% Link up with representative data 
+%% Perhaps one could sample some vacancies as a ``stake in the ground.'' 
+
+%Even when controlling for social knowledge, error percentages increase with the actual wage of the occupation. 
+% Preview results 
+% Respondent knowledge appears segmented, in that workers 
+%% The focus on the analysis was to:
+%% -characterize performance and see whether the ``wisdom of crowds'' hypotheses holds regarding occupations 
+%% -find poorly labeled occupations in the BLS/OES 
+%% -see what occupations are misperceived. 
+%% -see how total employment and social knowledge mediate performance in estimating hourly wages 
+%% -test whether social knowledge is ``segmented'' by wage  
+%% - Idea: break bands, with four drop downs into (0 - 25)(26-50)(51 - 75)(76 - 100)
+%% Why are physicains and surgeons ``off'' - is it top-coded? 
+
+% Questions: 
+% 1) Are log wages homoscedastic wrt to standard errors? 
+
+%% Granovetter---weak ties. 
+%% Some evidence for the Social learning hypotheses.  
+
+
+% One concern with this study is that results from convenience samples do not necessarily generalize to the larger population. 
+% However, convience samples---beyond just being convenient---can given credible results for certain kinds of questions, particularly those trying to detect correlations.
+% \footnote{ 
+% For example, volunteers for a clinical trial presumably do not have hypertension at the same rate as the population, but if some drug can reduce levels of hypertension in a clinical trial, we suspect that directinal effect would also hold in the population.}
+
+
+\subsection{Stratification in occupational knowledge by wage} 
+
+A important question is whether workers are stratified in their knowledge about occupational wages. 
+If workers only know about wages ``locally'' they might be stuck in a kind of trap, unwilling to make substantial human capital investments without more certainty about the reward.  
+We can test partially test this stratification proposition by seeing whether, for each occupation, social knowledge is predicted by the mean wages of the other occupations for which the worker claimed to have social knowledge. 
+
+Consider a worker $i$ evaluating an occupation, $j$. 
+This occupation has an actual wage $w_j$. 
+Let $S_{ij}$ be an indicator whether $i$ knows someone working in occupation $j$. 
+For $S_j$, we compute $\bar{w}^S_{-j}$, which is the mean wage of other occupations for which the worker had social knowledge, knowing someone in that wage.  
+
+In Table~\ref{tab:clustering}, Column~(1), I report an estimate of 
+\begin{align} \label{eq:cluster}
+\mbox{Pr}\{S_i = 1\} = \alpha + \beta \log w_j + \gamma \log \bar{w}^S_{-j} + \delta \left( \log w_j \times \log \bar{w}^S_{-j} \right) + \epsilon_{ij}. 
+\end{align} 
+
+\input{./tables/clustering.tex} 
+
+As we saw earlier, knowledge is decreasing in the wage of the occupation, in that $\hat{\beta}$ is negative. 
+Consistent with the stratification hypotheses, the coefficient on the acutal wage and the social knowedge wage is positive, or $\hat{\delta} > 0$. 
+Respondents that reported knowing people in higher-wage occupation where more likely to know someone in the $i$th occupation if the $i$th occupation was itself higher-wage. 
+In Column~(2), as a falsification test I report the same regression as in Equation~\ref{eq:cluster}, but within each worker, shuffling their social index at random. 
+Reassuringly, none of the coefficients are conventionally significant. 

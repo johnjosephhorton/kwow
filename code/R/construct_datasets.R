@@ -47,11 +47,11 @@ import.top.national <- function(fname, TOP.N=100, OCC.CAT="broad"){
   df[,convert.cols] <- sapply(df[,convert.cols], as.character)
   df[,convert.cols] <- sapply(df[,convert.cols], as.numeric)
   ## Convert first 3 columns to characters
-  df[,1:3] <- sapply(df[,1:3], as.character)
+  df[,1:3] <- sapply(df[,1:3], as.character) 
   
   ## For annually-paid jobs converts annual wages to hourly
   df[!is.na(df$ANNUAL) & df$ANNUAL==T, cols.hourly] <-
-    df[!is.na(df$ANNUAL) & df$ANNUAL==T, cols.annual]/2080
+    df[!is.na(df$ANNUAL) & df$ANNUAL==T, cols.annual]/(50 * 40)
   
   df$imputed.hourly <- with(df, !is.na(df$ANNUAL) & df$ANNUAL==T)
   

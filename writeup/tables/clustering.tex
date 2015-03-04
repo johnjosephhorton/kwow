@@ -1,50 +1,40 @@
 
-% Table created by stargazer v.4.5.3 by Marek Hlavac, Harvard University. E-mail: hlavac at fas.harvard.edu
-% Date and time: Tue, Dec 17, 2013 - 05:03:30 AM
+% Table created by stargazer v.5.1 by Marek Hlavac, Harvard University. E-mail: hlavac at fas.harvard.edu
+% Date and time: Sun, Mar 01, 2015 - 06:44:07 PM
 \begin{table}[!htbp] \centering 
-  \caption{General Knowledge Index, conditioned upon wages of other known occupations} 
+  \caption{Knowing someone in an occupation, conditioned upon wages of other known occupations} 
   \label{tab:clustering} 
 \begin{tabular}{@{\extracolsep{5pt}}lcc} 
 \\[-1.8ex]\hline 
 \hline \\[-1.8ex] 
  & \multicolumn{2}{c}{\textit{Dependent variable:}} \\ 
 \cline{2-3} 
-\\[-1.8ex] & know.someone & fake.know.someone \\ 
+\\[-1.8ex] & Know Someone? & Pseudo-Know Someone? \\ 
 \\[-1.8ex] & (1) & (2)\\ 
 \hline \\[-1.8ex] 
- Actual occupation wage, $\log \bar{w}_i$ & $-$1.593$^{***}$ & $-$0.064 \\ 
-  & (0.349) & (0.445) \\ 
+ Actual occupation wage, $\log \bar{w}_j$ & $-$1.657$^{***}$ & $-$1.364$^{***}$ \\ 
+  & (0.413) & (0.440) \\ 
   & & \\ 
- Mean log wage of other known occupations, $\log \bar{w}^S_{-i}$ & $-$4.464$^{***}$ & $-$0.071 \\ 
-  & (0.974) & (1.237) \\ 
+ Mean log wage of other known occupations, $\log \bar{w}^S_{-j}$ & $-$4.667$^{***}$ & $-$4.426$^{***}$ \\ 
+  & (1.249) & (1.305) \\ 
   & & \\ 
- Number of observations by worker, $\sum_i 1$ & $-$0.001$^{***}$ & $-$0.0001 \\ 
-  & (0.0003) & (0.0003) \\ 
-  & & \\ 
- Interaction term: $\log \bar{w}_i \times \log \bar{w}^S_{-i}$ & 1.414$^{***}$ & 0.052 \\ 
-  & (0.318) & (0.403) \\ 
-  & & \\ 
- Constant & 5.575$^{***}$ & 0.575 \\ 
-  & (1.068) & (1.364) \\ 
+ Interaction term: $\log \bar{w}_i \times \log \bar{w}^S_{-i}$ & 1.529$^{***}$ & 1.215$^{***}$ \\ 
+  & (0.373) & (0.404) \\ 
   & & \\ 
 \hline \\[-1.8ex] 
-Observations & 2,911 & 2,903 \\ 
-R$^{2}$ & 0.019 & 0.0002 \\ 
-Adjusted R$^{2}$ & 0.017 & $-$0.001 \\ 
-Residual Std. Error & 0.495 (df = 2906) & 0.500 (df = 2898) \\ 
-F Statistic & 13.825$^{***}$ (df = 4; 2906) & 0.110 (df = 4; 2898) \\ 
+Worker FE & Yes & Yes \\ 
+Observations & 2,218 & 2,213 \\ 
+R$^{2}$ & 0.248 & 0.070 \\ 
+Adjusted R$^{2}$ & 0.210 & 0.022 \\ 
+Residual Std. Error & 0.439 (df = 2110) & 0.489 (df = 2104) \\ 
 \hline 
 \hline \\[-1.8ex] 
-\multicolumn{3}{p{0.95 \linewidth}}{
-\emph{Notes:} TK This table reports the effects of social and general knowledge on a
-respondent's prediction error, while controlling for worker and
-occupation specfic effects. In Columns (1) and (2), the dependent
-variable is MSE in wage prediction, while in Columns (3) and (4), the
-dependent variable is an indicator for incorrectly predicting the
-direction of employment growth in that occupation. Columns (1) and (3)
-use worker and occupation fixed effects, with standard errors
-clustered at the level of the respondent (the more converative
-clustering choice), while in Columns (2) and (3), a multi-level model
-with respondent and title random effects are used. \starlanguage 
-}\end{tabular} 
-\end{table} 
+\end{tabular}
+\\
+\begin{minipage}{0.95 \textwidth}
+{\footnotesize \emph{Notes:}
+           
+
+           \starlanguage }
+\end{minipage}
+\end{table}
