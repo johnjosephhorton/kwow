@@ -10,6 +10,7 @@ credentials.R
 *.out
 *.lot
 *.lof
+*.synctex*
 *.aux
 *.log
 *.bbl

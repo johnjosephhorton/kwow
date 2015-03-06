@@ -133,7 +133,9 @@ While this is not the period over which we have official BLS predictions, we wor
 
 For the social knowledge measure, respondents were asked how many individuals they knew in an occupation. 
 The choices were $0$, $1$, $3-10$ and \qu{more than $10$.} 
-To construct a social index, these bins were coded as ``0'', ``1'', ``2'' and ``3'', respectively and then normalized with respect to the population of all responses across occupations. 
+To construct a social index, these bins were coded as ``0'', ``1'', ``2'' and ``3'', respectively and then normalized with respect to the population of all responses across occupations.
+
+%I'm not sure we explained enough here. In the next section we talk about fixed effects for each respondent. What was the breakdown of number of questions answered by each respondent? 
 
 \section{Results}
 
@@ -143,19 +145,17 @@ To compare respondent predictions to BLS estimates, we regressed the BLS estimat
 In Column~(1) of Table~\ref{tab:predictions}, the outcome variable is the log of the actual mean wage for the occupation. 
 The regressor is the log of the respondent's wage estimate for that occupation. 
 The regression includes a respondent-specific fixed-effect and standard errors are clustered at the level of the respondent. 
+%not that it's going to matter, but here's a situation where random effect models can pay the rent. You can reasonable assume that a respondent's mean wage / prediction is drawn from a normal distribution. Thus, you don't have to blow 127 degrees of freedom on fixed effects. You'll get a bunch more power too
 We can see that the estimated wage is not only highly significant and positive, but the $R^2$ for the model is quite high, with these estimates collectively explaining more than half the variation, even after the degrees of freedom correction. 
 
 \input{./tables/predictions.tex} %Why is the intercept not shown here? It should be close to zero.
-
-
-%%%%%ADK STOP
 
 The regression approach masks a pattern in responses that is readily visible when actual wages are plotted against mean worker estimates. 
 Figure~\ref{fig:prediction_scatter} is a scatter plot of the log actual wages (y-axis) versus the mean of log predicted wages (x-axis) for each occupation. 
 Deviations from the 45 degree line indicate prediction errors. 
 There are two notable features of the data clearly illustrated by the the plot. 
-We can see that respondents systematically underestimate the wages of occupations at the high end of the distribution.\footnote{The only occupation that workers substantially over-estimate is the home health aide category---perhaps because of a mistaken belief that this is the nursing occupation.}  
-Some outliers---both positive and negative---are labeled with the occupation title.  
+We can see that respondents systematically underestimate the wages of occupations at the high end of the distribution.\footnote{The only occupation that workers substantially over-estimate is the home health aide category --- perhaps because of a mistaken belief that this is the nursing occupation.}  
+Some outliers --- both positive and negative --- are labeled with the occupation title.  
 Many of the extreme outliers are under-estimates of the wages of managerial occupations. 
 
 \begin{figure}
@@ -167,11 +167,18 @@ Many of the extreme outliers are under-estimates of the wages of managerial occu
 \emph{Notes:} This plot shows the actual log mean wage versus the mean log wages versus predicted wages.  
 \end{minipage}  
 \end{figure} 
+%I'm wondering if it's worth adding a grey line to each of the points in the plot to indicate confidence interval.
 
-In Column~(2), Table~\ref{tab:predictions}, the outcome variable is the expected change in employment on the ``Go Down'' = -1,, ``Stay the same'' = 0, ``Go up'' = 1 scale and the independent variable is the respondent's prediction. 
+In Column~(2), Table~\ref{tab:predictions}, the outcome variable is the expected change in employment on the ``Go Down'' = -1, ``Stay the same'' = 0, ``Go up'' = 1 scale and the independent variable is the respondent's prediction. 
 As with the wage predictions, a respondent-specific fixed effect is included and standard errors are clustered at the respondent level. 
 To the extent that the regression has any predictive power, it is gained by \emph{negatively} weighting predictions:
 in sharp contrast to the wage prediction results, there is essentially no relationship between BLS projections and individual projections. 
+
+%Did you test the interaction? That is, if the worker did well on predicting wage, was their prediction of projection more likely correct? You can do that by running the regression
+
+%BLS growth projection (-1/0/1) = intercept + fixed respondent effect + respondent growth projection prediction + squared_error(respondent wage prediction, BLS gold standard wage) + beta * respondent growth projection prediction * squared_error(respondent wage prediction, BLS gold standard wage) + noise clustered at the respondent 
+
+%if beta does not turn out to be significant, our argument is stronger "further, there's no correlation between knowing the wage and the projection." If it's significant, it will be weak; it can't be strong because column 2 shows an Rsqd ~ 0. So there, it still works for your argument.
 
 \subsection{Social knowledge and predictive accuracy}
 
