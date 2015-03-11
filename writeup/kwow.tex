@@ -154,6 +154,7 @@ To construct a social index, these bins were coded as ``0'', ``1'', ``2'' and ``
 
 %I'm not sure we explained enough here. In the next section we talk about fixed effects for each respondent. What was the breakdown of number of questions answered by each respondent? 
 % JJH: Created an issue for you :). 
+%I wonder if you ran the regression with a different mapping, let's say 0, 1, 7.5, 10 if anything would change.
 
 \section{Results}
 
@@ -168,19 +169,24 @@ We can see that the estimated wage is not only highly significant and positive, 
 
 \input{./tables/predictions.tex} %Why is the intercept not shown here? It should be close to zero.
 % With FE there will not be an intercept, at least with this way of doing it. Is it more common in stats to pull out the mean of the FEs and call it the intercept?  
-The regression approach masks a pattern in responses that is readily visible when actual wages are plotted against mean worker estimates. 
+%Oops - duh..
+
+The regression approach masks a non-linear pattern in the relationship that is readily visible when actual wages are plotted against mean worker estimates. 
 Figure~\ref{fig:prediction_scatter} is a scatter plot of the log actual wages (y-axis) versus the mean of log predicted wages (x-axis) for each occupation. 
 Deviations from the 45 degree line indicate prediction errors. 
 There are two notable features of the data clearly illustrated by the the plot. 
-We can see that respondents systematically underestimate the wages of occupations at the high end of the distribution.\footnote{The only occupation that workers substantially over-estimate is the home health aide category --- perhaps because of a mistaken belief that this is the nursing occupation.}  
+We can see that respondents systematically underestimate the wages of occupations at the high end of the distribution.\footnote
+{
+The only occupation that workers substantially over-estimate is the home health aide category --- perhaps because of a mistaken belief that this is the nursing occupation.
+}  
 Some outliers --- both positive and negative --- are labeled with the occupation title.  
 Many of the extreme outliers are under-estimates of the wages of managerial occupations. 
 
-\begin{figure}
+\begin{figure}[h]
 \caption{Perceived hourly wages versus actual hourly wages \label{fig:prediction_scatter}} 
 \centering 
 \begin{minipage}{0.90 \linewidth}
-\includegraphics[width = \linewidth]{./plots/predicted_v_actual.pdf} 
+\includegraphics[width = 0.90\linewidth]{./plots/predicted_v_actual.pdf} 
 \\
 \emph{Notes:} This plot shows the actual log mean wage versus the mean log wages versus predicted wages.  
 \end{minipage}  
@@ -204,38 +210,40 @@ in sharp contrast to the wage prediction results, there is essentially no relati
 We now consider whether social knowledge of an occupation improves individual predictive accuracy. 
 In Table~\ref{tab:fe_errors}, Column~(1), the dependent variable is the respondent's prediction error in wages, defined as the absolute value in the difference in log wages between the respondent's estimate and the BLS value.  
 In Table~\ref{tab:fe_errors}, Column~(2), the dependent variable is the respondent's prediction error in employment trends, similarly defined as the absolute value in the difference in projects. 
-For both regressions, both occupation- and respondent fixed-effects are included and standard errors are clustered at the respondent level.  
+For both regressions, both occupation and respondent fixed-effects are included and standard errors are clustered at the respondent level.  
 
 \input{./tables/error_fe_estimate.tex}
 
-For wages, in Column~(1), we can see that social knowledge is associated with reduced error, but the effect size is small and not significant. 
-For project employment in Column~(2), however, we can see that greater social knowledge is strongly associated with lower error in projected employment.  
+For wages, in Column~(1), we can see that social knowledge is not associated with reduced error. Thus, knowing more individuals in an occupation does not seem to correspond to knowing how much an average employee is paid in that occupation.
+%%I'm wondering: if you run the regression just on the occupations with the largest error (the managers and whatnot), would you see an effect? It's possible the effect is masked by a ton of noise. Either way, we should report the result. If it's negative, it makes our argument stronger.
+For project employment in Column~(2), however, we can see that greater social knowledge is strongly associated with lower error in projected employment. The effect size is small however and not easily interpretable due to the ordinal scales for both social knowledge and future trend.
 
 \section{Discussion}
 
 One possible explanation for error in prediction for high-wage occupations is that occupations at the high end are more likely to be salaried, which may weaken workers' ability to infer hourly wages. 
-Also, workers on Amazon Mechanical Turk tend to have lower than average wages and tend to be younger than the population at large \citep{ipeirotis2010demographics}. 
+Also, workers on Amazon Mechanical Turk tend to have lower than average wages and tend to be younger than the population at large \citep{Berinsky2012, ipeirotis2010demographics}. 
 It is an open question whether this finding would generalize to the larger population. 
 
 The lack of predictive ability about employment trends is perhaps, ex post, unsurprising. 
 Knowing employment trends for an occupation would require a fairly sophisticated understanding of long-term trends, such as the shift away from manufacturing and towards a service-based economy and the erosion of ``middle skill jobs'' \citep{autor1998computing}.  
 In contrast, learning the wages for an occupation is fairly straightforward. 
 
-What is surprising is that employment accuracy is apparently improved through social knowledge. 
+What is surprising is that knowledge of employment trends is apparently improved through social knowledge. 
 In terms of mechanisms, for the social knowledge effects, it seems likely that knowing someone who works in an occupation would grant access to more nuanced views of an occupation:
 someone working in a particular field, especially one with some tenure, could probably explain how it was changing in terms of the accomplishment of the main work task, what new technologies were being used, where new sources of supply and demand were coming from and so on.  
 
 \section{Conclusion} 
 
-The main result of the paper is that respondents seem to have good knowledge about wages, at least collectively, but that their knowledge of projected employment---at least as predicted by the BLS---is very poor.
+The main result of the paper is that respondents seem to have good knowledge about wages, at least collectively, but that their knowledge of projected employment --- at least as predicted by the BLS --- is very poor.
 However, social knowledge of an occupation, i.e., knowing someone with that occupation, tends to reduce predictive error about employment trends in that occupation, even when controlling for both the respondent and the occupation. 
-By controlling for both the individual and the occuopation, we can plausibly isolate the effect of social knowledge. 
-It is not the case---as it would be in cross-sections---that individuals with lots of social knowledge have reduced error rates or that occupations that are well-known socially also have little error. 
-While social knowledge is of course not as good as randomly assigned, reverse causation seems implausible: 
-a reverse causation explanation would mean that accurate beliefs about a particular occupation causes one to have friends with someone in that occupation. 
+By controlling for both the individual and the occupation, we can plausibly isolate the effect of social knowledge. 
+It is not the case --- as it would be in cross-sections --- that individuals with lots of social knowledge have reduced error rates or that occupations that are well-known socially also have little error. 
+While social knowledge is of course not as good as randomly assigned, reverse causation seems implausible (i.e. accurate beliefs about a particular occupation causes one to have friends with someone in that occupation). 
 
 Given the seeming importance of social knowledge, it might be useful to expose young labor market entrants or near entrants to a wider cross section of individuals in occupations.
  
+%I'm sure there's literature we can pull in here on the "value of networking" or whatever it's called technically.
+
 \bibliographystyle{aer}
 \bibliography{kwow}
 
@@ -244,7 +252,7 @@ Given the seeming importance of social knowledge, it might be useful to expose y
 \appendix 
 
 \section{Survey Materials} \label{sec:survey}  
-Figure~\ref{fig:survey} shows the actual survey interface.  
+Figure~\ref{fig:survey} shows the actual survey task.  
 Wages in the drop-down box were listed in dollar increments from \$7 to \$10, two dollar increments from \$10 to \$20, four dollar increments from \$24 to \$36 and then six dollar increments to \$70/hour.  
 
 %Note there's a typo in "Quuestions" in this figure. You may want to correct before submission.
@@ -258,12 +266,14 @@ Wages in the drop-down box were listed in dollar increments from \$7 to \$10, tw
 \end{minipage}  
 \end{figure} 
 
+%Really is a shame we didn't have Javascript converting hourly wage to annual salary... That may be the cause of some of the errors as you mentioned. If I were a reviewer, I might ask you to rerun it.
+
 \section{Additional data on occupational knowledge} \label{sec:additional}
 
 Figure~\ref{fig:by_occupation_boxplots} we plot the distribution of individual respondent log wage estimates for each occupation as a box plot. 
 The actual mean and median wage for each occupation are shown as squares and triangles, respectively. 
 Occupations are ordered by mean wage, from highest to lowest. 
-By comparing the median of the box plot to the actual median, we can see the tendency of respondents to systematically underestimate the wages at the high end of the distribution. 
+By comparing the median of the box plot to the actual median, we can see the tendency of respondents to systematically underestimate the wages at the high end of the distribution.
 
 \begin{figure}
 \caption{Distributions of respondent hourly wage perceptions by occupation \label{fig:by_occupation_boxplots}} 
@@ -273,6 +283,8 @@ By comparing the median of the box plot to the actual median, we can see the ten
 \emph{Notes:} Boxplots of the respondent wage predictions are shown for each occupation, with actual mean and median over-layed.
 \end{minipage}
 \end{figure} 
+
+
 
 
 In Figure~\ref{fig:knowledge_by_occupation}, we plot the mean knowledge index by occupations.  
