@@ -130,7 +130,10 @@ The actual survey interface presented to respondents is shown in Figure~\ref{fig
 There were no incentives for correct answers and the short time most workers spent on any tasks suggests they were not performing research. 
 
 A total of \numRaters\, respondents participated in the survey. 
-Each occupation was evaluated by 30 different respondents. 
+Each occupation was evaluated by 30 different respondents.\footnote
+{
+Respondents were allowed to answer any number of the 100 different surveys for each of the 100 occupations. The median number of surveys per respondent was 13 and the range was at minimum 1 and at maximum 99. Approximately 7\% of the respondendents answered more than 90 and approximately 13\% answered one or two. 
+}
 We excluded occupations that a relatively high fraction of respondents reported not knowing what the occupation consisted of: 
 to be in the sample at all, at least 20 out of 30 had to report having knowledge of the occupation.
 We did this because for those occupations, it is more likely that even respondents that did claim to know what the occupation consisted of were in fact mistaken.  
@@ -144,9 +147,7 @@ However, for occupations where hourly wages are not available, we computed an es
 For employment predictions, we computed the percentage change from the 2010 employment level (the fraction of the workforce in each occupation) to the the 2020 employment projections. 
 We classified changes that were $\pm$ 5\% as ``Stay the Same'' (getting a value of $0$) and those greater than 5\% getting a value of $1$ and those with a greater than 5\% decrease getting a value of $-1$.  
 The actual language of our survey question was ``20 years'' in the future. 
-While this is not the period over which we have official BLS predictions, we worried that with too short of a time period many respondents would choose ``Stay the same'' and hence the request for a 20 year prediction. 
-%I don't understand: why didn't you ask for a "10yr" prediction? I think this needs another sentence of justification.
-% Because 10 years is too short --- I figured too people would just pool on "Stay the same" 
+While this is not the period over which we have official BLS predictions, we worried that with too short of a time period many respondents would choose ``Stay the same'' and hence the request for a 20 year prediction.
 
 For the social knowledge measure, respondents were asked how many individuals they knew in an occupation. 
 The choices were $0$, $1$, $3-10$ and \qu{more than $10$.} 
@@ -154,6 +155,7 @@ To construct a social index, these bins were coded as ``0'', ``1'', ``2'' and ``
 
 %I'm not sure we explained enough here. In the next section we talk about fixed effects for each respondent. What was the breakdown of number of questions answered by each respondent? 
 % JJH: Created an issue for you :). 
+
 %I wonder if you ran the regression with a different mapping, let's say 0, 1, 7.5, 10 if anything would change.
 
 \section{Results}
