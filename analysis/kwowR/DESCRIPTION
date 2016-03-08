@@ -1,0 +1,25 @@
+Package: kwowR
+Title: Code and data for "KWOW" 
+Version: 1.0
+Authors@R: person("John", "Horton", email = "john.joseph.horton@gmail.com", role = c("aut", "cre"))
+Description: Contains data and packages for KWOW project. 
+Depends: R (>= 3.2.3),
+	 foreign (>= 0.0),
+	 ggplot2 (>= 0.0),
+	 lme4 (>= 0.0),	 
+	 memisc (>= 0.0),
+	 plm (>= 0.0),
+	 plyr (>= 0.0),
+	 reporttools (>= 0.0),
+	 reshape2 (>= 0.0),
+	 scales (>= 0.0),
+	 stargazer (>= 0.0),
+	 stringr (>= 0.0),
+	 xtable (>= 0.0),
+	 sandwich (>= 0.0),
+	 lmtest (>= 0.0),
+	 JJHmisc (>= 0.0),
+	 lfe (>= 0.0),
+	 data.table (>= 0.0),
+License: MIT Licence 
+LazyData: true

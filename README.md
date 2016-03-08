@@ -1,27 +1,66 @@
-# oDesk Job "JH - Perform Exploratory Data Analysis in R & ggplot2"
-## Contract ID 13552832
+# Notes
 
+This is the associated code for the paper ``Good on Wages, Bad on Changes'' 
 
-### Important Messages Archive #
+1. My website: [http://www.john-joseph-horton.com/papers/sharing.pdf](http://www.john-joseph-horton.com/papers/sharing.pdf)
 
-#### Message 1
+## Citation Info
 
-So the DGP for this project is a simple survey I'm conducting on Mechanical Turk. Here's a link to the HTML i'm using to collect data:
+```
+@article{horton2016kwow,
+ title = "Good on Wages, Bad on Changes",
+ author = "John J. Horton and Adam Kapelner",
+ year = "2016",
+ month = "February",
+ journal = "Working Paper" 
+}	  
 
-https://dl.dropboxusercontent.com/u/420874/survey.html
+```
 
-The ${Title} parameter is populated with a list of the 100 most common occupations in the US. Each occupation is done by 30 different workers. I have data from the actual statistical agencies on employment, wages, wage trends etc.---I want to compare the MTurk answers to the official statistical numbers.
+## Replication
 
-Basically what I'm looking for is someone to plot & summarize the data in interesting & informative ways. I can do this myself---I'd say I'm a ggplot2 expert---and an experienced R programmer---but I'm looking to get help. I'm looking for someone who likes hacking around and exploring---I don't want someone who I need to tell what to do every 5 minutes. I'm very comfortable with letting someone explore and play around with minimal guidance from me (I always give 5 star feedback regardless, so don't worry about that).
+The repository is set up to make it transparent how the final PDF is constructed from the raw data. 
+To replicate, you will need a Linux or Mac OX machine that has the following installed:
 
-So how does this sound? I'll hire you then share repos with the code I have so far and the datasets. What's your github?
+1. `R`
+1. `pdflatex`
+1. `make`
+1. `gpg`
+1. `curl`
+1. `gs` (GhostScript)
 
+To replicate the data analysis, you will need several R packages.
+However, when you run the code below, it *should* obtain all these R-specific dependencies you need. 
 
-#### Message 2
+Note that this repository does not contain the actual experimental data.
+To obtain the data, email me at `john.joseph.horton@gmail.com` and I will email you two small text files.
+These files have the information you need to download and unencrypt the data. 
 
-Great - so added you to the repository and made some commit messages w/ data files. I like to keep all my R code in /code/R/ and data in /data. Analysis should go in /writeup.  Dump plots in /writeup/plots and any LaTeX tables in /writeup/tables (though don't worry too much about that now---just get used to the data). 
+One you have the two files, the steps are:
 
-Do you want a code sample for parsing MTurk output data? It should be relatively straightforward but if you hit any snags, let me  know. 
+####Download the repository from github
+```
+ git clone git@github.com:johnjosephhorton/kwow.git 
+```
+#### Download the data
 
-Also - you can email at john.joseph.horton@gmail.com.
+```
+cd etl
+make data
+```
+
+#### Run the analsysis
+
+#### Build the PDF
+From `/kwow`, run: 
+```
+cd writeup
+make kwow.pdf
+```
+This should download the necessary data files and decrypt them.
+It will also run the statistical analysis in R (downloading all needed packages) and then produce plots and tables (stored in `writeup/tables` and `writeup/plots`). 
+Finally, it will build the pdf file using `pdflatex`, leaving the resultant `sharing.pdf` in the `/writing` folder.
+To see the actual steps that are being followed, you can inspect `writeup\Makefile`.
+
+If you run into any trouble replicating, please contact me at ``john.joseph.horton@gmail.com``. 
 

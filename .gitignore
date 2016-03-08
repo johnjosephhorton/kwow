@@ -20,3 +20,14 @@ logistics/
 poster/
 old/
 sample.html
+writeup/plots/*pdf
+writeup/plots/*png
+writeup/plots/*svg
+writeup/tables/*tex
+data/
+etl/raw/
+etl/transformed/
+writeup/kwow.pdf
+code/
+analysis/kwowR/inst/extdata/*rds
+data/
