@@ -35,6 +35,8 @@ library(stringr)
 library(ggplot2)
 library(reshape2)
 
+#setwd("C:\\Users\\Kapelner\\workspace\\kwow\\knitr")
+
 load("bls.data")
 load("mturk.data")
 
@@ -101,6 +103,15 @@ for(i in 1:nrow(national.df)){
   
   cat("\\newpage")
 }
+@
+
+<<num_respondent_stats>>=
+#not good latex or presentation... but it's a record of what I did...
+xs = sort(table(mturk.df$WorkerId))
+median(xs)
+range(xs)
+sum(xs >= 90) / length(xs)
+sum(xs <= 2) / length(xs)
 @
 
 

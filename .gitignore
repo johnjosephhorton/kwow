@@ -3,6 +3,7 @@ credentials.R
 *.Rapp.history
 *.Rhistory
 *.Statahistory
+.project
 \.dropbox
 *.png 
 *.ttt
@@ -20,6 +21,7 @@ logistics/
 poster/
 old/
 sample.html
+<<<<<<< HEAD
 writeup/plots/*pdf
 writeup/plots/*png
 writeup/plots/*svg
@@ -31,3 +33,5 @@ writeup/kwow.pdf
 code/
 analysis/kwowR/inst/extdata/*rds
 data/
+*.swp
+
