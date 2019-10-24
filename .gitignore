@@ -34,4 +34,6 @@ code/
 analysis/kwowR/inst/extdata/*rds
 data/
 *.swp
-
+writeup/tables/*tex
+writeup/plots/unused/*
+writeup/tables/unused/*
