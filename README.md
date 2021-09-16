@@ -2,8 +2,6 @@
 
 This is the associated code for the paper ``Good on Wages, Bad on Changes'' 
 
-1. My website: [http://www.john-joseph-horton.com/papers/sharing.pdf](http://www.john-joseph-horton.com/papers/sharing.pdf)
-
 ## Citation Info
 
 ```
