@@ -29,7 +29,7 @@ axes.breaks <- c(7, 15, 30, 60, 100)
 g.predicted.v.actual <- ggplot(data = df.wage,
                                aes(y = mturk.w,
                                    x = oes.w)) +
-    geom_point(shape = 1, alpha = .5) +
+    geom_point(shape = 1, alpha = 0.2) +
     geom_smooth() +
     geom_errorbar(aes(x = oes.w, y = mturk.w, ymin = mturk.w - 2*se.mturk.w,
                       ymax = mturk.w + 2*se.mturk.w),
@@ -39,11 +39,13 @@ g.predicted.v.actual <- ggplot(data = df.wage,
                                         #           vjust = 0, angle = 0) +
     geom_text_repel(aes(label = ifelse(outlier, title, ""))) + 
     theme_bw() +
-    ylab("Respondent mean log wage for occupation") +
-    xlab("Actual mean log wage for occupation") +
+    ylab("Respondent mean wage prediction for occupation (log scale)") +
+    xlab("Actual mean wage for occupation (log scale)") +
     scale_x_log10(breaks = axes.breaks, limits = c(5, 100)) +
     scale_y_log10(breaks = axes.breaks, limits = c(5, 100)) 
 
+
+print(g.predicted.v.actual)
 
 JJHmisc::writeImage(g.predicted.v.actual,
                     "predicted_v_actual",
